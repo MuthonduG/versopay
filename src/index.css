@@ -33,6 +33,18 @@
     animation: float 4s infinite;
 }
 
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+.animate-scroll {
+    animation: scroll 40s linear infinite;
+    will-change: transform;
+}
+.animate-scroll:hover {
+    animation-play-state: paused;
+}
+
 /* For text truncation with multiple lines */
 .line-clamp-2 {
     display: -webkit-box;

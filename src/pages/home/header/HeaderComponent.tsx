@@ -1,9 +1,88 @@
 import header_image_one from "../../../assets/header_main.png";
-import { MdOutlineNotifications, MdPayment } from "react-icons/md";
+import { MdOutlineNotifications, MdPayment, MdSms } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa";
-import { BsCheckCircleFill } from "react-icons/bs";
+import { BsCheckCircleFill, BsGoogle } from "react-icons/bs";
+import { SiGooglecalendar } from "react-icons/si";
+import { GiBank } from "react-icons/gi";
+import { RiMoneyDollarCircleFill } from "react-icons/ri";
+import mpesa_logo from "../../../assets/mpesa.png";
+import airtel_logo from "../../../assets/airtel.png";
+import momo_logo from "../../../assets/momo.png";
+import kcb_logo from "../../../assets/kcb.png";
+import equity_logo from "../../../assets/equity.png";
 
 const HeaderComponent = () => {
+  // Integrations data
+  const integrations = [
+    { 
+      name: "MPesa", 
+      image: mpesa_logo,
+      bgColor: "bg-green-100",
+      textColor: "text-green-600",
+      hasImage: true
+    },
+    { 
+      name: "Airtel Money", 
+      icon: <RiMoneyDollarCircleFill className="text-2xl" />,
+      image: airtel_logo,
+      bgColor: "bg-red-100",
+      textColor: "text-red-600",
+      hasImage: true
+    },
+    { 
+      name: "Momo Money", 
+      icon: <RiMoneyDollarCircleFill className="text-2xl" />,
+      image: momo_logo,
+      bgColor: "bg-yellow-100",
+      textColor: "text-yellow-600",
+      hasImage: true
+    },
+    { 
+      name: "KCB", 
+      icon: <GiBank className="text-2xl" />,
+      image: kcb_logo,
+      bgColor: "bg-blue-100",
+      textColor: "text-blue-600",
+      hasImage: true
+    },
+    { 
+      name: "Equity", 
+      icon: <GiBank className="text-2xl" />,
+      image: equity_logo,
+      bgColor: "bg-purple-100",
+      textColor: "text-purple-600",
+      hasImage: true
+    },
+    { 
+      name: "WhatsApp", 
+      icon: <FaWhatsapp className="text-2xl" />,
+      bgColor: "bg-green-100",
+      textColor: "text-green-600",
+      hasImage: false
+    },
+    { 
+      name: "SMS", 
+      icon: <MdSms className="text-2xl" />,
+      bgColor: "bg-gray-100",
+      textColor: "text-gray-600",
+      hasImage: false
+    },
+    { 
+      name: "Google Calendar", 
+      icon: <SiGooglecalendar className="text-2xl" />,
+      bgColor: "bg-blue-100",
+      textColor: "text-blue-600",
+      hasImage: false
+    },
+    { 
+      name: "Google Events", 
+      icon: <BsGoogle className="text-2xl" />,
+      bgColor: "bg-indigo-100",
+      textColor: "text-indigo-600",
+      hasImage: false
+    },
+  ];
+
   return (
     <header className="w-full flex flex-col justify-center items-center mt-28">
 
@@ -28,7 +107,7 @@ const HeaderComponent = () => {
 
         {/* left side */}
         <div className="flex-1 md:flex hidden justify-center items-center p-2 relative ">
-          <div className="flex justify-center items-center relative h-[400px] w-[400px] mt-12 rounded-2xl shadow-xl overflow-hidden group">
+          <div className="flex justify-center items-center relative h-100 w-100 mt-12 rounded-2xl shadow-xl overflow-hidden group">
             <img src={header_image_one} alt="Dashboard preview" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
           </div>
 
@@ -36,7 +115,7 @@ const HeaderComponent = () => {
           <div className="absolute -top-6 right-0 bg-white rounded-2xl shadow-2xl p-4 w-64 animate-bounce-slow z-10"
                style={{ transform: 'translateX(25%)' }}>
             <div className="flex items-start gap-3">
-              <div className="bg-blue-100 p-2 rounded-full flex-shrink-0">
+              <div className="bg-blue-100 p-2 rounded-full shrink-0">
                 <MdOutlineNotifications className="text-blue-600 text-xl" />
               </div>
               <div className="flex-1 min-w-0">
@@ -44,7 +123,7 @@ const HeaderComponent = () => {
                 <p className="text-sm font-semibold text-gray-800 truncate">Jane Njeri</p>
                 <p className="text-xs text-gray-600 mt-1 truncate">Paid KES 500 • 2 min ago</p>
               </div>
-              <BsCheckCircleFill className="text-green-500 text-lg flex-shrink-0" />
+              <BsCheckCircleFill className="text-green-500 text-lg shrink-0" />
             </div>
             {/* Small indicator pointing to the image */}
             <div className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-white rotate-45 shadow-lg"></div>
@@ -54,13 +133,13 @@ const HeaderComponent = () => {
           <div className="absolute bottom-12 -left-16 bg-white rounded-2xl shadow-2xl p-4 w-72 animate-slide-in z-10"
                style={{ transform: 'translateX(20%)' }}>
             <div className="flex items-start gap-3">
-              <div className="bg-green-100 p-2 rounded-full flex-shrink-0">
+              <div className="bg-green-100 p-2 rounded-full shrink-0">
                 <FaWhatsapp className="text-green-600 text-xl" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-2">
                   <p className="text-xs font-medium text-gray-500 truncate">VersoPaid • now</p>
-                  <span className="text-[10px] bg-green-500 text-white px-2 py-0.5 rounded-full flex-shrink-0">NEW</span>
+                  <span className="text-[10px] bg-green-500 text-white px-2 py-0.5 rounded-full shrink-0">NEW</span>
                 </div>
                 <p className="text-sm font-semibold text-gray-800 mt-1 truncate">Payment Reminder</p>
                 <p className="text-xs text-gray-600 mt-1 line-clamp-2">
@@ -80,7 +159,7 @@ const HeaderComponent = () => {
           <div className="absolute top-16 -right-12 bg-white rounded-xl shadow-2xl p-3 w-48 animate-float z-10"
                style={{ transform: 'translateX(15%)' }}>
             <div className="flex items-center gap-2">
-              <MdPayment className="text-blue-500 text-lg flex-shrink-0" />
+              <MdPayment className="text-blue-500 text-lg shrink-0" />
               <div className="min-w-0">
                 <p className="text-xs font-medium text-gray-500 truncate">Total Collections</p>
                 <p className="text-sm font-bold text-gray-800 truncate">KES 45,500</p>
@@ -95,8 +174,88 @@ const HeaderComponent = () => {
 
       </div>
 
-      {/* integrations */}
+      {/* integrations slider */}
+      <div className="w-full overflow-hidden mt-16 py-6">
+        {/* Scrolling slider container */}
+        <div className="relative flex overflow-x-hidden py-8">
+          {/* First scrolling row */}
+          <div className="flex animate-scroll gap-6 whitespace-nowrap pr-6">
+            {integrations.map((integration, index) => (
+              <div
+                key={`${integration.name}-${index}`}
+                className="inline-flex items-center gap-4 px-6 py-3 bg-white rounded-full shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer border border-gray-100 hover:border-transparent"
+                style={{ marginRight: '0' }}
+              >
+                {integration.image ? (
+                  <div className={`w-8 h-8 rounded-full ${integration.bgColor} p-0 flex items-center justify-center overflow-hidden`}>
+                    <img 
+                      src={integration.image} 
+                      alt={integration.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className={`${integration.bgColor} p-2 rounded-full`}>
+                    <div className={integration.textColor}>{integration.icon}</div>
+                  </div>
+                )}
+                <span className="text-sm font-medium text-gray-700">{integration.name}</span>
+              </div>
+            ))}
+          </div>
 
+          {/* Duplicate row for seamless infinite scroll */}
+          <div className="flex animate-scroll gap-6 whitespace-nowrap pr-6" aria-hidden="true">
+            {integrations.map((integration, index) => (
+              <div
+                key={`${integration.name}-duplicate-${index}`}
+                className="inline-flex items-center gap-4 px-6 py-3 bg-white rounded-full shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer border border-gray-100 hover:border-transparent"
+                style={{ marginRight: '0' }}
+              >
+                {integration.image ? (
+                  <div className={`w-8 h-8 rounded-full ${integration.bgColor} p-0 flex items-center justify-center overflow-hidden`}>
+                    <img 
+                      src={integration.image} 
+                      alt={integration.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className={`${integration.bgColor} p-2 rounded-full`}>
+                    <div className={integration.textColor}>{integration.icon}</div>
+                  </div>
+                )}
+                <span className="text-sm font-medium text-gray-700">{integration.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Alternative grid layout for mobile/static view */}
+        <div className="flex flex-wrap justify-center gap-4 mt-8 md:hidden">
+          {integrations.slice(0, 6).map((integration, index) => (
+            <div
+              key={`mobile-${integration.name}-${index}`}
+              className="flex items-center gap-3 px-4 py-2 bg-white rounded-full shadow-md border border-gray-100"
+            >
+              {integration.image ? (
+                <div className={`w-6 h-6 rounded-full ${integration.bgColor} p-0 flex items-center justify-center overflow-hidden`}>
+                  <img 
+                    src={integration.image} 
+                    alt={integration.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ) : (
+                <div className={`${integration.bgColor} p-1.5 rounded-full`}>
+                  <div className={`${integration.textColor} text-sm`}>{integration.icon}</div>
+                </div>
+              )}
+              <span className="text-xs font-medium text-gray-700">{integration.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </header>
   )
 }
