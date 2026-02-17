@@ -1,4 +1,4 @@
-import header_image_one from "../../../assets/header_main.png";
+import header_image_two from "../../../assets/header_two.png";
 import { MdOutlineNotifications, MdPayment, MdSms } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa";
 import { BsCheckCircleFill, BsGoogle } from "react-icons/bs";
@@ -10,6 +10,7 @@ import airtel_logo from "../../../assets/airtel.png";
 import momo_logo from "../../../assets/momo.png";
 import kcb_logo from "../../../assets/kcb.png";
 import equity_logo from "../../../assets/equity.png";
+
 
 const HeaderComponent = () => {
   // Integrations data
@@ -86,10 +87,8 @@ const HeaderComponent = () => {
   return (
     <header className="w-full flex flex-col justify-center items-center mt-28">
 
-      {/* main content */}
       <div className="flex flex-col md:flex-row justify-center items-center gap-4 w-[70%]">
 
-        {/* right side */}
         <div className="flex-1 flex-col justify-center items-center md:justify-end md:items-end p-4 gap-4">
           <span className="text-4xl font-semibold text-blue-700">Re-curring payments and collections made easy</span>
           <p className="text-gray-600 leading-9 mt-8">
@@ -99,19 +98,17 @@ const HeaderComponent = () => {
           </p>
           <div className="flex flex-col md:flex-row justify-center items-center gap-4 mt-14">
 
-            <a href="" className="w-full px-6 p-2 flex justify-center items-center bg-blue-700/80 hover:bg-blue-700/90 transform shadow rounded-full text-white font-semibold transition-all duration-300 hover:scale-105">Join The Waitlist</a>
-            <a href="" className="w-full px-6 p-2 flex justify-center items-center bg-gray-700/20 hover:bg-gray-700/25 transform shadow rounded-full font-semibold transition-all duration-300 hover:scale-105">Request Demo</a>
+            <a href="" className="w-full px-6 py-3 flex justify-center items-center bg-blue-700/80 hover:bg-blue-700/90 transform shadow rounded-full text-white font-semibold transition-all duration-300 hover:scale-105">Join The Waitlist</a>
+            <a href="" className="w-full px-6 py-3 flex justify-center items-center bg-gray-700/20 hover:bg-gray-700/25 transform shadow rounded-full font-semibold transition-all duration-300 hover:scale-105">Request Demo</a>
 
           </div>
         </div>
 
-        {/* left side */}
         <div className="flex-1 md:flex hidden justify-center items-center p-2 relative ">
           <div className="flex justify-center items-center relative h-100 w-100 mt-12 rounded-2xl shadow-xl overflow-hidden group">
-            <img src={header_image_one} alt="Dashboard preview" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <img src={header_image_two} alt="Dashboard preview" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
           </div>
 
-          {/* absolute notification card at the right top - positioned to be 25% inside, 75% outside */}
           <div className="absolute -top-6 right-0 bg-white rounded-2xl shadow-2xl p-4 w-64 animate-bounce-slow z-10"
                style={{ transform: 'translateX(25%)' }}>
             <div className="flex items-start gap-3">
@@ -125,11 +122,9 @@ const HeaderComponent = () => {
               </div>
               <BsCheckCircleFill className="text-green-500 text-lg shrink-0" />
             </div>
-            {/* Small indicator pointing to the image */}
             <div className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-white rotate-45 shadow-lg"></div>
           </div>
 
-          {/* absolute card showing a whatsapp message - positioned to be 20% inside, 80% outside */}
           <div className="absolute bottom-12 -left-16 bg-white rounded-2xl shadow-2xl p-4 w-72 animate-slide-in z-10"
                style={{ transform: 'translateX(20%)' }}>
             <div className="flex items-start gap-3">
@@ -151,11 +146,9 @@ const HeaderComponent = () => {
                 </div>
               </div>
             </div>
-            {/* Small indicator pointing to the image */}
             <div className="absolute -right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-white rotate-45 shadow-lg"></div>
           </div>
 
-          {/* Additional floating payment card - positioned to be 15% inside, 85% outside */}
           <div className="absolute top-16 -right-12 bg-white rounded-xl shadow-2xl p-3 w-48 animate-float z-10"
                style={{ transform: 'translateX(15%)' }}>
             <div className="flex items-center gap-2">
@@ -166,7 +159,6 @@ const HeaderComponent = () => {
                 <p className="text-[10px] text-green-600 truncate">↑ 12% from last month</p>
               </div>
             </div>
-            {/* Small indicator pointing to the image */}
             <div className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-white rotate-45 shadow-lg"></div>
           </div>
 
@@ -174,11 +166,12 @@ const HeaderComponent = () => {
 
       </div>
 
-      {/* integrations slider */}
-      <div className="w-full overflow-hidden mt-16 py-6">
-        {/* Scrolling slider container */}
+      <div className="mt-4">
+        <span className="text-xl font-semibold text-gray-600/40">Powered By:</span>
+      </div>
+
+      <div className="w-full overflow-hidden py-2 hidden md:block">
         <div className="relative flex overflow-x-hidden py-8">
-          {/* First scrolling row */}
           <div className="flex animate-scroll gap-6 whitespace-nowrap pr-6">
             {integrations.map((integration, index) => (
               <div
@@ -204,7 +197,6 @@ const HeaderComponent = () => {
             ))}
           </div>
 
-          {/* Duplicate row for seamless infinite scroll */}
           <div className="flex animate-scroll gap-6 whitespace-nowrap pr-6" aria-hidden="true">
             {integrations.map((integration, index) => (
               <div
@@ -230,32 +222,32 @@ const HeaderComponent = () => {
             ))}
           </div>
         </div>
-
-        {/* Alternative grid layout for mobile/static view */}
-        <div className="flex flex-wrap justify-center gap-4 mt-8 md:hidden">
-          {integrations.slice(0, 6).map((integration, index) => (
-            <div
-              key={`mobile-${integration.name}-${index}`}
-              className="flex items-center gap-3 px-4 py-2 bg-white rounded-full shadow-md border border-gray-100"
-            >
-              {integration.image ? (
-                <div className={`w-6 h-6 rounded-full ${integration.bgColor} p-0 flex items-center justify-center overflow-hidden`}>
-                  <img 
-                    src={integration.image} 
-                    alt={integration.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ) : (
-                <div className={`${integration.bgColor} p-1.5 rounded-full`}>
-                  <div className={`${integration.textColor} text-sm`}>{integration.icon}</div>
-                </div>
-              )}
-              <span className="text-xs font-medium text-gray-700">{integration.name}</span>
-            </div>
-          ))}
-        </div>
       </div>
+
+      <div className="flex flex-wrap justify-center gap-4 mt-8 md:hidden">
+        {integrations.map((integration, index) => (
+          <div
+            key={`mobile-${integration.name}-${index}`}
+            className="flex items-center gap-3 px-4 py-2 bg-white rounded-full shadow-md border border-gray-100"
+          >
+            {integration.image ? (
+              <div className={`w-6 h-6 rounded-full ${integration.bgColor} p-0 flex items-center justify-center overflow-hidden`}>
+                <img 
+                  src={integration.image} 
+                  alt={integration.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ) : (
+              <div className={`${integration.bgColor} p-1.5 rounded-full`}>
+                <div className={`${integration.textColor} text-sm`}>{integration.icon}</div>
+              </div>
+            )}
+            <span className="text-xs font-medium text-gray-700">{integration.name}</span>
+          </div>
+        ))}
+      </div>
+
     </header>
   )
 }
