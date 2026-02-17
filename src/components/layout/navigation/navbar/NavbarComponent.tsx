@@ -29,6 +29,7 @@ interface navProps {
   href: string;
   icon?: ReactElement;
   dropdown?: dropdownItem[];
+  hoverColor?: string;
 }
 
 const navElements: navProps[] = [
@@ -36,6 +37,7 @@ const navElements: navProps[] = [
     title: "Features", 
     href: "#", 
     icon: <BiCategory />,
+    hoverColor: "purple",
     dropdown: [
       { 
         title: "MPesa Payments", 
@@ -79,6 +81,7 @@ const navElements: navProps[] = [
     title: "Solutions", 
     href: "#", 
     icon: <FaToolbox />,
+    hoverColor: "green",
     dropdown: [
       { 
         title: "MPesa & Bank Reconciliations", 
@@ -104,6 +107,7 @@ const navElements: navProps[] = [
     title: "Integrations", 
     href: "#", 
     icon: <PiMoneyFill />,
+    hoverColor: "amber",
     dropdown: [
       { 
         title: "MPesa", 
@@ -224,6 +228,39 @@ const NavbarComponent = () => {
     setOpenDropdown(null); // Close any open dropdowns when toggling sidebar
   };
 
+  // Helper function to get uniform hover color class for main nav links
+  const getUniformHoverClass = () => {
+    return 'hover:text-blue-600 transition-colors duration-200 cursor-pointer';
+  };
+
+  // Helper function to get dropdown item hover color (remains different)
+  const getDropdownItemHoverClass = (color?: string) => {
+    switch(color) {
+      case 'purple':
+        return 'hover:bg-purple-50 hover:text-purple-700';
+      case 'green':
+        return 'hover:bg-green-50 hover:text-green-700';
+      case 'amber':
+        return 'hover:bg-amber-50 hover:text-amber-700';
+      default:
+        return 'hover:bg-blue-50 hover:text-blue-700';
+    }
+  };
+
+  // Helper function to get border top color
+  const getBorderTopClass = (color?: string) => {
+    switch(color) {
+      case 'purple':
+        return 'border-t-purple-500';
+      case 'green':
+        return 'border-t-green-500';
+      case 'amber':
+        return 'border-t-amber-500';
+      default:
+        return 'border-t-blue-500';
+    }
+  };
+
   // Mobile Sidebar
   if (isMobile) {
     return (
@@ -236,7 +273,7 @@ const NavbarComponent = () => {
           </div>
           <button 
             onClick={handleMobileMenuToggle}
-            className="text-2xl text-gray-600"
+            className="text-2xl text-gray-600 hover:text-blue-600 transition-colors cursor-pointer"
           >
             {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
@@ -245,7 +282,7 @@ const NavbarComponent = () => {
         {/* Sidebar Overlay */}
         {isMobileMenuOpen && (
           <div 
-            className="fixed inset-0 bg-black bg-opacity-50 z-40"
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 cursor-pointer"
             onClick={() => setIsMobileMenuOpen(false)}
           />
         )}
@@ -269,7 +306,7 @@ const NavbarComponent = () => {
                   <div className="relative">
                     <button
                       onClick={(e) => toggleDropdown(element.title, e)}
-                      className="mobile-dropdown-btn w-full flex items-center justify-between p-4 text-gray-700 hover:bg-blue-50 transition-colors"
+                      className={`mobile-dropdown-btn w-full flex items-center justify-between p-4 text-gray-700 ${getUniformHoverClass()}`}
                     >
                       <div className="flex items-center gap-3">
                         <span className="text-blue-600">{element.icon}</span>
@@ -284,7 +321,7 @@ const NavbarComponent = () => {
                           <a
                             key={item.title}
                             href={item.href}
-                            className="flex items-start gap-3 p-3 pl-12 text-sm text-gray-600 hover:bg-blue-50 transition-colors"
+                            className={`flex items-start gap-3 p-3 pl-12 text-sm text-gray-600 transition-colors ${getDropdownItemHoverClass(element.hoverColor)} cursor-pointer`}
                             onClick={() => {
                               setOpenDropdown(null);
                               setIsMobileMenuOpen(false);
@@ -299,7 +336,12 @@ const NavbarComponent = () => {
                                 />
                               </div>
                             ) : (
-                              <span className="text-blue-500 mt-1 text-lg w-8 h-8 flex items-center justify-center">
+                              <span className={`mt-1 text-lg w-8 h-8 flex items-center justify-center ${
+                                element.hoverColor === 'purple' ? 'text-purple-500' :
+                                element.hoverColor === 'green' ? 'text-green-500' :
+                                element.hoverColor === 'amber' ? 'text-amber-500' :
+                                'text-blue-500'
+                              }`}>
                                 {item.icon}
                               </span>
                             )}
@@ -317,7 +359,7 @@ const NavbarComponent = () => {
                 ) : (
                   <a
                     href={element.href}
-                    className="flex items-center gap-3 p-4 text-gray-700 hover:bg-blue-50 transition-colors"
+                    className={`flex items-center gap-3 p-4 text-gray-700 ${getUniformHoverClass()}`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <span className="text-blue-600">{element.icon}</span>
@@ -331,7 +373,7 @@ const NavbarComponent = () => {
             <div className="p-4">
               <a 
                 href="#" 
-                className="block text-center bg-blue-700 text-white py-3 rounded-lg hover:bg-blue-800 transition-colors"
+                className="block text-center bg-blue-700 text-white py-3 rounded-lg hover:bg-blue-800 transition-colors cursor-pointer"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Login
@@ -368,7 +410,14 @@ const NavbarComponent = () => {
                         e.stopPropagation();
                         toggleDropdown(element.title);
                       }}
-                      className="px-3 py-2 text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 text-sm lg:text-base"
+                      className={`px-3 py-2 flex items-center gap-1 text-sm lg:text-base ${
+                        openDropdown === element.title 
+                          ? element.hoverColor === 'purple' ? 'text-purple-600' :
+                            element.hoverColor === 'green' ? 'text-green-600' :
+                            element.hoverColor === 'amber' ? 'text-amber-600' :
+                            'text-blue-600'
+                          : 'text-gray-600'
+                      } ${getUniformHoverClass()}`}
                     >
                       <span>{element.title}</span>
                       <FaChevronDown className={`text-xs transition-transform ${openDropdown === element.title ? 'rotate-180' : ''}`} />
@@ -376,7 +425,7 @@ const NavbarComponent = () => {
                     
                     {openDropdown === element.title && (
                       <div 
-                        className="absolute left-0 top-full mt-10 bg-white rounded-b-lg shadow-xl border-t-2 border-blue-500 py-6 z-50"
+                        className={`absolute left-0 top-full mt-10 bg-white rounded-b-lg shadow-xl border-t-2 ${getBorderTopClass(element.hoverColor)} py-6 z-50`}
                         style={{
                           width: element.title === "Features" ? "700px" : 
                                  element.title === "Integrations" ? "700px" : "500px",
@@ -393,11 +442,21 @@ const NavbarComponent = () => {
                             <a
                               key={item.title}
                               href={item.href}
-                              className="flex items-start gap-3 p-3 text-sm text-gray-700 hover:bg-blue-50 rounded-lg transition-colors group"
+                              className={`flex items-start gap-3 p-3 text-sm rounded-lg transition-all duration-200 group cursor-pointer ${
+                                element.hoverColor === 'purple' ? 'hover:bg-purple-50' :
+                                element.hoverColor === 'green' ? 'hover:bg-green-50' :
+                                element.hoverColor === 'amber' ? 'hover:bg-amber-50' :
+                                'hover:bg-blue-50'
+                              }`}
                               onClick={() => setOpenDropdown(null)}
                             >
                               {item.image ? (
-                                <div className="w-10 h-10 flex-shrink-0 rounded-xl bg-white shadow-md group-hover:shadow-lg transition-shadow overflow-hidden flex items-center justify-center border border-gray-100">
+                                <div className={`w-10 h-10 flex-shrink-0 rounded-xl bg-white shadow-md transition-all duration-200 overflow-hidden flex items-center justify-center border border-gray-100 ${
+                                  element.hoverColor === 'purple' ? 'group-hover:shadow-purple-200/50 group-hover:border-purple-200' :
+                                  element.hoverColor === 'green' ? 'group-hover:shadow-green-200/50 group-hover:border-green-200' :
+                                  element.hoverColor === 'amber' ? 'group-hover:shadow-amber-200/50 group-hover:border-amber-200' :
+                                  'group-hover:shadow-blue-200/50 group-hover:border-blue-200'
+                                }`}>
                                   <img 
                                     src={item.image} 
                                     alt={item.title} 
@@ -405,12 +464,24 @@ const NavbarComponent = () => {
                                   />
                                 </div>
                               ) : (
-                                <span className="text-blue-500 text-xl w-10 h-10 flex items-center justify-center">
+                                <span className={`text-xl w-10 h-10 flex items-center justify-center transition-colors ${
+                                  element.hoverColor === 'purple' ? 'text-purple-500 group-hover:text-purple-600' :
+                                  element.hoverColor === 'green' ? 'text-green-500 group-hover:text-green-600' :
+                                  element.hoverColor === 'amber' ? 'text-amber-500 group-hover:text-amber-600' :
+                                  'text-blue-500 group-hover:text-blue-600'
+                                }`}>
                                   {item.icon}
                                 </span>
                               )}
                               <div className="flex-1">
-                                <div className="font-semibold text-gray-800">{item.title}</div>
+                                <div className={`font-semibold transition-colors ${
+                                  element.hoverColor === 'purple' ? 'group-hover:text-purple-700' :
+                                  element.hoverColor === 'green' ? 'group-hover:text-green-700' :
+                                  element.hoverColor === 'amber' ? 'group-hover:text-amber-700' :
+                                  'group-hover:text-blue-700'
+                                }`}>
+                                  {item.title}
+                                </div>
                                 {item.description && (
                                   <div className="text-xs text-gray-500 mt-1 leading-relaxed">
                                     {item.description}
@@ -421,11 +492,16 @@ const NavbarComponent = () => {
                           ))}
                         </div>
                         
-                        {/* Optional footer for dropdown */}
-                        <div className="mt-4 pt-4 border-t border-gray-100 px-6">
+                        {/* Footer for dropdown */}
+                        <div className={`mt-4 pt-4 border-t border-gray-100 px-6`}>
                           <a 
                             href={`#${element.title.toLowerCase()}`}
-                            className="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1"
+                            className={`text-sm font-medium flex items-center gap-1 transition-colors cursor-pointer ${
+                              element.hoverColor === 'purple' ? 'text-purple-600 hover:text-purple-800' :
+                              element.hoverColor === 'green' ? 'text-green-600 hover:text-green-800' :
+                              element.hoverColor === 'amber' ? 'text-amber-600 hover:text-amber-800' :
+                              'text-blue-600 hover:text-blue-800'
+                            }`}
                             onClick={() => setOpenDropdown(null)}
                           >
                             View all {element.title.toLowerCase()}
@@ -438,7 +514,7 @@ const NavbarComponent = () => {
                 ) : (
                   <a
                     href={element.href}
-                    className="px-3 py-2 text-gray-600 hover:text-blue-600 transition-colors block text-sm lg:text-base"
+                    className={`px-3 py-2 text-gray-600 block text-sm lg:text-base ${getUniformHoverClass()}`}
                   >
                     {element.title}
                   </a>
@@ -448,7 +524,7 @@ const NavbarComponent = () => {
           </div>
 
           {/* ctas */}
-          <div className="flex justify-center items-center bg-blue-700/70 hover:bg-blue-700/90 px-4 py-1.5 rounded-3xl font-semibold text-white transition-colors text-sm lg:text-base">
+          <div className="flex justify-center items-center bg-blue-700/70 hover:bg-blue-700/90 px-4 py-1.5 rounded-3xl font-semibold text-white transition-colors text-sm lg:text-base cursor-pointer">
             <a href="#" className="">
               Login
             </a>
