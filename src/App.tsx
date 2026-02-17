@@ -1,14 +1,17 @@
-
 import './index.css'
-import FeaturesPage from './pages/home/features/features'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import HomePage from './pages/home'
 
 function App() {
 
 
   return (
     <>
-     <FeaturesPage />
-
+      <Router>
+        <Routes>
+          <Route index element={<HomePage/>} />
+        </Routes>
+      </Router>
     </>
   )
 }
