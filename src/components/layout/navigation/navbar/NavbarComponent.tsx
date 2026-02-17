@@ -328,7 +328,7 @@ const NavbarComponent = () => {
                             }}
                           >
                             {item.image ? (
-                              <div className="w-8 h-8 flex-shrink-0 rounded-lg bg-white shadow-sm p-0 flex items-center justify-center overflow-hidden">
+                              <div className="w-8 h-8 shrink-0 rounded-lg bg-white shadow-sm p-0 flex items-center justify-center overflow-hidden">
                                 <img 
                                   src={item.image} 
                                   alt={item.title} 
@@ -451,7 +451,7 @@ const NavbarComponent = () => {
                               onClick={() => setOpenDropdown(null)}
                             >
                               {item.image ? (
-                                <div className={`w-10 h-10 flex-shrink-0 rounded-xl bg-white shadow-md transition-all duration-200 overflow-hidden flex items-center justify-center border border-gray-100 ${
+                                <div className={`w-10 h-10 shrink-0 rounded-xl bg-white shadow-md transition-all duration-200 overflow-hidden flex items-center justify-center border border-gray-100 ${
                                   element.hoverColor === 'purple' ? 'group-hover:shadow-purple-200/50 group-hover:border-purple-200' :
                                   element.hoverColor === 'green' ? 'group-hover:shadow-green-200/50 group-hover:border-green-200' :
                                   element.hoverColor === 'amber' ? 'group-hover:shadow-amber-200/50 group-hover:border-amber-200' :
