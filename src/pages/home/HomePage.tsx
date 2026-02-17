@@ -2,6 +2,7 @@
 import NavbarComponent from '../../components/layout/navigation/navbar/NavbarComponent'
 import FeaturesPage from './features/features'
 import HeaderComponent from './header/HeaderComponent'
+import WhyUsComponent from './whyus/WhyUsComponent'
 
 
 const HomePage = () => {
@@ -11,6 +12,7 @@ const HomePage = () => {
       <NavbarComponent/>
       <HeaderComponent/>
       <FeaturesPage/>
+      <WhyUsComponent/>
 
     </section>
   )

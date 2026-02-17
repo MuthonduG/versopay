@@ -156,7 +156,6 @@ const NavbarComponent = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   
-  // Refs for click outside detection
   const sidebarRef = useRef<HTMLDivElement>(null);
   const mobileHeaderRef = useRef<HTMLDivElement>(null);
   const desktopNavRef = useRef<HTMLDivElement>(null);
@@ -174,7 +173,6 @@ const NavbarComponent = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Handle click outside for desktop dropdowns
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (desktopNavRef.current && !desktopNavRef.current.contains(event.target as Node)) {
@@ -191,10 +189,8 @@ const NavbarComponent = () => {
     };
   }, [openDropdown]);
 
-  // Handle click outside for mobile sidebar
   useEffect(() => {
     const handleClickOutsideMobile = (event: MouseEvent) => {
-      // Close sidebar if clicking outside
       if (isMobileMenuOpen && 
           sidebarRef.current && 
           mobileHeaderRef.current &&
@@ -203,7 +199,6 @@ const NavbarComponent = () => {
         setIsMobileMenuOpen(false);
       }
       
-      // Close dropdowns in sidebar if clicking outside the current dropdown
       if (openDropdown) {
         const target = event.target as Element;
         if (!target.closest('.mobile-dropdown-btn') && !target.closest('.mobile-dropdown-content')) {
@@ -225,15 +220,13 @@ const NavbarComponent = () => {
 
   const handleMobileMenuToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
-    setOpenDropdown(null); // Close any open dropdowns when toggling sidebar
+    setOpenDropdown(null); 
   };
 
-  // Helper function to get uniform hover color class for main nav links
   const getUniformHoverClass = () => {
     return 'hover:text-blue-600 transition-colors duration-200 cursor-pointer';
   };
 
-  // Helper function to get dropdown item hover color (remains different)
   const getDropdownItemHoverClass = (color?: string) => {
     switch(color) {
       case 'purple':
@@ -247,7 +240,6 @@ const NavbarComponent = () => {
     }
   };
 
-  // Helper function to get border top color
   const getBorderTopClass = (color?: string) => {
     switch(color) {
       case 'purple':
@@ -261,11 +253,9 @@ const NavbarComponent = () => {
     }
   };
 
-  // Mobile Sidebar
   if (isMobile) {
     return (
       <>
-        {/* Mobile Header */}
         <div ref={mobileHeaderRef} className="fixed top-0 left-0 right-0 flex justify-between items-center p-4 bg-white shadow-md z-50">
           <div className="flex items-center">
             <span className="text-xl text-blue-700 font-bold">Verso</span>
@@ -279,7 +269,6 @@ const NavbarComponent = () => {
           </button>
         </div>
 
-        {/* Sidebar Overlay */}
         {isMobileMenuOpen && (
           <div 
             className="fixed inset-0 bg-black bg-opacity-50 z-40 cursor-pointer"
@@ -369,7 +358,6 @@ const NavbarComponent = () => {
               </div>
             ))}
 
-            {/* Mobile Login Button */}
             <div className="p-4">
               <a 
                 href="#" 
@@ -385,21 +373,18 @@ const NavbarComponent = () => {
     );
   }
 
-  // Desktop Navbar
   return (
     <section className="flex justify-center items-center gap-4 p-4 w-full">
       <nav 
         ref={desktopNavRef}
         className="flex justify-center items-center gap-4 p-4 rounded-4xl shadow-md shadow-gray-600/40 w-[90%] lg:w-[80%] border-2 border-blue-500/5 fixed bg-white z-50 mt-16"
       >
-        {/* logo */}
         <div className="flex flex-1 justify-start items-start">
           <span className="text-xl text-blue-700 font-bold">Verso</span>
           <span className="text-xl font-bold">Paid</span>
         </div>
 
         <div className="flex flex-1 justify-end items-end gap-4">
-          {/* navlinks */}
           <div className="flex justify-center items-center gap-1">
             {navElements.map((element) => (
               <div key={element.title} className="relative dropdown-container">
@@ -492,7 +477,6 @@ const NavbarComponent = () => {
                           ))}
                         </div>
                         
-                        {/* Footer for dropdown */}
                         <div className={`mt-4 pt-4 border-t border-gray-100 px-6`}>
                           <a 
                             href={`#${element.title.toLowerCase()}`}
@@ -523,7 +507,6 @@ const NavbarComponent = () => {
             ))}
           </div>
 
-          {/* ctas */}
           <div className="flex justify-center items-center bg-blue-700/70 hover:bg-blue-700/90 px-4 py-1.5 rounded-3xl font-semibold text-white transition-colors text-sm lg:text-base cursor-pointer">
             <a href="#" className="">
               Login

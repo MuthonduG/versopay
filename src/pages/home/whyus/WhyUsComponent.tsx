@@ -1,0 +1,143 @@
+import why_us_image from "../../../assets/why_us.png";
+import { FaCheckCircle, FaArrowRight } from 'react-icons/fa';
+
+const user_avatar_images: string[] = [
+    "https://i.pinimg.com/1200x/ff/59/9f/ff599f54dfc78c39e417de2f24640ff3.jpg",
+    "https://i.pinimg.com/736x/f9/73/4f/f9734f332e556dd06cc5c8c4c7dedc85.jpg",
+    "https://i.pinimg.com/736x/84/fb/74/84fb74866cfe12554c73094b9d7b19c5.jpg",
+    "https://i.pinimg.com/736x/1b/c1/69/1bc1690376a67997ef7899c24a8509bb.jpg",
+];
+
+const WhyUsComponent = () => {
+  return (
+    <section className="flex justify-center items-center w-full py-20 bg-linear-to-b from-white to-gray-50">
+        
+        <div className="w-[70%] flex flex-col-reverse md:flex-row-reverse justify-center items-center gap-12">
+            
+            {/* left side - Content */}
+            <div className="flex-1 space-y-6">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+                    Why Choose{' '}
+                    <span className="text-blue-700">Versopaid</span>
+                </h2>
+
+                <p className="text-gray-600 leading-relaxed">
+                    We help small recurring-collection groups in Kenya automate payment tracking, 
+                    reconciliation, and member notifications - so you can focus on growing, not chasing payments.
+                </p>
+
+                <div className="space-y-4 mt-8">
+                    <div className="flex items-center gap-4 bg-white hover:bg-blue-50 rounded-full p-4 pr-8 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group border border-gray-100">
+                        <div className="bg-blue-700 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:scale-110 transition-transform">
+                            1
+                        </div>
+                        <div className="flex-1">
+                            <div className="flex items-center gap-2">
+                                <h4 className="font-bold text-gray-900 text-lg">80% Time Saved</h4>
+                            </div>
+                            <p className="text-gray-600 text-sm">Automated reconciliation eliminates manual work</p>
+                        </div>
+                    </div>
+
+                    <div className="flex items-center gap-4 bg-white hover:bg-blue-50 rounded-full p-4 pr-8 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group border border-gray-100">
+                        <div className="bg-blue-700 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:scale-110 transition-transform">
+                            2
+                        </div>
+                        <div className="flex-1">
+                            <div className="flex items-center gap-2">
+                                <h4 className="font-bold text-gray-900 text-lg">Auto-Reminders</h4>
+                            </div>
+                            <p className="text-gray-600 text-sm">WhatsApp, SMS & email notifications</p>
+                        </div>
+                    </div>
+
+                    <div className="flex items-center gap-4 bg-white hover:bg-blue-50 rounded-full p-4 pr-8 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group border border-gray-100">
+                        <div className="bg-blue-700 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:scale-110 transition-transform">
+                            3
+                        </div>
+                        <div className="flex-1">
+                            <div className="flex items-center gap-2">
+                                <h4 className="font-bold text-gray-900 text-lg">Clear Reporting</h4>
+                            </div>
+                            <p className="text-gray-600 text-sm">Audit-ready financial summaries</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="mt-10">
+                    <a 
+                        href="#" 
+                        className="inline-flex items-center gap-2 px-8 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg group"
+                    >
+                        Get Started Today 
+                        <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                    </a>
+                </div>
+            </div>
+            
+            {/* right side - Image with overlays */}
+            <div className="flex-1 flex justify-center items-center relative">
+                <div className="relative w-full max-w-xl overflow-hidden shadow-2xl"
+                     style={{
+                        borderRadius: '60% 40% 50% 30% / 30% 50% 40% 60%',
+                        animation: 'morph 8s ease-in-out infinite'
+                     }}>
+                    <div className="relative w-full h-full transform scale-120 origin-center">
+                        <img 
+                            src={why_us_image} 
+                            alt="Why choose Versopaid" 
+                            className="w-full h-auto object-cover"
+                        />
+                    </div>
+                    
+                    <div className="absolute inset-0 bg-linear-to-tr from-blue-900/20 to-transparent"></div>
+                </div>
+
+                <div className="absolute -bottom-6 right-4 bg-white rounded-2xl shadow-2xl p-4 flex items-center gap-3 z-10">
+                    <div className="flex -space-x-3">
+                        {user_avatar_images.slice(0, 4).map((avatar, index) => (
+                            <div 
+                                key={index}
+                                className="w-10 h-10 rounded-full border-2 border-white overflow-hidden shadow-md"
+                            >
+                                <img 
+                                    src={avatar} 
+                                    alt={`User ${index + 1}`}
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                    <div className="flex flex-col">
+                        <span className="text-sm font-bold text-gray-900">500+</span>
+                        <span className="text-xs text-gray-600">Happy Groups</span>
+                    </div>
+                </div>
+
+                <div className="absolute top-6 -left-6 bg-white rounded-xl shadow-xl p-3 animate-float z-10">
+                    <div className="flex items-center gap-2">
+                        <div className="bg-green-100 p-2 rounded-lg">
+                            <FaCheckCircle className="text-green-600 text-sm" />
+                        </div>
+                        <div>
+                            <p className="text-xs font-bold text-gray-900">98%</p>
+                            <p className="text-[10px] text-gray-600">Payment Accuracy</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="absolute -z-10 w-full h-full bg-blue-100 rounded-full blur-3xl opacity-30"
+                     style={{
+                        borderRadius: '40% 60% 30% 70% / 60% 30% 70% 40%',
+                        transform: 'scale(1.1)'
+                     }}>
+                </div>
+            </div>
+            
+        </div>
+        
+    </section>
+  );
+};
+
+export default WhyUsComponent;
