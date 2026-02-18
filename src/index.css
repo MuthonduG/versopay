@@ -45,6 +45,14 @@
     animation-play-state: paused;
 }
 
+@keyframes float-slow {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+.animate-float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+}
+
 .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
