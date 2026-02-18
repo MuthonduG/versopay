@@ -71,3 +71,11 @@
         border-radius: 60% 40% 50% 30% / 30% 50% 40% 60%;
     }
 }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-10px) translateX(5px); }
+}
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
