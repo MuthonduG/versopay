@@ -1,5 +1,6 @@
 // import React, { type ReactElement } from 'react'
 import NavbarComponent from '../../components/layout/navigation/navbar/NavbarComponent'
+import BannerComponent from './banner/BannerComponent'
 import FeaturesPage from './features/features'
 import HeaderComponent from './header/HeaderComponent'
 import SecurityTransactionsComponent from './security/SecurityTransactionsComponent'
@@ -17,6 +18,7 @@ const HomePage = () => {
       <WhyUsComponent/>
       <TargetOrganisation/>
       <SecurityTransactionsComponent/>
+      <BannerComponent/>
 
     </section>
   )
