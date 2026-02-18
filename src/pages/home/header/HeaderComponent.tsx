@@ -1,16 +1,16 @@
 import header_image_two from "../../../assets/header_two.png";
 import { MdOutlineNotifications, MdPayment, MdSms } from "react-icons/md";
 import { FaArrowRight, FaUsers, FaWhatsapp } from "react-icons/fa";
-import { BsCheckCircleFill, BsGoogle } from "react-icons/bs";
+import { BsCheckCircleFill, BsGoogle, BsStars } from "react-icons/bs";
 import { SiGooglecalendar } from "react-icons/si";
 import { GiBank } from "react-icons/gi";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
+import { HiOutlineSparkles } from "react-icons/hi";
 import mpesa_logo from "../../../assets/mpesa.png";
 import airtel_logo from "../../../assets/airtel.png";
 import momo_logo from "../../../assets/momo.png";
 import kcb_logo from "../../../assets/kcb.png";
 import equity_logo from "../../../assets/equity.png";
-
 
 const HeaderComponent = () => {
   // Integrations data
@@ -85,14 +85,28 @@ const HeaderComponent = () => {
   ];
 
   return (
-    <header className="w-full flex flex-col justify-center items-center mt-28">
+    <header className="w-full flex flex-col justify-center items-center mt-28 relative overflow-visible">
+      
+      {/* Decorative background elements - matching Navbar theme */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-20 -right-20 w-64 h-64 bg-yellow-100 rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-amber-100 rounded-full blur-3xl opacity-30"></div>
+        
+        <div className="absolute top-40 left-20 animate-float-slow opacity-10">
+          <BsStars className="text-yellow-500 text-6xl" />
+        </div>
+        <div className="absolute bottom-40 right-20 animate-float-slow opacity-10">
+          <HiOutlineSparkles className="text-amber-500 text-6xl" />
+        </div>
+      </div>
 
-      <div className="flex flex-col md:flex-row justify-center items-center gap-4 w-[70%]">
+      <div className="relative z-10 flex flex-col md:flex-row justify-center items-center gap-4 w-[90%] lg:w-[70%]">
 
-        <div className="flex-1 flex-col justify-center items-center md:justify-end md:items-end p-4 gap-4">
+        {/* Left side - Content */}
+        <div className="flex-1 flex-col justify-center items-center md:justify-start md:items-start p-4 gap-4">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
             Re-curring payments and collections{' '}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-700 to-purple-700">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-amber-500">
               made easy
             </span>
           </h1>
@@ -102,10 +116,12 @@ const HeaderComponent = () => {
             specifically for small recurring-collection groups in Kenya. We help organizations track who
             has paid and who hasn’t - automatically - so they don’t have to manually reconcile M-Pesa statements or chase payments.
           </p>
+          
+          {/* Updated CTA buttons to match Navbar yellow theme */}
           <div className="flex flex-col md:flex-row justify-center md:justify-start items-center gap-4 mt-14 w-full">
             <a 
               href="#" 
-              className="group w-full md:w-auto px-8 py-4 flex justify-center items-center bg-linear-to-r from-blue-700 to-blue-800 hover:from-blue-800 hover:to-blue-900 transform shadow-xl rounded-full text-white font-semibold transition-all duration-300 hover:scale-105 gap-2"
+              className="group w-full md:w-auto px-8 py-4 flex justify-center items-center bg-linear-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 transform shadow-xl rounded-full text-white font-semibold transition-all duration-300 hover:scale-105 gap-2"
             >
               Join The Waitlist
               <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -114,22 +130,31 @@ const HeaderComponent = () => {
               href="#" 
               className="group w-full md:w-auto px-8 py-4 flex justify-center items-center bg-white hover:bg-gray-50 transform shadow-lg rounded-full font-semibold transition-all duration-300 hover:scale-105 border-2 border-gray-200 gap-2"
             >
-              <FaUsers className="text-blue-600" />
+              <FaUsers className="text-yellow-500" />
               Request Demo
             </a>
           </div>
         </div>
 
-        <div className="flex-1 md:flex hidden justify-center items-center p-2 relative ">
-          <div className="flex justify-center items-center relative h-100 w-100 mt-12 rounded-2xl shadow-xl overflow-hidden group">
-            <img src={header_image_two} alt="Dashboard preview" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+        {/* Right side - Image with overlays */}
+        <div className="flex-1 md:flex hidden justify-center items-center p-2 relative min-h-125">
+          {/* Main image container */}
+          <div className="flex justify-center items-center relative h-96 w-96 mt-12 rounded-2xl shadow-xl overflow-hidden group">
+            <img 
+              src={header_image_two} 
+              alt="Dashboard preview" 
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+            />
+            {/* Yellow accent overlay */}
+            <div className="absolute inset-0 bg-linear-to-tr from-yellow-500/10 to-transparent pointer-events-none"></div>
           </div>
 
-          <div className="absolute -top-6 right-0 bg-white rounded-2xl shadow-2xl p-4 w-64 animate-bounce-slow z-10"
+          {/* Notification card - updated with yellow theme */}
+          <div className="absolute -top-6 right-0 bg-white rounded-2xl shadow-2xl p-4 w-64 animate-bounce-slow z-20"
                style={{ transform: 'translateX(25%)' }}>
             <div className="flex items-start gap-3">
-              <div className="bg-blue-100 p-2 rounded-full shrink-0">
-                <MdOutlineNotifications className="text-blue-600 text-xl" />
+              <div className="bg-yellow-100 p-2 rounded-full shrink-0">
+                <MdOutlineNotifications className="text-yellow-600 text-xl" />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-xs text-gray-500 font-medium truncate">NEW PAYMENT</p>
@@ -141,7 +166,8 @@ const HeaderComponent = () => {
             <div className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-white rotate-45 shadow-lg"></div>
           </div>
 
-          <div className="absolute bottom-12 -left-16 bg-white rounded-2xl shadow-2xl p-4 w-72 animate-slide-in z-10"
+          {/* WhatsApp card - keep green for WhatsApp brand */}
+          <div className="absolute bottom-12 -left-16 bg-white rounded-2xl shadow-2xl p-4 w-72 animate-slide-in z-20"
                style={{ transform: 'translateX(20%)' }}>
             <div className="flex items-start gap-3">
               <div className="bg-green-100 p-2 rounded-full shrink-0">
@@ -150,7 +176,7 @@ const HeaderComponent = () => {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-2">
                   <p className="text-xs font-medium text-gray-500 truncate">VersoPaid • now</p>
-                  <span className="text-[10px] bg-green-500 text-white px-2 py-0.5 rounded-full shrink-0">NEW</span>
+                  <span className="text-[10px] bg-yellow-500 text-white px-2 py-0.5 rounded-full shrink-0">NEW</span>
                 </div>
                 <p className="text-sm font-semibold text-gray-800 mt-1 truncate">Payment Reminder</p>
                 <p className="text-xs text-gray-600 mt-1 line-clamp-2">
@@ -165,14 +191,15 @@ const HeaderComponent = () => {
             <div className="absolute -right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-white rotate-45 shadow-lg"></div>
           </div>
 
-          <div className="absolute top-16 -right-12 bg-white rounded-xl shadow-2xl p-3 w-48 animate-float z-10"
+          {/* Stats card - updated with yellow theme */}
+          <div className="absolute top-16 -right-12 bg-white rounded-xl shadow-2xl p-3 w-48 animate-float z-20"
                style={{ transform: 'translateX(15%)' }}>
             <div className="flex items-center gap-2">
-              <MdPayment className="text-blue-500 text-lg shrink-0" />
+              <MdPayment className="text-yellow-500 text-lg shrink-0" />
               <div className="min-w-0">
                 <p className="text-xs font-medium text-gray-500 truncate">Total Collections</p>
                 <p className="text-sm font-bold text-gray-800 truncate">KES 45,500</p>
-                <p className="text-[10px] text-green-600 truncate">↑ 12% from last month</p>
+                <p className="text-[10px] text-yellow-600 truncate">↑ 12% from last month</p>
               </div>
             </div>
             <div className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-white rotate-45 shadow-lg"></div>
@@ -182,11 +209,13 @@ const HeaderComponent = () => {
 
       </div>
 
-      <div className="mt-4">
+      {/* Powered By section */}
+      <div className="relative z-10 mt-4">
         <span className="text-xl font-semibold text-gray-600/40">Powered By:</span>
       </div>
 
-      <div className="w-full overflow-hidden py-2 hidden md:block">
+      {/* Integrations slider - desktop */}
+      <div className="relative z-10 w-full overflow-hidden py-2 hidden md:block">
         <div className="relative flex overflow-x-hidden py-8">
           <div className="flex animate-scroll gap-6 whitespace-nowrap pr-6">
             {integrations.map((integration, index) => (
@@ -240,7 +269,8 @@ const HeaderComponent = () => {
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-4 mt-8 md:hidden">
+      {/* Mobile integrations grid */}
+      <div className="relative z-10 flex flex-wrap justify-center gap-4 mt-8 md:hidden">
         {integrations.map((integration, index) => (
           <div
             key={`mobile-${integration.name}-${index}`}

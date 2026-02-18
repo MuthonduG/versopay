@@ -42,7 +42,7 @@ const TargetOrganisation = () => {
         <div className="flex flex-col justify-center items-center gap-4 mb-12">
           <span className="font-bold text-4xl md:text-5xl text-gray-900">
             Built For Your{' '}
-            <span className="text-blue-700">Organization</span>
+            <span className="text-yellow-500">Organization</span>
           </span>
           <p className="text-gray-600 text-center w-full md:w-[70%] text-lg leading-relaxed">
             Whether you manage a small investment group or a large credit union, 

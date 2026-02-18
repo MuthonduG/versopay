@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 @import "tailwindcss";
 
 * {
     box-sizing: border-box;
+    font-family: "SN Pro", sans-serif;
 }
 
 ::-webkit-scrollbar {

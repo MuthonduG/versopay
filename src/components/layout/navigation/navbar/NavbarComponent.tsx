@@ -15,6 +15,7 @@ import kcb_logo from "../../../../assets/kcb.png";
 import sib_logo from "../../../../assets/sib.png";
 import airtel_logo from "../../../../assets/airtel.png";
 import equity_logo from "../../../../assets/equity.png";
+import { useNavigate } from 'react-router-dom';
 
 interface dropdownItem {
   title: string;
@@ -156,9 +157,16 @@ const NavbarComponent = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   
+  const navigate = useNavigate();
+  
   const sidebarRef = useRef<HTMLDivElement>(null);
   const mobileHeaderRef = useRef<HTMLDivElement>(null);
   const desktopNavRef = useRef<HTMLDivElement>(null);
+
+  const handleNavigateToLogin = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate("/oauth/login");
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -223,20 +231,22 @@ const NavbarComponent = () => {
     setOpenDropdown(null); 
   };
 
+  // Uniform hover class for main nav links (yellow theme)
   const getUniformHoverClass = () => {
-    return 'hover:text-blue-600 transition-colors duration-200 cursor-pointer';
+    return 'hover:text-yellow-600 transition-colors duration-200 cursor-pointer';
   };
 
+  // Different hover colors for dropdown items based on category
   const getDropdownItemHoverClass = (color?: string) => {
     switch(color) {
       case 'purple':
-        return 'hover:bg-purple-50 hover:text-purple-700';
+        return 'hover:bg-purple-50 hover:text-purple-700 hover:border-purple-200';
       case 'green':
-        return 'hover:bg-green-50 hover:text-green-700';
+        return 'hover:bg-green-50 hover:text-green-700 hover:border-green-200';
       case 'amber':
-        return 'hover:bg-amber-50 hover:text-amber-700';
+        return 'hover:bg-amber-50 hover:text-amber-700 hover:border-amber-200';
       default:
-        return 'hover:bg-blue-50 hover:text-blue-700';
+        return 'hover:bg-yellow-50 hover:text-yellow-700 hover:border-yellow-200';
     }
   };
 
@@ -249,7 +259,7 @@ const NavbarComponent = () => {
       case 'amber':
         return 'border-t-amber-500';
       default:
-        return 'border-t-blue-500';
+        return 'border-t-yellow-500';
     }
   };
 
@@ -258,12 +268,12 @@ const NavbarComponent = () => {
       <>
         <div ref={mobileHeaderRef} className="fixed top-0 left-0 right-0 flex justify-between items-center p-4 bg-white shadow-md z-50">
           <div className="flex items-center">
-            <span className="text-xl text-blue-700 font-bold">Verso</span>
-            <span className="text-xl font-bold">Paid</span>
+            <span className="text-xl text-yellow-500 font-bold">Verso</span>
+            <span className="text-xl font-bold text-gray-900">Paid</span>
           </div>
           <button 
             onClick={handleMobileMenuToggle}
-            className="text-2xl text-gray-600 hover:text-blue-600 transition-colors cursor-pointer"
+            className="text-2xl text-gray-600 hover:text-yellow-600 transition-colors cursor-pointer"
           >
             {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
@@ -283,8 +293,8 @@ const NavbarComponent = () => {
         >
           <div className="p-4 border-b">
             <div className="flex items-center">
-              <span className="text-xl text-blue-700 font-bold">Verso</span>
-              <span className="text-xl font-bold">Paid</span>
+              <span className="text-xl text-yellow-500 font-bold">Verso</span>
+              <span className="text-xl font-bold text-gray-900">Paid</span>
             </div>
           </div>
 
@@ -298,7 +308,14 @@ const NavbarComponent = () => {
                       className={`mobile-dropdown-btn w-full flex items-center justify-between p-4 text-gray-700 ${getUniformHoverClass()}`}
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-blue-600">{element.icon}</span>
+                        <span className={`${
+                          element.hoverColor === 'purple' ? 'text-purple-500' :
+                          element.hoverColor === 'green' ? 'text-green-500' :
+                          element.hoverColor === 'amber' ? 'text-amber-500' :
+                          'text-yellow-500'
+                        }`}>
+                          {element.icon}
+                        </span>
                         <span>{element.title}</span>
                       </div>
                       <FaChevronDown className={`text-sm transition-transform ${openDropdown === element.title ? 'rotate-180' : ''}`} />
@@ -317,7 +334,12 @@ const NavbarComponent = () => {
                             }}
                           >
                             {item.image ? (
-                              <div className="w-8 h-8 shrink-0 rounded-lg bg-white shadow-sm p-0 flex items-center justify-center overflow-hidden">
+                              <div className={`w-8 h-8 shrink-0 rounded-lg bg-white shadow-sm p-0 flex items-center justify-center overflow-hidden border ${
+                                element.hoverColor === 'purple' ? 'border-purple-200' :
+                                element.hoverColor === 'green' ? 'border-green-200' :
+                                element.hoverColor === 'amber' ? 'border-amber-200' :
+                                'border-yellow-200'
+                              }`}>
                                 <img 
                                   src={item.image} 
                                   alt={item.title} 
@@ -329,7 +351,7 @@ const NavbarComponent = () => {
                                 element.hoverColor === 'purple' ? 'text-purple-500' :
                                 element.hoverColor === 'green' ? 'text-green-500' :
                                 element.hoverColor === 'amber' ? 'text-amber-500' :
-                                'text-blue-500'
+                                'text-yellow-500'
                               }`}>
                                 {item.icon}
                               </span>
@@ -351,7 +373,7 @@ const NavbarComponent = () => {
                     className={`flex items-center gap-3 p-4 text-gray-700 ${getUniformHoverClass()}`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <span className="text-blue-600">{element.icon}</span>
+                    <span className="text-yellow-500">{element.icon}</span>
                     <span>{element.title}</span>
                   </a>
                 )}
@@ -359,13 +381,12 @@ const NavbarComponent = () => {
             ))}
 
             <div className="p-4">
-              <a 
-                href="#" 
-                className="block text-center bg-blue-700 text-white py-3 rounded-lg hover:bg-blue-800 transition-colors cursor-pointer"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <button
+                onClick={handleNavigateToLogin}
+                className="block w-full text-center bg-yellow-500 hover:bg-yellow-600 text-white py-3 rounded-lg transition-colors cursor-pointer font-semibold"
               >
                 Login
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -377,11 +398,11 @@ const NavbarComponent = () => {
     <section className="flex justify-center items-center gap-4 p-4 w-full">
       <nav 
         ref={desktopNavRef}
-        className="flex justify-center items-center gap-4 p-4 rounded-4xl shadow-md shadow-gray-600/40 w-[90%] lg:w-[80%] border-2 border-blue-500/5 fixed bg-white z-50 mt-16"
+        className="flex justify-center items-center gap-4 p-4 rounded-4xl shadow-md shadow-gray-600/40 w-[90%] lg:w-[80%] border-2 border-gray-500/20 fixed bg-white z-50 mt-16"
       >
         <div className="flex flex-1 justify-start items-start">
-          <span className="text-xl text-blue-700 font-bold">Verso</span>
-          <span className="text-xl font-bold">Paid</span>
+          <span className="text-xl text-yellow-500 font-bold">Verso</span>
+          <span className="text-xl font-bold text-gray-900">Paid</span>
         </div>
 
         <div className="flex flex-1 justify-end items-end gap-4">
@@ -400,7 +421,7 @@ const NavbarComponent = () => {
                           ? element.hoverColor === 'purple' ? 'text-purple-600' :
                             element.hoverColor === 'green' ? 'text-green-600' :
                             element.hoverColor === 'amber' ? 'text-amber-600' :
-                            'text-blue-600'
+                            'text-yellow-600'
                           : 'text-gray-600'
                       } ${getUniformHoverClass()}`}
                     >
@@ -431,7 +452,7 @@ const NavbarComponent = () => {
                                 element.hoverColor === 'purple' ? 'hover:bg-purple-50' :
                                 element.hoverColor === 'green' ? 'hover:bg-green-50' :
                                 element.hoverColor === 'amber' ? 'hover:bg-amber-50' :
-                                'hover:bg-blue-50'
+                                'hover:bg-yellow-50'
                               }`}
                               onClick={() => setOpenDropdown(null)}
                             >
@@ -440,7 +461,7 @@ const NavbarComponent = () => {
                                   element.hoverColor === 'purple' ? 'group-hover:shadow-purple-200/50 group-hover:border-purple-200' :
                                   element.hoverColor === 'green' ? 'group-hover:shadow-green-200/50 group-hover:border-green-200' :
                                   element.hoverColor === 'amber' ? 'group-hover:shadow-amber-200/50 group-hover:border-amber-200' :
-                                  'group-hover:shadow-blue-200/50 group-hover:border-blue-200'
+                                  'group-hover:shadow-yellow-200/50 group-hover:border-yellow-200'
                                 }`}>
                                   <img 
                                     src={item.image} 
@@ -453,7 +474,7 @@ const NavbarComponent = () => {
                                   element.hoverColor === 'purple' ? 'text-purple-500 group-hover:text-purple-600' :
                                   element.hoverColor === 'green' ? 'text-green-500 group-hover:text-green-600' :
                                   element.hoverColor === 'amber' ? 'text-amber-500 group-hover:text-amber-600' :
-                                  'text-blue-500 group-hover:text-blue-600'
+                                  'text-yellow-500 group-hover:text-yellow-600'
                                 }`}>
                                   {item.icon}
                                 </span>
@@ -463,7 +484,7 @@ const NavbarComponent = () => {
                                   element.hoverColor === 'purple' ? 'group-hover:text-purple-700' :
                                   element.hoverColor === 'green' ? 'group-hover:text-green-700' :
                                   element.hoverColor === 'amber' ? 'group-hover:text-amber-700' :
-                                  'group-hover:text-blue-700'
+                                  'group-hover:text-yellow-700'
                                 }`}>
                                   {item.title}
                                 </div>
@@ -484,7 +505,7 @@ const NavbarComponent = () => {
                               element.hoverColor === 'purple' ? 'text-purple-600 hover:text-purple-800' :
                               element.hoverColor === 'green' ? 'text-green-600 hover:text-green-800' :
                               element.hoverColor === 'amber' ? 'text-amber-600 hover:text-amber-800' :
-                              'text-blue-600 hover:text-blue-800'
+                              'text-yellow-600 hover:text-yellow-800'
                             }`}
                             onClick={() => setOpenDropdown(null)}
                           >
@@ -507,11 +528,12 @@ const NavbarComponent = () => {
             ))}
           </div>
 
-          <div className="flex justify-center items-center bg-blue-700/70 hover:bg-blue-700/90 px-4 py-1.5 rounded-3xl font-semibold text-white transition-colors text-sm lg:text-base cursor-pointer">
-            <a href="#" className="">
-              Login
-            </a>
-          </div>
+          <button
+            onClick={handleNavigateToLogin}
+            className="flex justify-center items-center bg-yellow-500 hover:bg-yellow-600 px-4 py-1.5 rounded-3xl font-semibold text-white transition-all duration-300 hover:scale-105 text-sm lg:text-base cursor-pointer shadow-md"
+          >
+            Login
+          </button>
         </div>
       </nav>
     </section>
