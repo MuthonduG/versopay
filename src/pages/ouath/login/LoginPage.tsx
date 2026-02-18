@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FaEnvelope, FaLock, FaArrowRight, FaGoogle, FaMicrosoft } from 'react-icons/fa';
 import { BsShieldCheck, BsEye, BsEyeSlash, BsStars } from 'react-icons/bs';
 import { HiOutlineSparkles } from 'react-icons/hi';
@@ -11,8 +11,6 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   
-  const navigate = useNavigate();
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle login logic here
@@ -51,10 +49,10 @@ const LoginPage = () => {
           </div>
           
           {/* Greenish-yellowish gradient overlay - full coverage */}
-          <div className="absolute inset-0 bg-gradient-to-br from-yellow-800/80 via-lime-700/70 to-green-800/80 mix-blend-multiply"></div>
+          <div className="absolute inset-0 bg-linear-to-br from-yellow-800/80 via-lime-700/70 to-green-800/80 mix-blend-multiply"></div>
           
           {/* Additional green-yellow overlay for depth */}
-          <div className="absolute inset-0 bg-gradient-to-t from-yellow-900/60 via-transparent to-lime-600/30"></div>
+          <div className="absolute inset-0 bg-linear-to-t from-yellow-900/60 via-transparent to-lime-600/30"></div>
           
           {/* Content overlay - centered on left side */}
           <div className="absolute inset-0 flex flex-col justify-center items-center text-white p-12 z-20">
@@ -87,7 +85,7 @@ const LoginPage = () => {
         </div>
 
         {/* Right side - Login Form - full height, scrollable if needed */}
-        <div className="lg:flex-1 w-full lg:h-screen overflow-y-auto bg-gradient-to-br from-yellow-50 via-white to-amber-50 flex items-center justify-center p-6 lg:p-8">
+        <div className="lg:flex-1 w-full lg:h-screen overflow-y-auto bg-linear-to-br from-yellow-50 via-white to-amber-50 flex items-center justify-center p-6 lg:p-8">
           <div className="w-full max-w-md py-8 lg:py-0">
             {/* Mobile logo (visible only on mobile) */}
             <div className="flex justify-center items-center gap-2 mb-8 lg:hidden">
@@ -185,7 +183,7 @@ const LoginPage = () => {
               {/* Submit button */}
               <button
                 type="submit"
-                className="group w-full flex justify-center items-center gap-2 bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-lg mt-8"
+                className="group w-full flex justify-center items-center gap-2 bg-linear-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-lg mt-8"
               >
                 Sign In
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform" />

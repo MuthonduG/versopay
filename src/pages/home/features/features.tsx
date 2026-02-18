@@ -45,7 +45,7 @@ const FeaturesPage = () => {
           
           <h2 className="text-[#0f1724] text-4xl md:text-5xl font-bold mb-4 leading-tight">
             Simplify Your{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-amber-500">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-amber-500">
               Financial Operations
             </span>
           </h2>
@@ -64,11 +64,11 @@ const FeaturesPage = () => {
             >
               {/* Removed the top accent bar completely */}
               
-              <div className="bg-gradient-to-r from-yellow-100 to-amber-100 rounded-lg w-16 h-16 mx-auto mb-4 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300">
+              <div className="bg-linear-to-r from-yellow-100 to-amber-100 rounded-lg w-16 h-16 mx-auto mb-4 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300">
                 {feature.icon}
               </div>
               
-              <h3 className="text-[#0f1724] text-xl font-semibold mb-2 text-center group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-yellow-600 group-hover:to-amber-600 transition-all duration-300">
+              <h3 className="text-[#0f1724] text-xl font-semibold mb-2 text-center group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-yellow-600 group-hover:to-amber-600 transition-all duration-300">
                 {feature.title}
               </h3>
               
@@ -77,7 +77,7 @@ const FeaturesPage = () => {
               </p>
 
               {/* Decorative element - very subtle */}
-              <div className="absolute -bottom-8 -right-8 w-16 h-16 bg-gradient-to-r from-yellow-500/5 to-amber-500/5 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute -bottom-8 -right-8 w-16 h-16 bg-linear-to-r from-yellow-500/5 to-amber-500/5 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
           ))}
         </div>
@@ -88,7 +88,7 @@ const FeaturesPage = () => {
           </p>
           <a 
             href="#" 
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-lg"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-lg"
           >
             Get Started Today
             <span className="text-lg">→</span>
