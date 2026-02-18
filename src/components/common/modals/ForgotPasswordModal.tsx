@@ -10,9 +10,15 @@ interface ForgotPasswordModalProps {
   isOpen?: boolean;
   onClose?: () => void;
   onSubmit?: (email: string) => void;
+  onOpenOtp?: (email: string) => void; 
 }
 
-const ForgotPasswordModal = ({ isOpen = true, onClose, onSubmit }: ForgotPasswordModalProps) => {
+const ForgotPasswordModal = ({ 
+  isOpen = true, 
+  onClose, 
+  onSubmit,
+  onOpenOtp 
+}: ForgotPasswordModalProps) => {
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -73,6 +79,14 @@ const ForgotPasswordModal = ({ isOpen = true, onClose, onSubmit }: ForgotPasswor
     });
   };
 
+  const handleEnterOtp = () => {
+    // Close forgot password modal and open OTP modal
+    handleClose(); // Close this modal
+    if (onOpenOtp) {
+      onOpenOtp(email); // Open OTP modal with email
+    }
+  };
+
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
       handleClose();
@@ -106,8 +120,6 @@ const ForgotPasswordModal = ({ isOpen = true, onClose, onSubmit }: ForgotPasswor
               <HiOutlineSparkles className="text-amber-400 text-2xl" />
             </div>
           </div>
-
-     
 
           <div className="relative z-10 p-8">
             
@@ -191,7 +203,7 @@ const ForgotPasswordModal = ({ isOpen = true, onClose, onSubmit }: ForgotPasswor
 
                   <div className="space-y-3">
                     <button
-                      onClick={handleClose}
+                      onClick={handleEnterOtp}
                       className="w-full flex justify-center items-center gap-2 bg-linear-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-lg"
                     >
                       Enter OTP
