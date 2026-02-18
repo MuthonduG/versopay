@@ -5,6 +5,7 @@ import { BsShieldCheck, BsEye, BsEyeSlash, BsStars } from 'react-icons/bs';
 import { HiOutlineSparkles } from 'react-icons/hi';
 import ForgotPasswordModal from '../../../components/common/modals/ForgotPasswordModal';
 import LoginImage from "../../../assets/login.png";
+import OtpModal from '../../../components/common/modals/OtpComponent';
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,12 +13,12 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const [showOtpModal, setShowOtpModal] = useState(false);
+  const [otpEmail, setOtpEmail] = useState('');
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login logic here
     console.log('Login attempted with:', { email, password, rememberMe });
-    // navigate to dashboard after successful login
   };
 
   const handleForgotPasswordClick = (e: React.MouseEvent) => {
@@ -31,14 +32,30 @@ const LoginPage = () => {
 
   const handleOtpRequested = (email: string) => {
     console.log('OTP requested for:', email);
-    // You can auto-fill the email field if you want
     setEmail(email);
+  };
+
+  const handleOpenOtpModal = (email: string) => {
+    setOtpEmail(email);
+    setShowOtpModal(true);
+  };
+
+  const handleCloseOtpModal = () => {
+    setShowOtpModal(false);
+  };
+
+  const handleOtpSubmit = (otp: string) => {
+    console.log('OTP submitted:', otp);
+    // Handle OTP verification here
+  };
+
+  const handleResendOtp = () => {
+    console.log('Resend OTP for:', otpEmail);
   };
 
   return (
     <section className="w-full min-h-screen flex relative overflow-hidden">
       
-      {/* Decorative elements - repositioned to work with split layout */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div className="absolute -top-20 -right-20 w-64 h-64 bg-yellow-200/30 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-amber-200/30 rounded-full blur-3xl"></div>
@@ -229,8 +246,18 @@ const LoginPage = () => {
         isOpen={showForgotPassword}
         onClose={handleCloseModal}
         onSubmit={handleOtpRequested}
+        onOpenOtp={handleOpenOtpModal}
       />
-      
+
+      <OtpModal
+        isOpen={showOtpModal}
+        onClose={handleCloseOtpModal}
+        onSubmit={handleOtpSubmit}
+        email={otpEmail}
+        onResend={handleResendOtp}
+        expiryTime={300}
+      />
+
     </section>
   );
 };
