@@ -2,6 +2,7 @@
 import NavbarComponent from '../../components/layout/navigation/navbar/NavbarComponent'
 import FeaturesPage from './features/features'
 import HeaderComponent from './header/HeaderComponent'
+import TargetOrganisation from './target_org/TargetOrganisation'
 import WhyUsComponent from './whyus/WhyUsComponent'
 
 
@@ -13,6 +14,7 @@ const HomePage = () => {
       <HeaderComponent/>
       <FeaturesPage/>
       <WhyUsComponent/>
+      <TargetOrganisation/>
 
     </section>
   )

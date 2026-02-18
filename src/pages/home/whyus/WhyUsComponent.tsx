@@ -16,15 +16,17 @@ const WhyUsComponent = () => {
             
             {/* left side - Content */}
             <div className="flex-1 space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-                    Why Choose{' '}
-                    <span className="text-blue-700">Versopaid</span>
-                </h2>
+                <div className="flex flex-col gap-6 justify-start items-start w-full">
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+                        Why Choose{' '}
+                        <span className="text-blue-700">Versopaid</span>
+                    </h2>
 
-                <p className="text-gray-600 leading-relaxed">
-                    We help small recurring-collection groups in Kenya automate payment tracking, 
-                    reconciliation, and member notifications - so you can focus on growing, not chasing payments.
-                </p>
+                    <p className="text-gray-600 leading-9">
+                        We help small recurring-collection groups in Kenya automate payment tracking, 
+                        reconciliation, and member notifications - so you can focus on growing, not chasing payments.
+                    </p>                
+                </div>
 
                 <div className="space-y-4 mt-8">
                     <div className="flex items-center gap-4 bg-white hover:bg-blue-50 rounded-full p-4 pr-8 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group border border-gray-100">
@@ -76,7 +78,7 @@ const WhyUsComponent = () => {
             </div>
             
             {/* right side - Image with overlays */}
-            <div className="flex-1 flex justify-center items-center relative">
+            <div className="flex-1 hidden md:flex justify-center items-center relative">
                 <div className="relative w-full max-w-xl overflow-hidden shadow-2xl"
                      style={{
                         borderRadius: '60% 40% 50% 30% / 30% 50% 40% 60%',
