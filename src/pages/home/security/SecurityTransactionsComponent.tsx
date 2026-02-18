@@ -109,8 +109,8 @@ const SecurityTransactionsComponent = () => {
                                 <MdSecurity className="text-green-400 text-xl" />
                             </div>
                             <div>
-                                <p className="text-white text-sm font-semibold">0 Security Breaches</p>
-                                <p className="text-gray-400 text-xs">Since 2020</p>
+                                <p className="text-white text-sm font-semibold">0 Security </p>
+                                <p className="text-gray-400 text-xs">Breaches</p>
                             </div>
                         </div>
                     </div>

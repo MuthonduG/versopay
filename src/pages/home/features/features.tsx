@@ -12,7 +12,7 @@ const FeaturesPage = () => {
             Simplify Your Financial Operations
           </h2>
           <p className="text-[#606874] text-base md:text-lg max-w-2xl mx-auto leading-9 mt-10">
-            Manual tracking is error-prone and slow. Versopay brings automation to your collections and disbursements so you can focus on growth.
+            Manual tracking is error-prone and slow. VersoPaid brings automation to your collections and disbursements so you can focus on growth.
           </p>
         </div>
 
