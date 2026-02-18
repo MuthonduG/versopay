@@ -6,7 +6,7 @@ import HeaderComponent from './header/HeaderComponent'
 import SecurityTransactionsComponent from './security/SecurityTransactionsComponent'
 import TargetOrganisation from './target_org/TargetOrganisation'
 import WhyUsComponent from './whyus/WhyUsComponent'
-
+import FooterComponent from '../../components/layout/footer/FooterComponent'
 
 const HomePage = () => {
   return (
@@ -19,7 +19,8 @@ const HomePage = () => {
       <TargetOrganisation/>
       <SecurityTransactionsComponent/>
       <BannerComponent/>
-
+      <FooterComponent/>
+      
     </section>
   )
 }
