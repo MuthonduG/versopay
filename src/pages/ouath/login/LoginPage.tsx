@@ -123,6 +123,7 @@ const LoginPage = () => {
               </h1>
               <p className="text-gray-600">
                 Don't have an account?{' '}
+                {/* The Link component already handles navigation correctly */}
                 <Link to="/oauth/register" className="text-yellow-600 hover:text-yellow-700 font-semibold hover:underline">
                   Create account
                 </Link>
@@ -213,9 +214,6 @@ const LoginPage = () => {
             </form>
 
             <div className="relative my-8">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
-              </div>
               <div className="relative flex justify-center text-sm">
                 <span className="px-4 bg-transparent text-gray-500">Or continue with</span>
               </div>
