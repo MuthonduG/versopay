@@ -1,11 +1,10 @@
 import header_image_two from "../../../assets/header_two.png";
 import { MdOutlineNotifications, MdPayment, MdSms } from "react-icons/md";
-import { FaWhatsapp, FaArrowRight, FaUsers } from "react-icons/fa";
-import { BsCheckCircleFill, BsGoogle, BsStars } from "react-icons/bs";
+import { FaArrowRight, FaUsers, FaWhatsapp } from "react-icons/fa";
+import { BsCheckCircleFill, BsGoogle } from "react-icons/bs";
 import { SiGooglecalendar } from "react-icons/si";
 import { GiBank } from "react-icons/gi";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
-import { HiOutlineSparkles } from "react-icons/hi";
 import mpesa_logo from "../../../assets/mpesa.png";
 import airtel_logo from "../../../assets/airtel.png";
 import momo_logo from "../../../assets/momo.png";
@@ -86,25 +85,11 @@ const HeaderComponent = () => {
   ];
 
   return (
-    <header className="w-full flex flex-col justify-center items-center mt-28 relative overflow-hidden">
-      
-      {/* Decorative background elements - matching BannerComponent */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-20 -right-20 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-30"></div>
-        <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-purple-100 rounded-full blur-3xl opacity-30"></div>
-        
-        <div className="absolute top-40 left-20 animate-float-slow opacity-10">
-          <BsStars className="text-blue-500 text-6xl" />
-        </div>
-        <div className="absolute bottom-40 right-20 animate-float-slow opacity-10">
-          <HiOutlineSparkles className="text-purple-500 text-6xl" />
-        </div>
-      </div>
+    <header className="w-full flex flex-col justify-center items-center mt-28">
 
-      <div className="relative z-10 flex flex-col md:flex-row justify-center items-center gap-4 w-[90%] lg:w-[70%]">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-4 w-[70%]">
 
-        {/* Left side - Content */}
-        <div className="flex-1 flex-col justify-center items-center md:justify-start md:items-start p-4 gap-4">
+        <div className="flex-1 flex-col justify-center items-center md:justify-end md:items-end p-4 gap-4">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
             Re-curring payments and collections{' '}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-700 to-purple-700">
@@ -117,8 +102,6 @@ const HeaderComponent = () => {
             specifically for small recurring-collection groups in Kenya. We help organizations track who
             has paid and who hasn’t - automatically - so they don’t have to manually reconcile M-Pesa statements or chase payments.
           </p>
-          
-          {/* Updated CTA buttons to match BannerComponent style */}
           <div className="flex flex-col md:flex-row justify-center md:justify-start items-center gap-4 mt-14 w-full">
             <a 
               href="#" 
@@ -137,13 +120,11 @@ const HeaderComponent = () => {
           </div>
         </div>
 
-        {/* Right side - Image with overlays (unchanged) */}
         <div className="flex-1 md:flex hidden justify-center items-center p-2 relative ">
           <div className="flex justify-center items-center relative h-100 w-100 mt-12 rounded-2xl shadow-xl overflow-hidden group">
             <img src={header_image_two} alt="Dashboard preview" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
           </div>
 
-          {/* Notification card - unchanged */}
           <div className="absolute -top-6 right-0 bg-white rounded-2xl shadow-2xl p-4 w-64 animate-bounce-slow z-10"
                style={{ transform: 'translateX(25%)' }}>
             <div className="flex items-start gap-3">
@@ -160,7 +141,6 @@ const HeaderComponent = () => {
             <div className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-white rotate-45 shadow-lg"></div>
           </div>
 
-          {/* WhatsApp card - unchanged */}
           <div className="absolute bottom-12 -left-16 bg-white rounded-2xl shadow-2xl p-4 w-72 animate-slide-in z-10"
                style={{ transform: 'translateX(20%)' }}>
             <div className="flex items-start gap-3">
@@ -185,7 +165,6 @@ const HeaderComponent = () => {
             <div className="absolute -right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-white rotate-45 shadow-lg"></div>
           </div>
 
-          {/* Stats card - unchanged */}
           <div className="absolute top-16 -right-12 bg-white rounded-xl shadow-2xl p-3 w-48 animate-float z-10"
                style={{ transform: 'translateX(15%)' }}>
             <div className="flex items-center gap-2">
@@ -203,13 +182,11 @@ const HeaderComponent = () => {
 
       </div>
 
-      {/* Powered By section - unchanged */}
-      <div className="relative z-10 mt-4">
+      <div className="mt-4">
         <span className="text-xl font-semibold text-gray-600/40">Powered By:</span>
       </div>
 
-      {/* Integrations slider - unchanged */}
-      <div className="relative z-10 w-full overflow-hidden py-2 hidden md:block">
+      <div className="w-full overflow-hidden py-2 hidden md:block">
         <div className="relative flex overflow-x-hidden py-8">
           <div className="flex animate-scroll gap-6 whitespace-nowrap pr-6">
             {integrations.map((integration, index) => (
@@ -263,8 +240,7 @@ const HeaderComponent = () => {
         </div>
       </div>
 
-      {/* Mobile integrations grid - unchanged */}
-      <div className="relative z-10 flex flex-wrap justify-center gap-4 mt-8 md:hidden">
+      <div className="flex flex-wrap justify-center gap-4 mt-8 md:hidden">
         {integrations.map((integration, index) => (
           <div
             key={`mobile-${integration.name}-${index}`}
@@ -287,11 +263,6 @@ const HeaderComponent = () => {
           </div>
         ))}
       </div>
-
-      {/* Custom animations */}
-      <style>{`
-
-      `}</style>
 
     </header>
   )
