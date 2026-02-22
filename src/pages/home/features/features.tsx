@@ -8,18 +8,18 @@ const FeaturesPage = () => {
   const features = [
     {
       icon: <FaRecycle className="text-2xl text-yellow-600" />,
-      title: "Recurring Collections",
-      description: "Set up daily, weekly, or monthly payment plans. Automatically prompt members via STK push and track compliance in real-time.",
+      title: "Automated M-Pesa Reconciliation",
+      description: "Payments from M-Pesa are matched to members automatically. No more manual statement reviews or spreadsheet errors.",
     },
     {
       icon: <IoPeopleSharp className="text-2xl text-yellow-600" />,
-      title: "Bulk Disbursements",
-      description: "Pay salaries, dividends, or vendor invoices in one click. Support for thousands of recipients across different mobile networks.",
+      title: "Subscription & Defaulter Tracking",
+      description: "See who has paid and who hasn’t at a glance. Flag missed payments in real time and manage defaulters from one dashboard.",
     },
     {
       icon: <VscGraph className="text-2xl text-yellow-600" />,
-      title: "Automated Reconciliation",
-      description: "Real-time dashboards match incoming payments to member accounts instantly. Say goodbye to manual spreadsheets.",
+      title: "Reminders & Reporting",
+      description: "SMS, WhatsApp, and email reminders for upcoming or missed payments. Weekly and monthly contribution summaries, exportable and audit-ready.",
     }
   ];
 
@@ -44,15 +44,15 @@ const FeaturesPage = () => {
         <div className="text-center mb-16">
           
           <h2 className="text-[#0f1724] text-4xl md:text-5xl font-bold mb-4 leading-tight">
-            Simplify Your{' '}
+            M-Pesa Reconciliation,{' '}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-amber-500">
-              Financial Operations
+              Subscriptions & Reporting
             </span>
           </h2>
           
           <p className="text-[#606874] text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            Manual tracking is error-prone and slow. VersoPaid brings automation to your collections 
-            and disbursements so you can focus on growth.
+            Stop manual statement matching. VersoPaid automates reconciliation, tracks recurring contributions, 
+            flags defaulters, sends reminders, and delivers audit-ready reports.
           </p>
         </div>
 
@@ -84,7 +84,7 @@ const FeaturesPage = () => {
 
         <div className="text-center mt-16">
           <p className="text-[#606874] mb-6">
-            Ready to transform your financial operations?
+            Ready to stop reconciling by hand and chasing payments?
           </p>
           <a 
             href="#" 

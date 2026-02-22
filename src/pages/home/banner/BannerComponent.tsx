@@ -23,15 +23,15 @@ const BannerComponent = () => {
         
         <div className="flex flex-col justify-center items-center gap-4">
           <h2 className="text-4xl md:text-5xl font-bold text-center leading-tight">
-            <span className="text-gray-900">Ready to streamline your </span>
+            <span className="text-gray-900">Ready to stop chasing </span>
             <span className="text-transparent bg-clip-text bg-linear-to-tr from-yellow-500 to-amber-500">
               payments?
             </span>
           </h2>
           
           <p className="text-lg md:text-xl leading-relaxed w-full md:w-[80%] text-center text-gray-600 mt-6">
-            Join hundreds of organizations already using VersoPaid to automate their 
-            collections, reconciliations, and disbursements - saving up to 80% time.
+            Automate M-Pesa reconciliation, track subscriptions, manage defaulters, and get 
+            clear reports. Join pilot groups using VersoPaid to never reconcile by hand again.
           </p>
         </div>
         
@@ -72,7 +72,7 @@ const BannerComponent = () => {
 
           {/* Added trust indicator */}
           <div className="flex justify-center items-center gap-4 mt-6">
-            <span className="text-xs text-gray-500">✨ 500+ organizations trust us</span>
+            <span className="text-xs text-gray-500">M-Pesa reconciliation first</span>
             <span className="text-xs text-gray-500">🔒 No spam, unsubscribe anytime</span>
           </div>
         </div>

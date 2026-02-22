@@ -35,13 +35,13 @@ const WhyUsComponent = () => {
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
                         Why Choose{' '}
                         <span className="text-transparent bg-clip-text bg-linear-to-tr from-yellow-500 to-amber-500">
-                            Versopaid
+                            VersoPaid
                         </span>
                     </h2>
 
                     <p className="text-gray-600 leading-9">
-                        We help small recurring-collection groups in Kenya automate payment tracking, 
-                        reconciliation, and member notifications - so you can focus on growing, not chasing payments.
+                        We automate M-Pesa reconciliation, subscription tracking, defaulter management, and reminders 
+                        for recurring-collection groups in Kenya — so you get clarity without chasing payments.
                     </p>                
                 </div>
 
@@ -52,9 +52,9 @@ const WhyUsComponent = () => {
                         </div>
                         <div className="flex-1">
                             <div className="flex items-center gap-2">
-                                <h4 className="font-bold text-gray-900 text-lg">80% Time Saved</h4>
+                                <h4 className="font-bold text-gray-900 text-lg">Time Saved</h4>
                             </div>
-                            <p className="text-gray-600 text-sm">Automated reconciliation eliminates manual work</p>
+                            <p className="text-gray-600 text-sm">Automated M-Pesa reconciliation — no manual statement matching</p>
                         </div>
                     </div>
 
@@ -64,9 +64,9 @@ const WhyUsComponent = () => {
                         </div>
                         <div className="flex-1">
                             <div className="flex items-center gap-2">
-                                <h4 className="font-bold text-gray-900 text-lg">Auto-Reminders</h4>
+                                <h4 className="font-bold text-gray-900 text-lg">Automated Reminders</h4>
                             </div>
-                            <p className="text-gray-600 text-sm">WhatsApp, SMS & email notifications</p>
+                            <p className="text-gray-600 text-sm">WhatsApp, SMS and email for upcoming or missed payments</p>
                         </div>
                     </div>
 
@@ -78,7 +78,7 @@ const WhyUsComponent = () => {
                             <div className="flex items-center gap-2">
                                 <h4 className="font-bold text-gray-900 text-lg">Clear Reporting</h4>
                             </div>
-                            <p className="text-gray-600 text-sm">Audit-ready financial summaries</p>
+                            <p className="text-gray-600 text-sm">Weekly and monthly contribution summaries, audit-ready</p>
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,7 @@ const WhyUsComponent = () => {
                     <div className="relative w-full h-full transform scale-120 origin-center">
                         <img 
                             src={why_us_image} 
-                            alt="Why choose Versopaid" 
+                            alt="Why choose VersoPaid" 
                             className="w-full h-auto object-cover"
                         />
                     </div>
@@ -128,8 +128,8 @@ const WhyUsComponent = () => {
                         ))}
                     </div>
                     <div className="flex flex-col">
-                        <span className="text-sm font-bold text-gray-900">500+</span>
-                        <span className="text-xs text-gray-600">Happy Groups</span>
+                        <span className="text-sm font-bold text-gray-900">Pilot</span>
+                        <span className="text-xs text-gray-600">Chamas & groups</span>
                     </div>
                 </div>
 
@@ -139,8 +139,8 @@ const WhyUsComponent = () => {
                             <FaCheckCircle className="text-yellow-600 text-sm" />
                         </div>
                         <div>
-                            <p className="text-xs font-bold text-gray-900">98%</p>
-                            <p className="text-[10px] text-gray-600">Payment Accuracy</p>
+                        <p className="text-xs font-bold text-gray-900">Accurate</p>
+                        <p className="text-[10px] text-gray-600">M-Pesa matching</p>
                         </div>
                     </div>
                 </div>
