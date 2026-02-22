@@ -11,25 +11,20 @@ const FooterComponent = () => {
 
   const footerLinks = {
     product: [
-      { name: "Features", href: "#features" },
-      { name: "Solutions", href: "#solutions" },
-      { name: "Integrations", href: "#integrations" },
-      { name: "Pricing", href: "#pricing" },
-      { name: "FAQ", href: "#faq" }
+      { name: "Reconciliation", href: "#solutions" },
+      { name: "Subscriptions", href: "#solutions" },
+      { name: "Defaulter Tracking", href: "#solutions" },
+      { name: "Reporting", href: "#solutions" },
+      { name: "M-Pesa", href: "#integrations" }
     ],
     company: [
-      { name: "About Us", href: "#about" },
-      { name: "Blog", href: "#blog" },
-      { name: "Careers", href: "#careers" },
-      { name: "Press", href: "#press" },
-      { name: "Contact", href: "#contact" }
+      { name: "About", href: "#about" },
+      { name: "Contact", href: "#contact" },
+      { name: "FAQ", href: "#faq" }
     ],
     resources: [
-      { name: "Documentation", href: "#docs" },
-      { name: "API Reference", href: "#api" },
-      { name: "Case Studies", href: "#case-studies" },
-      { name: "Webinars", href: "#webinars" },
-      { name: "Community", href: "#community" }
+      { name: "Help", href: "#contact" },
+      { name: "FAQs", href: "#faq" }
     ],
     legal: [
       { name: "Privacy Policy", href: "#privacy" },
@@ -80,8 +75,8 @@ const FooterComponent = () => {
             </div>
             
             <p className="text-sm leading-relaxed text-gray-600">
-              Automating payment reconciliation and subscription management for 
-              small recurring-collection groups in Kenya.
+              Automated M-Pesa reconciliation, subscription tracking, defaulter management, 
+              reminders, and reporting for recurring-collection groups in Kenya.
             </p>
             
             <div className="flex items-center gap-4 pt-4">
@@ -99,13 +94,13 @@ const FooterComponent = () => {
 
             {/* Trust badge */}
             <div className="flex items-center gap-2 bg-yellow-50 px-3 py-2 rounded-full">
-              <span className="text-yellow-600 text-xs font-medium">⭐ Trusted by 500+ organizations</span>
+              <span className="text-yellow-600 text-xs font-medium">M-Pesa reconciliation • No funds held</span>
             </div>
           </div>
 
           <div className="lg:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-gray-900 font-semibold mb-4">Product</h3>
+              <h3 className="text-gray-900 font-semibold mb-4">Solutions & Integrations</h3>
               <ul className="space-y-3">
                 {footerLinks.product.map((link) => (
                   <li key={link.name}>

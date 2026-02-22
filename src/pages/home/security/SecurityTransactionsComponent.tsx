@@ -39,17 +39,16 @@ const SecurityTransactionsComponent = () => {
           
           {/* Header with yellow gradient */}
           <span className="text-white text-4xl lg:text-5xl font-bold leading-tight">
-            Enterprise-grade{' '}
+            Secure by Design.{' '}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-400 to-amber-400">
-              Security
+              No Funds Held.
             </span>
           </span>
 
           {/* Description */}
           <p className="text-gray-300 mt-4 leading-relaxed text-lg">
-            Your financial data is protected by bank-level encryption and strict access controls. 
-            We ensure compliance and transparency at every step, so you can focus on growing 
-            your business with peace of mind.
+            VersoPaid does not hold your money — we connect to M-Pesa and your bank to reconcile and report. 
+            Your payment data is protected with strong security and we align with Kenya’s Data Protection Act.
           </p>
 
           {/* Security features grid - updated to yellow theme */}
@@ -116,7 +115,7 @@ const SecurityTransactionsComponent = () => {
               {/* Verification badge - updated to yellow */}
               <div className="absolute -bottom-4 -left-4 bg-white/10 backdrop-blur-md rounded-xl p-3 flex items-center gap-2 border border-gray-700">
                 <MdVerified className="text-yellow-400 text-xl" />
-                <span className="text-white text-sm font-medium">Secured by VersoPaid</span>
+                <span className="text-white text-sm font-medium">Reconciliation & reporting only</span>
               </div>
             </div>
           </div>
@@ -129,8 +128,8 @@ const SecurityTransactionsComponent = () => {
                   <MdSecurity className="text-yellow-400 text-xl" />
                 </div>
                 <div>
-                  <p className="text-white text-sm font-semibold">0 Security</p>
-                  <p className="text-gray-400 text-xs">Breaches</p>
+                  <p className="text-white text-sm font-semibold">0</p>
+                  <p className="text-gray-400 text-xs">Security breaches</p>
                 </div>
               </div>
             </div>
