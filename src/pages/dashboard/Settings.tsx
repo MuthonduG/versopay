@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type ReactElement } from 'react'
 import {
   MdOutlineNotifications,
   MdSecurity,
@@ -27,7 +27,7 @@ interface Integration {
   name: string
   description: string
   status: IntegStatus
-  icon: JSX.Element
+  icon: ReactElement
   iconBg: string
 }
 
@@ -47,7 +47,7 @@ const integStatusStyle: Record<IntegStatus, string> = {
   Disconnected: 'bg-gray-100   text-gray-500',
 }
 
-const integStatusIcon: Record<IntegStatus, JSX.Element> = {
+const integStatusIcon: Record<IntegStatus, ReactElement> = {
   Active:       <MdCheckCircle className="text-green-500"  />,
   Pending:      <MdPending     className="text-yellow-500" />,
   Error:        <MdWarningAmber className="text-red-500"   />,
@@ -71,7 +71,7 @@ const Toggle = ({ on, onToggle }: { on: boolean; onToggle: () => void }) => (
 
 /* ── section header ─────────────────────────────────────── */
 
-const SectionHeader = ({ icon, title, description }: { icon: JSX.Element; title: string; description: string }) => (
+const SectionHeader = ({ icon, title, description }: { icon: ReactElement; title: string; description: string }) => (
   <div className="flex items-start gap-4 pb-5 border-b border-gray-100 mb-6">
     <div className="bg-yellow-50 border border-yellow-100 p-2.5 rounded-xl shrink-0">{icon}</div>
     <div>
@@ -120,7 +120,7 @@ const Field = ({
 
 /* ── tab nav ────────────────────────────────────────────── */
 
-const tabs: { id: Tab; label: string; icon: JSX.Element }[] = [
+const tabs: { id: Tab; label: string; icon: ReactElement }[] = [
   { id: 'profile',       label: 'Profile & Org',   icon: <IoPersonCircleOutline className="text-base" /> },
   { id: 'security',      label: 'Security',         icon: <MdSecurity            className="text-base" /> },
   { id: 'notifications', label: 'Notifications',    icon: <BsBell                className="text-base" /> },

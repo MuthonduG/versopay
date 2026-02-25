@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type ReactElement } from 'react'
 import { MdOutlineNotifications, MdTrendingUp, MdCheckCircle, MdWarningAmber, MdPending } from 'react-icons/md'
 import { FaSearch, FaEllipsisH, FaFilter, FaPlus, FaWallet } from 'react-icons/fa'
 import { BsDownload, BsCalendar3 } from 'react-icons/bs'
@@ -86,7 +86,7 @@ const allTransactions: Transaction[] = [
 /* ── helpers ─────────────────────────────────────────────── */
 
 const MethodBadge = ({ method, label }: { method: MethodKey; label: string }) => {
-  const configs: Record<MethodKey, { bg: string; iconClass: string; icon: JSX.Element }> = {
+  const configs: Record<MethodKey, { bg: string; iconClass: string; icon: ReactElement }> = {
     mpesa:  { bg: 'bg-green-100',  iconClass: 'text-green-600',  icon: <FaWallet /> },
     airtel: { bg: 'bg-red-100',    iconClass: 'text-red-500',    icon: <RiMoneyDollarCircleFill /> },
     momo:   { bg: 'bg-yellow-100', iconClass: 'text-yellow-600', icon: <RiMoneyDollarCircleFill /> },
