@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaEnvelope, FaLock, FaArrowRight, FaGoogle, FaMicrosoft } from 'react-icons/fa';
 import { BsShieldCheck, BsEye, BsEyeSlash, BsStars } from 'react-icons/bs';
 import { HiOutlineSparkles } from 'react-icons/hi';
@@ -15,10 +15,11 @@ const LoginPage = () => {
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [showOtpModal, setShowOtpModal] = useState(false);
   const [otpEmail, setOtpEmail] = useState('');
+  const navigate = useNavigate();
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Login attempted with:', { email, password, rememberMe });
+    navigate('/dashboard');
   };
 
   const handleForgotPasswordClick = (e: React.MouseEvent) => {
