@@ -16,7 +16,6 @@ import {
   FaChevronLeft,
   FaChevronRight,
   FaUpload,
-  FaUserCircle,
 } from 'react-icons/fa'
 
 /* ── types ─────────────────────────────────────────────── */

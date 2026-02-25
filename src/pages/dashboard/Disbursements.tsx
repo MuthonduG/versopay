@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type ReactElement } from 'react'
 import {
   MdOutlineNotifications,
   MdWarningAmber,
@@ -113,7 +113,7 @@ const typeIcon = (type: string) => {
 }
 
 const MethodBadge = ({ method, label }: { method: MethodKey; label: string }) => {
-  const cfg: Record<MethodKey, { bg: string; cls: string; icon: JSX.Element }> = {
+  const cfg: Record<MethodKey, { bg: string; cls: string; icon: ReactElement }> = {
     equity:  { bg: 'bg-purple-100', cls: 'text-purple-600', icon: <GiBank /> },
     kcb:     { bg: 'bg-blue-100',   cls: 'text-blue-700',   icon: <GiBank /> },
     bank:    { bg: 'bg-blue-100',   cls: 'text-blue-600',   icon: <GiBank /> },
