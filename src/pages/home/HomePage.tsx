@@ -20,7 +20,6 @@ const HomePage = () => {
       <SecurityTransactionsComponent/>
       <BannerComponent/>
       <FooterComponent/>
-      
     </section>
   )
 }
