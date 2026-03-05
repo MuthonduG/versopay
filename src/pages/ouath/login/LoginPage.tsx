@@ -19,7 +19,7 @@ const LoginPage = () => {
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate('/dashboard');
+    navigate('/oauth/onboarding');
   };
 
   const handleForgotPasswordClick = (e: React.MouseEvent) => {
