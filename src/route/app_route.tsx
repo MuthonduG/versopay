@@ -5,6 +5,7 @@ const HomePage        = lazy(() => import('../pages/home'));
 const OauthPage       = lazy(() => import('../pages/ouath'));
 const RegisterPage    = lazy(() => import('../pages/ouath/register/RegisterPage'));
 const LoginPage       = lazy(() => import('../pages/ouath/login/LoginPage'));
+const OnboardingPage  = lazy(() => import('../pages/ouath/onboarding/OnboardingPage'));
 const DashboardLayout = lazy(() => import('../pages/dashboard/DashboardLayout'));
 const Dashboard       = lazy(() => import('../pages/dashboard/Dashboard'));
 const Analytics       = lazy(() => import('../pages/dashboard/Analytics'));
@@ -28,8 +29,9 @@ export const AppRoute = () => (
 
       {/* oauth */}
       <Route path="/oauth" element={<OauthPage />}>
-        <Route path="register" element={<RegisterPage />} />
-        <Route path="login"    element={<LoginPage />} />
+        <Route path="register"   element={<RegisterPage />} />
+        <Route path="login"     element={<LoginPage />} />
+        <Route path="onboarding" element={<OnboardingPage />} />
       </Route>
 
       {/* dashboard */}

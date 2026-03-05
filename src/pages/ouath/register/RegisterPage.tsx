@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
   FaEnvelope, 
   FaLock, 
@@ -21,6 +21,7 @@ type AccountType = 'personal' | 'organisation';
 type PaymentMethod = 'mpesa' | 'airtel' | 'momo' | 'bank';
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   
@@ -106,7 +107,8 @@ const RegisterPage = () => {
     };
     
     console.log('Registration data:', formData);
-    // Handle registration logic here
+    // After signup, go to onboarding (Step 2: Roles & Privileges)
+    navigate('/oauth/onboarding');
   };
 
   return (
