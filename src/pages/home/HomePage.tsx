@@ -3,6 +3,7 @@ import NavbarComponent from '../../components/layout/navigation/navbar/NavbarCom
 import BannerComponent from './banner/BannerComponent'
 import FeaturesPage from './features/features'
 import HeaderComponent from './header/HeaderComponent'
+import AboutComponent from './about/AboutComponent'
 import SecurityTransactionsComponent from './security/SecurityTransactionsComponent'
 import TargetOrganisation from './target_org/TargetOrganisation'
 import WhyUsComponent from './whyus/WhyUsComponent'
@@ -16,6 +17,7 @@ const HomePage = () => {
       <HeaderComponent/>
       <FeaturesPage/>
       <WhyUsComponent/>
+      <AboutComponent/>
       <TargetOrganisation/>
       <SecurityTransactionsComponent/>
       <BannerComponent/>

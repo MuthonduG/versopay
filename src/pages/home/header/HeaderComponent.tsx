@@ -54,34 +54,9 @@ const HeaderComponent = () => {
       textColor: "text-purple-600",
       hasImage: true
     },
-    { 
-      name: "WhatsApp", 
-      icon: <FaWhatsapp className="text-2xl" />,
-      bgColor: "bg-green-100",
-      textColor: "text-green-600",
-      hasImage: false
-    },
-    { 
-      name: "SMS", 
-      icon: <MdSms className="text-2xl" />,
-      bgColor: "bg-gray-100",
-      textColor: "text-gray-600",
-      hasImage: false
-    },
-    { 
-      name: "Google Calendar", 
-      icon: <SiGooglecalendar className="text-2xl" />,
-      bgColor: "bg-blue-100",
-      textColor: "text-blue-600",
-      hasImage: false
-    },
-    { 
-      name: "Google Events", 
-      icon: <BsGoogle className="text-2xl" />,
-      bgColor: "bg-indigo-100",
-      textColor: "text-indigo-600",
-      hasImage: false
-    },
+   
+    
+
   ];
 
   return (
@@ -123,13 +98,6 @@ const HeaderComponent = () => {
             >
               Join The Waitlist
               <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a 
-              href="#" 
-              className="group w-full md:w-auto px-8 py-4 flex justify-center items-center bg-white hover:bg-gray-50 transform shadow-lg rounded-full font-semibold transition-all duration-300 hover:scale-105 border-2 border-gray-200 gap-2"
-            >
-              <FaUsers className="text-yellow-500" />
-              Request Demo
             </a>
           </div>
         </div>

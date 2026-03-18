@@ -24,7 +24,7 @@ const FeaturesPage = () => {
   ];
 
   return (
-    <section className="flex justify-center items-center w-full bg-[#e8f1ff] mt-16 mb-10 py-16 relative overflow-hidden">
+    <section id="solutions" className="flex justify-center items-center w-full bg-[#e8f1ff] mt-16 mb-10 py-16 relative overflow-hidden">
       
       {/* Decorative yellow/amber elements - subtle overlay */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

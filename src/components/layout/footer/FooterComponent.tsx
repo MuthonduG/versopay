@@ -1,7 +1,7 @@
+import { Link } from 'react-router-dom';
 import { 
   FaTwitter, 
   FaLinkedin, 
-  FaGithub, 
 } from 'react-icons/fa';
 import { BsStars } from 'react-icons/bs';
 import { HiOutlineSparkles } from 'react-icons/hi';
@@ -38,7 +38,6 @@ const FooterComponent = () => {
   const socialLinks = [
     { icon: <FaTwitter />, href: "#", name: "Twitter" },
     { icon: <FaLinkedin />, href: "#", name: "LinkedIn" },
-    { icon: <FaGithub />, href: "#", name: "GitHub" },
   ];
 
   return (
@@ -120,12 +119,21 @@ const FooterComponent = () => {
               <ul className="space-y-3">
                 {footerLinks.company.map((link) => (
                   <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-gray-600 hover:text-yellow-600 transition-colors duration-300"
-                    >
-                      {link.name}
-                    </a>
+                    {link.href.startsWith('/') ? (
+                      <Link
+                        to={link.href}
+                        className="text-sm text-gray-600 hover:text-yellow-600 transition-colors duration-300"
+                      >
+                        {link.name}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        className="text-sm text-gray-600 hover:text-yellow-600 transition-colors duration-300"
+                      >
+                        {link.name}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

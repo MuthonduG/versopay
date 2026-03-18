@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
 const HomePage        = lazy(() => import('../pages/home'));
+const AboutPage       = lazy(() => import('../pages/about/AboutPage'));
 const OauthPage       = lazy(() => import('../pages/ouath'));
 const RegisterPage    = lazy(() => import('../pages/ouath/register/RegisterPage'));
 const LoginPage       = lazy(() => import('../pages/ouath/login/LoginPage'));
@@ -26,6 +27,7 @@ export const AppRoute = () => (
   <Suspense fallback={<Loader />}>
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<AboutPage />} />
 
       {/* oauth */}
       <Route path="/oauth" element={<OauthPage />}>
