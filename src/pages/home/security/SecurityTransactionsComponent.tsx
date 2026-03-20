@@ -52,11 +52,11 @@ const SecurityTransactionsComponent = () => {
           </p>
 
           {/* Security features grid - updated to yellow theme */}
-          <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center p-2 gap-6 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center p-3 gap-6 mt-8">
             {securityPropsList.map((element, index) => (
               <div 
                 key={element.title} 
-                className="flex items-center gap-4 bg-white/5 backdrop-blur-sm rounded-xl p-4 hover:bg-white/10 transition-all duration-300 hover:scale-105 group border border-gray-800 hover:border-yellow-500/20"
+                className="flex flex-col  items-center gap-4 bg-white/5 backdrop-blur-sm rounded-xl p-7 hover:bg-white/10 transition-all duration-300 hover:scale-105 group border border-gray-800 hover:border-yellow-500/20"
               >
                 <div className="bg-yellow-500/20 p-3 rounded-full group-hover:bg-yellow-500/30 transition-colors">
                   {element.icon}

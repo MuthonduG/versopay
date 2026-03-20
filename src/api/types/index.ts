@@ -110,3 +110,44 @@ export interface Notification {
   read: boolean;
   createdAt: string;
 }
+
+// Waitlist types (public onboarding flow)
+export type BusinessType = 'ISP' | 'GYM' | 'SACCO' | 'CHAMA' | 'OTHER';
+
+export interface WaitlistJoinRequest {
+  email: string;
+  phone_number: string;
+  business_name: string;
+  business_type: BusinessType;
+  other_business_description?: string;
+}
+
+export interface WaitlistEntry {
+  id: number;
+  email: string;
+  phone_number: string;
+  business_name: string;
+  business_type: BusinessType;
+  other_business_description?: string | null;
+  business_type_label: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface WaitlistRegisterResponse {
+  message: string;
+  data: WaitlistEntry;
+}
+
+export interface CheckWaitlistStatusResponse {
+  email: string;
+  registered: boolean;
+  message: string;
+}
+
+export type WaitlistFieldErrors = Partial<
+  Record<
+    'email' | 'phone_number' | 'business_name' | 'business_type' | 'other_business_description',
+    string
+  >
+>;

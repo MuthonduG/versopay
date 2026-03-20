@@ -1,4 +1,4 @@
-import { FaArrowRight, FaUsers } from 'react-icons/fa';
+import { FaArrowRight } from 'react-icons/fa';
 import { BsStars } from 'react-icons/bs';
 import { MdOutlineEmail } from 'react-icons/md';
 import { HiOutlineSparkles } from 'react-icons/hi';
@@ -43,13 +43,13 @@ const BannerComponent = () => {
             Get Started Free
             <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
           </a>
-          <a 
+          {/* <a 
             href="#" 
             className="group w-full px-6 py-4 flex justify-center items-center bg-white hover:bg-gray-50 transform shadow-lg rounded-full font-semibold transition-all duration-300 hover:scale-105 border-2 border-gray-200 gap-2"
           >
             <FaUsers className="text-yellow-500" />
             Request Demo
-          </a>
+          </a> */}
         </div>
 
         <div className="w-full md:w-[60%] mt-12 pt-8 border-t border-gray-200">

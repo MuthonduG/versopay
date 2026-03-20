@@ -13,14 +13,10 @@ const FooterComponent = () => {
     product: [
       { name: "Reconciliation", href: "#solutions" },
       { name: "Subscriptions", href: "#solutions" },
-      { name: "Defaulter Tracking", href: "#solutions" },
-      { name: "Reporting", href: "#solutions" },
-      { name: "M-Pesa", href: "#integrations" }
+      
     ],
     company: [
       { name: "About", href: "#about" },
-      { name: "Contact", href: "#contact" },
-      { name: "FAQ", href: "#faq" }
     ],
     resources: [
       { name: "Help", href: "#contact" },
