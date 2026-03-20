@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import { FaBars, FaTimes } from "react-icons/fa"
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const navLinks = [
-  { title: "Learn more", href: "#solutions" },
-  { title: "M-Pesa", href: "#integrations" },
-  { title: "Contact", href: "#contact" },
+  { title: "Reconciliation", href: "#solutions" },
+  { title: "Subscriptions", href: "#solutions" },
+  { title: "About", href: "#about" },
 ]
 
 const NavbarComponent = () => {
@@ -85,16 +85,27 @@ const NavbarComponent = () => {
           className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-200 ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
         >
           <div className="pt-14 px-4 pb-6 flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.title}
-                href={link.href}
-                className="block py-3 px-2 text-gray-700 hover:text-yellow-600 transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.title}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.href.startsWith('/') ? (
+                <Link
+                  key={link.title}
+                  to={link.href}
+                  className="block py-3 px-2 text-gray-700 hover:text-yellow-600 transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.title}
+                </Link>
+              ) : (
+                <a
+                  key={link.title}
+                  href={link.href}
+                  className="block py-3 px-2 text-gray-700 hover:text-yellow-600 transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.title}
+                </a>
+              )
+            )}
             <div className="border-t border-gray-100 mt-4 pt-4 flex flex-col gap-2">
               <button
                 type="button"
@@ -126,16 +137,26 @@ const NavbarComponent = () => {
         </a>
 
         <div className="flex items-center gap-6">
-          {navLinks.map((link) => (
-            <a
-              key={link.title}
-              href={link.href}
-              className="text-gray-700 hover:text-yellow-600 transition-colors text-sm font-medium"
-            >
-              {link.title}
-            </a>
-          ))}
-          <a
+          {navLinks.map((link) =>
+            link.href.startsWith('/') ? (
+              <Link
+                key={link.title}
+                to={link.href}
+                className="text-gray-700 hover:text-yellow-600 transition-colors text-sm font-medium"
+              >
+                {link.title}
+              </Link>
+            ) : (
+              <a
+                key={link.title}
+                href={link.href}
+                className="text-gray-700 hover:text-yellow-600 transition-colors text-sm font-medium"
+              >
+                {link.title}
+              </a>
+            )
+          )}
+          {/* <a
             href="#"
             onClick={(e) => {
               e.preventDefault()
@@ -151,7 +172,7 @@ const NavbarComponent = () => {
             className="px-4 py-2 rounded-lg bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-semibold transition-colors"
           >
             Sign Up
-          </button>
+          </button> */}
         </div>
       </nav>
     </header>

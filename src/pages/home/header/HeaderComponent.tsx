@@ -1,8 +1,7 @@
 import header_image_two from "../../../assets/header_two.png";
-import { MdOutlineNotifications, MdPayment, MdSms } from "react-icons/md";
-import { FaArrowRight, FaUsers, FaWhatsapp } from "react-icons/fa";
-import { BsCheckCircleFill, BsGoogle, BsStars } from "react-icons/bs";
-import { SiGooglecalendar } from "react-icons/si";
+import { MdOutlineNotifications, MdPayment } from "react-icons/md";
+import { FaArrowRight, FaWhatsapp } from "react-icons/fa";
+import { BsCheckCircleFill, BsStars } from "react-icons/bs";
 import { GiBank } from "react-icons/gi";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { HiOutlineSparkles } from "react-icons/hi";
@@ -12,7 +11,11 @@ import momo_logo from "../../../assets/momo.png";
 import kcb_logo from "../../../assets/kcb.png";
 import equity_logo from "../../../assets/equity.png";
 
-const HeaderComponent = () => {
+interface HeaderComponentProps {
+  onJoinWaitlist?: () => void;
+}
+
+const HeaderComponent = ({ onJoinWaitlist }: HeaderComponentProps) => {
   // Integrations data
   const integrations = [
     { 
@@ -54,34 +57,9 @@ const HeaderComponent = () => {
       textColor: "text-purple-600",
       hasImage: true
     },
-    { 
-      name: "WhatsApp", 
-      icon: <FaWhatsapp className="text-2xl" />,
-      bgColor: "bg-green-100",
-      textColor: "text-green-600",
-      hasImage: false
-    },
-    { 
-      name: "SMS", 
-      icon: <MdSms className="text-2xl" />,
-      bgColor: "bg-gray-100",
-      textColor: "text-gray-600",
-      hasImage: false
-    },
-    { 
-      name: "Google Calendar", 
-      icon: <SiGooglecalendar className="text-2xl" />,
-      bgColor: "bg-blue-100",
-      textColor: "text-blue-600",
-      hasImage: false
-    },
-    { 
-      name: "Google Events", 
-      icon: <BsGoogle className="text-2xl" />,
-      bgColor: "bg-indigo-100",
-      textColor: "text-indigo-600",
-      hasImage: false
-    },
+   
+    
+
   ];
 
   return (
@@ -117,20 +95,14 @@ const HeaderComponent = () => {
           
           {/* Updated CTA buttons to match Navbar yellow theme */}
           <div className="flex flex-col md:flex-row justify-center md:justify-start items-center gap-4 mt-14 w-full">
-            <a 
-              href="#" 
+            <button
+              type="button"
+              onClick={() => onJoinWaitlist?.()}
               className="group w-full md:w-auto px-8 py-4 flex justify-center items-center bg-linear-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 transform shadow-xl rounded-full text-white font-semibold transition-all duration-300 hover:scale-105 gap-2"
             >
               Join The Waitlist
               <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a 
-              href="#" 
-              className="group w-full md:w-auto px-8 py-4 flex justify-center items-center bg-white hover:bg-gray-50 transform shadow-lg rounded-full font-semibold transition-all duration-300 hover:scale-105 border-2 border-gray-200 gap-2"
-            >
-              <FaUsers className="text-yellow-500" />
-              Request Demo
-            </a>
+            </button>
           </div>
         </div>
 
