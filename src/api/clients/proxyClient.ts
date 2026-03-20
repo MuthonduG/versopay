@@ -2,7 +2,7 @@
 import type { ApiResponse, ApiError } from '../types';
 // Import helpers to map HTTP status codes to messages and normalize errors
 import { mapStatusToMessage, normalizeError } from '../errors/errorHandler';
-// Import token storage helper to persist JWT on successful auth
+// Import token storage helper to persist JWT on successful 
 import { setToken } from './tokenStorage';
 
 // Base path for proxy requests; falls back to /api if env var is missing
