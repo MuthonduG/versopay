@@ -5,7 +5,7 @@ import type {
   WaitlistRegisterResponse,
 } from '../types';
 
-const WAITLIST_BASE = '/api/waitlist';
+const WAITLIST_BASE = 'api/waitlist';
 
 export async function joinWaitlist(payload: WaitlistJoinRequest) {
   return proxyFetch<WaitlistRegisterResponse>(`${WAITLIST_BASE}/register/`, {
