@@ -2,11 +2,17 @@
 import type { ApiResponse, ApiError } from '../types';
 // Import helpers to map HTTP status codes to messages and normalize errors
 import { mapStatusToMessage, normalizeError } from '../errors/errorHandler';
-// Import token storage helper to persist JWT on successful auth
+// Import token storage helper to persist JWT on successful 
 import { setToken } from './tokenStorage';
 
 // Base path for proxy requests; falls back to /api if env var is missing
 const PROXY_BASE = import.meta.env.VITE_API_GATEWAY ?? '/api';
+
+function joinUrl(base: string, path: string): string {
+  const normalizedBase = base.replace(/\/+$/, '');
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  return `${normalizedBase}${normalizedPath}`;
+}
 
 // Options passed to proxyFetch for configuring the request
 export interface ProxyClientOptions {
@@ -29,7 +35,7 @@ export async function proxyFetch<T = unknown>(
   const { method = 'GET', body, headers = {} } = options;
 
   // Build full URL: ensure path has leading slash if missing
-  const url = `${PROXY_BASE}${path.startsWith('/') ? path : `/${path}`}`;
+  const url = joinUrl(PROXY_BASE, path);
 
   // Build fetch config: method, credentials for cookies, JSON content-type
   const config: RequestInit = {
