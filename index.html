@@ -1,51 +1,80 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Basic Setup -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./src/assets/verso.png" />
+    <link rel="icon" type="image/png" href="/src/assets/verso.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- Primary SEO Meta Tags -->
-    <title>VersoPaid | Automated Bank and M-Pesa Reconciliation & Subscription Management for Kenyan Groups</title>
-    <meta name="title" content="VersoPaid | Automated M-Pesa Reconciliation & Subscription Management for Kenyan Groups" />
-    <meta name="description" content="VersoPaid automates Bank and M-Pesa payments and reconciliation, subscription tracking, and payment reminders for Chamas, SACCOs, gyms, and ISPs in Kenya. Stop manual Excel work. Get audit-ready reports instantly." />
-    <meta name="keywords" content="VersoPaid, Verso Paid, M-Pesa reconciliation Kenya, Bank Reconciliation, subscription management Kenya, automated payments Kenya, SACCO payment tracking Kenya, Bank statement reconciliation, M-Pesa statement reconciliation, recurring payments Kenya, payment automation, defaulter tracking, group contribution management" />
+
+    <!-- Primary SEO -->
+    <title>VersoPaid | M-Pesa Reconciliation & Subscription Management for Kenyan SMEs</title>
+
+    <meta
+      name="description"
+      content="Automate M-Pesa and bank reconciliation, track subscriptions, detect defaulters, and send payment reminders. Built for Chamas, SACCOs, gyms, and SMEs in Kenya."
+    />
+
+    <meta
+      name="keywords"
+      content="M-Pesa reconciliation Kenya, subscription management Kenya, defaulter tracking Kenya, chama management software, SACCO payment tracking, automated payments Kenya, bank reconciliation Kenya, recurring payments Kenya"
+    />
+
     <meta name="author" content="VersoPaid" />
     <meta name="robots" content="index, follow" />
-    <meta name="language" content="English" />
+
+    <!-- Geo Targeting -->
     <meta name="geo.region" content="KE" />
     <meta name="geo.placename" content="Nairobi, Kenya" />
-    
-    <!-- Brand Differentiation - Clear distinction from Versapay -->
-    <meta name="description" content="VersoPaid is NOT Versapay. VersoPaid is a Kenyan-built M-Pesa reconciliation and Chama management platform for local groups and SMEs." />
-    
-    <!-- Open Graph / Facebook -->
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.versopaid.tech/" />
+    <link rel="alternate" href="https://www.versopaid.tech/" hreflang="en-ke" />
+
+    <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://versopaid.tech/" />
-    <meta property="og:title" content="VersoPaid - Kenyan M-Pesa Reconciliation & Chama Management Platform" />
-    <meta property="og:description" content="VersoPaid is Kenya's lightweight M-Pesa reconciliation tool for Chamas, SACCOs, gyms, and ISPs. Automate subscription tracking and payments. Built for Kenya." />
-    <meta property="og:image" content="https://versopaid.tech/og-image.jpg" />
-    <meta property="og:site_name" content="VersoPaid" />
-    <meta property="og:locale" content="en_KE" />
-    
+    <meta property="og:url" content="https://www.versopaid.tech/" />
+    <meta property="og:title" content="VersoPaid - Automate M-Pesa Reconciliation & Subscriptions" />
+    <meta
+      property="og:description"
+      content="Stop using Excel to track payments. Automate reconciliation, track defaulters, and manage recurring payments in Kenya."
+    />
+    <meta property="og:image" content="https://www.versopaid.tech/preview.png" />
+
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://versopaid.tech/" />
-    <meta property="twitter:title" content="VersoPaid - M-Pesa Reconciliation & Chama Management Kenya" />
-    <meta property="twitter:description" content="Stop manual M-Pesa reconciliation. VersoPaid automates payments, tracking, and reminders for Chamas, SACCOs, gyms, and ISPs in Kenya." />
-    <meta property="twitter:image" content="https://versopaid.tech/twitter-image.jpg" />
-    <meta property="twitter:site" content="@versopaid" />
-    
-    <!-- Canonical URL - FIXED to .tech domain -->
-    <link rel="canonical" href="https://versopaid.tech/" />
-    <link rel="alternate" href="https://versopaid.tech/" hreflang="en-ke" />
-    
-    <!-- Preconnect for performance -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="VersoPaid - M-Pesa Reconciliation for SMEs" />
+    <meta
+      name="twitter:description"
+      content="Automate payments, track defaulters, and manage subscriptions in Kenya."
+    />
+    <meta name="twitter:image" content="https://www.versopaid.tech/preview.png" />
+
+    <!-- Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    <title>VersoPaid - M-Pesa Reconciliation & Chama Management Kenya</title>
+
+    <!-- Structured Data (SEO Boost) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "VersoPaid",
+        "url": "https://www.versopaid.tech/",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "description": "M-Pesa reconciliation and subscription tracking platform for Kenyan SMEs",
+        "areaServed": {
+          "@type": "Country",
+          "name": "Kenya"
+        },
+        "creator": {
+          "@type": "Organization",
+          "name": "VersoPaid"
+        }
+      }
+    </script>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
