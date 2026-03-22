@@ -32,7 +32,7 @@ const SecurityTransactionsComponent = () => {
         </div>
       </div>
 
-      <div className="relative z-10 flex flex-col-reverse md:flex-row justify-center items-center py-10 p-4 w-[90%] lg:w-[70%] gap-12">
+      <div className="security_component relative z-10 flex flex-col-reverse md:flex-row justify-center items-center py-10 p-4 w-[90%] lg:w-[70%] gap-12">
             
         {/* Left side - Content */}
         <div className="flex-1 flex-col justify-start items-start gap-6 p-4">
@@ -47,7 +47,7 @@ const SecurityTransactionsComponent = () => {
 
           {/* Description */}
           <p className="text-gray-300 mt-4 leading-relaxed text-lg">
-            VersoPaid does not hold your money — we connect to M-Pesa and your bank to reconcile and report. 
+            VersoPaid does not hold your money - we connect to M-Pesa and your bank to reconcile and report. 
             Your payment data is protected with strong security and we align with Kenya’s Data Protection Act.
           </p>
 
