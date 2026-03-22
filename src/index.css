@@ -91,7 +91,7 @@
 }
 
 
-@media (min-width: 760px) and (max-width: 1250px) {
+@media (min-width: 760px) and (max-width: 1420px) {
   .security_component {
     flex-direction: column-reverse;
     gap: 1.5rem;

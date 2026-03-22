@@ -9,6 +9,7 @@ import TargetOrganisation from './target_org/TargetOrganisation'
 import WhyUsComponent from './whyus/WhyUsComponent'
 import FooterComponent from '../../components/layout/footer/FooterComponent'
 import JoinWaitlistModal from '../../components/common/modals/JoinWaitlistModal';
+import TestimonialsComponent from './testimonials/TestimonialsComponent';
 
 const HomePage = () => {
   const [isJoinWaitlistOpen, setIsJoinWaitlistOpen] = useState(false);
@@ -27,6 +28,7 @@ const HomePage = () => {
       <AboutComponent/>
       <TargetOrganisation/>
       <SecurityTransactionsComponent/>
+      <TestimonialsComponent/>
       <BannerComponent/>
       <FooterComponent/>
     </section>
