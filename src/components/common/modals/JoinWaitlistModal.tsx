@@ -218,8 +218,11 @@ const JoinWaitlistModal = ({ isOpen = true, onClose }: JoinWaitlistModalProps) =
           </div>
 
           <button
-            onClick={handleClose}
-            className="absolute top-4 right-4 z-10 p-2 text-gray-400 hover:text-gray-600 transition-colors rounded-full hover:bg-gray-100"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleClose();
+            }}
+            className="absolute top-4 right-4 z-30 p-2 text-gray-400 hover:text-gray-600 transition-colors rounded-full hover:bg-gray-100"
             aria-label="Close waitlist form"
             type="button"
           >
