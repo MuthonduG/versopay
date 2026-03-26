@@ -205,7 +205,7 @@ const AboutComponent = () => {
                   className="w-28 h-28 rounded-full object-cover mx-auto border-4 border-emerald-100"
                 />
                 <h4 className="mt-5 text-2xl font-bold text-gray-900">{member.name}</h4>
-                <p className="mt-1 text-lg font-semibold text-emerald-500">{member.title}</p>
+                <p className="mt-1 text-lg font-semibold text-yellow-600">{member.title}</p>
                 <p className="mt-4 text-gray-600 leading-relaxed max-w-xs mx-auto">{member.bio}</p>
               </div>
             ))}
