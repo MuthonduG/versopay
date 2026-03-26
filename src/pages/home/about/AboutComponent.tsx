@@ -4,6 +4,8 @@ import { HiOutlineSparkles } from 'react-icons/hi';
 import { MdOutlineDashboard, MdOutlinePayments } from 'react-icons/md';
 import { RiTeamLine } from 'react-icons/ri';
 import { ImArrowRight2 } from "react-icons/im";
+import maxwellImage from '../../../assets/max.jpeg';
+import josephImage from '../../../assets/jose.jpg';
 
 
 const AboutComponent = () => {
@@ -35,6 +37,21 @@ const AboutComponent = () => {
     { value: "100", label: "Accuracy Rate", suffix: "%", prefix: false },
     { value: "24", label: "Support Response", suffix: "hrs", prefix: false },
     { value: "0", label: "Funds Held", suffix: "", prefix: "KES " }
+  ];
+
+  const executives = [
+    {
+      image: maxwellImage,
+      name: 'Maxwell Githinji',
+      title: 'Founder & CEO',
+      bio: 'Senior engineer with expertise in DevOps, backend systems, and product development.',
+    },
+    {
+      image: josephImage,
+      name: 'Joseph Wamiti',
+      title: 'Co-Founder & CTO',
+      bio: 'Senior software engineer with prior experience in blockchain, business development, and marketing strategy.',
+    },
   ];
 
   return (
@@ -164,6 +181,32 @@ const AboutComponent = () => {
                 </div>
                 <h4 className="text-lg font-semibold text-gray-900 mb-2">{value.title}</h4>
                 <p className="text-gray-600 text-sm leading-relaxed">{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Executive Team Section */}
+        <div className="mb-20">
+          <div className="text-center mb-10">
+            <h3 className="text-3xl font-bold text-gray-900 mb-3">Executive Team</h3>
+            <p className="text-gray-600">Built by experienced operators focused on reliable financial products.</p>
+          </div>
+
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+            {executives.map((member) => (
+              <div
+                key={member.name}
+                className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:shadow-lg transition-all duration-300"
+              >
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-28 h-28 rounded-full object-cover mx-auto border-4 border-emerald-100"
+                />
+                <h4 className="mt-5 text-2xl font-bold text-gray-900">{member.name}</h4>
+                <p className="mt-1 text-lg font-semibold text-yellow-600">{member.title}</p>
+                <p className="mt-4 text-gray-600 leading-relaxed max-w-xs mx-auto">{member.bio}</p>
               </div>
             ))}
           </div>
