@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
-import { MdDashboardCustomize, MdAdminPanelSettings, MdLogout, MdOutlineNotifications } from 'react-icons/md'
+import { MdDashboardCustomize, MdAdminPanelSettings, MdLogout, MdOutlineNotifications, MdOutlineGroup } from 'react-icons/md'
 import { GrAnalytics } from 'react-icons/gr'
 import { IoMdRepeat } from 'react-icons/io'
 import { IoPeopleOutline } from 'react-icons/io5'
@@ -27,6 +27,7 @@ const navSections = [
   {
     label: 'ORGANIZATION',
     items: [
+      { title: 'Users', href: '/dashboard/users', icon: <MdOutlineGroup className="text-lg" /> },
       { title: 'Members', href: '/dashboard/members', icon: <IoPeopleOutline className="text-lg" /> },
       { title: 'Roles & Permissions', href: '/dashboard/roles', icon: <MdAdminPanelSettings className="text-lg" /> },
       { title: 'Settings', href: '/dashboard/settings', icon: <CiSettings className="text-lg" /> },

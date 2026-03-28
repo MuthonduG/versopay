@@ -1,7 +1,9 @@
+import { directClient } from '../clients/directClient';
 import { proxyFetch } from '../clients/proxyClient';
 import type {
   CheckWaitlistStatusResponse,
   WaitlistJoinRequest,
+  WaitlistListResponse,
   WaitlistRegisterResponse,
 } from '../types';
 
@@ -19,5 +21,11 @@ export async function checkWaitlistStatus(email: string) {
     `${WAITLIST_BASE}/check/${encodeURIComponent(email)}/`,
     { method: 'GET' }
   );
+}
+
+/** Dashboard: full waitlist from CMS (requires same-origin or CORS + auth as configured). */
+export async function fetchWaitlistAll() {
+  const { data } = await directClient.get<WaitlistListResponse>('/api/waitlist/all/');
+  return data;
 }
 
