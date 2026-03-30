@@ -6,8 +6,8 @@ const TargetOrganisation = () => {
     {
       title: "SACCOS",
       icon: <BsBank className="text-4xl text-blue-600" />,
-      description: "Track member contributions and reconcile M-Pesa automatically. Defaulter lists, reminders, and audit-ready reports for branches.",
-      features: ["M-Pesa reconciliation", "Contribution tracking", "Defaulter tracking", "Monthly reports"],
+      description: "Track member contributions and reconcile M-Pesa and bank payments automatically. Defaulter lists, reminders, and audit-ready reports for branches.",
+      features: ["M-Pesa & bank reconciliation", "Contribution tracking", "Defaulter tracking", "Monthly reports"],
       bgColor: "bg-blue-50",
       borderColor: "border-blue-200",
       hoverColor: "hover:bg-blue-100",
@@ -16,8 +16,8 @@ const TargetOrganisation = () => {
     {
       title: "CHAMAS",
       icon: <FaUsers className="text-4xl text-green-600" />,
-      description: "Automate M-Pesa matching and see who has paid. Get WhatsApp and SMS reminders, defaulter lists, and simple contribution reports.",
-      features: ["M-Pesa reconciliation", "Subscription tracking", "Defaulter alerts", "Reminders"],
+      description: "Automate M-Pesa & bank payments matching and see who has paid. Get WhatsApp and SMS reminders, defaulter lists, and simple contribution reports.",
+      features: ["M-Pesa & bank reconciliation", "Subscription tracking", "Defaulter alerts", "Reminders"],
       bgColor: "bg-green-50",
       borderColor: "border-green-200",
       hoverColor: "hover:bg-green-100",
@@ -26,8 +26,8 @@ const TargetOrganisation = () => {
     {
       title: "SMEs",
       icon: <BsBuilding className="text-4xl text-purple-600" />,
-      description: "Gyms, ISPs, schools — track recurring payments, reconcile M-Pesa, flag defaulters, and send reminders with clear reporting.",
-      features: ["M-Pesa reconciliation", "Subscription tracking", "Defaulter tracking", "Reminders & reports"],
+      description: "Gyms, ISPs, schools — track recurring payments, reconcile M-Pesa and bank payments, flag defaulters, and send reminders with clear reporting.",
+      features: ["M-Pesa & bank reconciliation", "Subscription tracking", "Defaulter tracking", "Reminders & reports"],
       bgColor: "bg-purple-50",
       borderColor: "border-purple-200",
       hoverColor: "hover:bg-purple-100",
@@ -104,7 +104,7 @@ const TargetOrganisation = () => {
         </div>
 
         <div className="flex flex-wrap justify-center items-center gap-8 mt-12 opacity-60">
-          <span className="text-sm text-gray-500">M-Pesa reconciliation first</span>
+          <span className="text-sm text-gray-500">M-Pesa & bank reconciliation first</span>
           <span className="text-sm text-gray-500">•</span>
           <span className="text-sm text-gray-500">No manual chasing</span>
           <span className="text-sm text-gray-500">•</span>

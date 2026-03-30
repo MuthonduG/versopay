@@ -90,7 +90,7 @@ const HeaderComponent = ({ onJoinWaitlist }: HeaderComponentProps) => {
           </h1>
           
           <p className="text-gray-600 leading-relaxed text-lg mt-8">
-            VersoPaid automates M‑Pesa reconciliation, tracks subscriptions, flags defaulters, and sends reminders — so you never chase payments again.
+            VersoPaid automates M‑Pesa and bank payments reconciliation, tracks subscriptions, flags defaulters, and sends reminders — so you never chase payments again.
           </p>
           
           {/* Updated CTA buttons to match Navbar yellow theme */}

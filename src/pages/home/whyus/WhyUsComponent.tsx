@@ -40,7 +40,7 @@ const WhyUsComponent = () => {
                     </h2>
 
                     <p className="text-gray-600 leading-9">
-                        We automate M-Pesa reconciliation, subscription tracking, defaulter management, and reminders 
+                        We automate M-Pesa and bank payments reconciliation, subscription tracking, defaulter management, and reminders 
                         for recurring-collection groups in Kenya — so you get clarity without chasing payments.
                     </p>                
                 </div>
@@ -54,7 +54,7 @@ const WhyUsComponent = () => {
                             <div className="flex items-center gap-2">
                                 <h4 className="font-bold text-gray-900 text-lg">Time Saved</h4>
                             </div>
-                            <p className="text-gray-600 text-sm">Automated M-Pesa reconciliation — no manual statement matching</p>
+                            <p className="text-gray-600 text-sm">Automated M-Pesa & bank reconciliation — no manual statement matching</p>
                         </div>
                     </div>
 
@@ -140,7 +140,7 @@ const WhyUsComponent = () => {
                         </div>
                         <div>
                         <p className="text-xs font-bold text-gray-900">Accurate</p>
-                        <p className="text-[10px] text-gray-600">M-Pesa matching</p>
+                            <p className="text-[10px] text-gray-600">M-Pesa & bank matching</p>
                         </div>
                     </div>
                 </div>

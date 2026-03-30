@@ -84,7 +84,7 @@ const AboutComponent = () => {
           <p className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
             Versopaid is a lightweight reconciliation and subscription management platform built specifically 
             for small recurring-collection groups in Kenya. We help organizations track who has paid and who 
-            hasn't — automatically — so you don't have to manually reconcile M-Pesa statements.
+            hasn't — automatically — so you don't have to manually reconcile M-Pesa and bank statements.
           </p>
         </div>
 
@@ -103,7 +103,7 @@ const AboutComponent = () => {
             </p>
             <ul className="space-y-3">
               {[
-                "Manual reconciliation of M-Pesa statements",
+                "Manual reconciliation of M-Pesa and bank statements",
                 "Time-consuming follow-ups with defaulters",
                 "Errors in payment tracking",
                 "Lack of structured reporting",
