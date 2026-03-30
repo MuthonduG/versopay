@@ -123,7 +123,7 @@ export interface WaitlistJoinRequest {
 }
 
 export interface WaitlistEntry {
-  id: number;
+  id: string | number;
   email: string;
   phone_number: string;
   business_name: string;
@@ -143,6 +143,11 @@ export interface CheckWaitlistStatusResponse {
   email: string;
   registered: boolean;
   message: string;
+}
+
+export interface WaitlistListResponse {
+  count: number;
+  results: WaitlistEntry[];
 }
 
 export type WaitlistFieldErrors = Partial<

@@ -30,7 +30,7 @@ const BannerComponent = () => {
           </h2>
           
           <p className="text-lg md:text-xl leading-relaxed w-full md:w-[80%] text-center text-gray-600 mt-6">
-            Automate M-Pesa reconciliation, track subscriptions, manage defaulters, and get 
+            Automate M-Pesa and bank payments reconciliation, track subscriptions, manage defaulters, and get 
             clear reports. Join pilot groups using VersoPaid to never reconcile by hand again.
           </p>
         </div>
@@ -72,7 +72,7 @@ const BannerComponent = () => {
 
           {/* Added trust indicator */}
           <div className="flex justify-center items-center gap-4 mt-6">
-            <span className="text-xs text-gray-500">M-Pesa reconciliation first</span>
+            <span className="text-xs text-gray-500">M-Pesa and bank reconciliation first</span>
             <span className="text-xs text-gray-500">🔒 No spam, unsubscribe anytime</span>
           </div>
         </div>

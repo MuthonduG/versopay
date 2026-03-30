@@ -8,8 +8,8 @@ const FeaturesPage = () => {
   const features = [
     {
       icon: <FaRecycle className="text-2xl text-yellow-600" />,
-      title: "Automated M-Pesa Reconciliation",
-      description: "Payments from M-Pesa are matched to members automatically. No more manual statement reviews or spreadsheet errors.",
+      title: "Automated M-Pesa & Bank Reconciliation",
+      description: "Payments from M-Pesa and bank transfers are matched to members automatically. No more manual statement reviews or spreadsheet errors.",
     },
     {
       icon: <IoPeopleSharp className="text-2xl text-yellow-600" />,
@@ -44,14 +44,14 @@ const FeaturesPage = () => {
         <div className="text-center mb-16">
           
           <h2 className="text-[#0f1724] text-4xl md:text-5xl font-bold mb-4 leading-tight">
-            M-Pesa Reconciliation,{' '}
+            M-Pesa & Bank Reconciliation,{' '}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-amber-500">
               Subscriptions & Reporting
             </span>
           </h2>
           
           <p className="text-[#606874] text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            Stop manual statement matching. VersoPaid automates reconciliation, tracks recurring contributions, 
+            Stop manual statement matching. VersoPaid automates reconciliation for M-Pesa and bank payments, tracks recurring contributions, 
             flags defaulters, sends reminders, and delivers audit-ready reports.
           </p>
         </div>

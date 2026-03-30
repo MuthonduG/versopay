@@ -16,6 +16,7 @@ const Disbursements   = lazy(() => import('../pages/dashboard/Disbursements'));
 const Members         = lazy(() => import('../pages/dashboard/Members'));
 const Roles           = lazy(() => import('../pages/dashboard/Roles'));
 const Settings        = lazy(() => import('../pages/dashboard/Settings'));
+const Users           = lazy(() => import('../pages/dashboard/Users'));
 
 const Loader = () => (
   <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -43,6 +44,7 @@ export const AppRoute = () => (
         <Route path="plans"        element={<Plans />} />
         <Route path="collections"  element={<Collections />} />
         <Route path="disbursements"element={<Disbursements />} />
+        <Route path="users"        element={<Users />} />
         <Route path="members"      element={<Members />} />
         <Route path="roles"        element={<Roles />} />
         <Route path="settings"     element={<Settings />} />
