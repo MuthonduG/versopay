@@ -1,19 +1,13 @@
-import './index.css'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import HomePage from './pages/home'
+import './index.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { AppRoute } from './route/app_route';
 
 function App() {
-
-
   return (
-    <>
-      <Router>
-        <Routes>
-          <Route index element={<HomePage/>} />
-        </Routes>
-      </Router>
-    </>
-  )
+    <Router>
+      <AppRoute />
+    </Router>
+  );
 }
 
-export default App
+export default App;

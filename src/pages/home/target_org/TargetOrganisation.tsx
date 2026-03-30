@@ -6,32 +6,32 @@ const TargetOrganisation = () => {
     {
       title: "SACCOS",
       icon: <BsBank className="text-4xl text-blue-600" />,
-      description: "Credit unions and savings cooperatives managing member contributions, loans, and dividend payouts. Perfect for SACCOs with 50-5000+ members.",
-      features: ["Member contribution tracking", "Loan repayment monitoring", "Dividend calculations", "Branch management"],
+      description: "Track member contributions and reconcile M-Pesa and bank payments automatically. Defaulter lists, reminders, and audit-ready reports for branches.",
+      features: ["M-Pesa & bank reconciliation", "Contribution tracking", "Defaulter tracking", "Monthly reports"],
       bgColor: "bg-blue-50",
       borderColor: "border-blue-200",
       hoverColor: "hover:bg-blue-100",
-      stats: "2,500+ members"
+      stats: "Recurring collections"
     },
     {
       title: "CHAMAS",
       icon: <FaUsers className="text-4xl text-green-600" />,
-      description: "Investment groups, merry-go-rounds, and social clubs that need transparent contribution tracking and automated payout notifications.",
-      features: ["Monthly contribution tracking", "Automatic defaulter alerts", "Payout scheduling", "Group financial reports"],
+      description: "Automate M-Pesa & bank payments matching and see who has paid. Get WhatsApp and SMS reminders, defaulter lists, and simple contribution reports.",
+      features: ["M-Pesa & bank reconciliation", "Subscription tracking", "Defaulter alerts", "Reminders"],
       bgColor: "bg-green-50",
       borderColor: "border-green-200",
       hoverColor: "hover:bg-green-100",
-      stats: "50-200 members"
+      stats: "Chamas & groups"
     },
     {
       title: "SMEs",
       icon: <BsBuilding className="text-4xl text-purple-600" />,
-      description: "Small to medium businesses with recurring billing - from gyms and ISPs to schools and property managers.",
-      features: ["Recurring invoice generation", "Payment reconciliation", "Customer payment portal", "Revenue analytics"],
+      description: "Gyms, ISPs, schools — track recurring payments, reconcile M-Pesa and bank payments, flag defaulters, and send reminders with clear reporting.",
+      features: ["M-Pesa & bank reconciliation", "Subscription tracking", "Defaulter tracking", "Reminders & reports"],
       bgColor: "bg-purple-50",
       borderColor: "border-purple-200",
       hoverColor: "hover:bg-purple-100",
-      stats: "100-1000+ customers"
+      stats: "Gyms, ISPs, schools"
     }
   ];
 
@@ -41,12 +41,12 @@ const TargetOrganisation = () => {
         
         <div className="flex flex-col justify-center items-center gap-4 mb-12">
           <span className="font-bold text-4xl md:text-5xl text-gray-900">
-            Built For Your{' '}
-            <span className="text-blue-700">Organization</span>
+            Built For Recurring{' '}
+            <span className="text-yellow-500">Collections</span>
           </span>
           <p className="text-gray-600 text-center w-full md:w-[70%] text-lg leading-relaxed">
-            Whether you manage a small investment group or a large credit union, 
-            VersoPaid scales with you - from 50 to 5,000+ members.
+            Chamas, SACCO branches, gyms, ISPs, schools — anyone who collects monthly payments via M-Pesa 
+            and needs reconciliation, defaulter tracking, and clear reports.
           </p>
         </div>
 
@@ -104,11 +104,11 @@ const TargetOrganisation = () => {
         </div>
 
         <div className="flex flex-wrap justify-center items-center gap-8 mt-12 opacity-60">
-          <span className="text-sm text-gray-500">Trusted by 500+ organizations</span>
+          <span className="text-sm text-gray-500">M-Pesa & bank reconciliation first</span>
           <span className="text-sm text-gray-500">•</span>
-          <span className="text-sm text-gray-500">4.9/5 from 200+ reviews</span>
+          <span className="text-sm text-gray-500">No manual chasing</span>
           <span className="text-sm text-gray-500">•</span>
-          <span className="text-sm text-gray-500">GDPR & Data Protection Compliant</span>
+          <span className="text-sm text-gray-500">Data Protection Compliant</span>
         </div>
 
       </div>

@@ -1,5 +1,7 @@
 import why_us_image from "../../../assets/why_us.png";
 import { FaCheckCircle, FaArrowRight } from 'react-icons/fa';
+import { BsStars } from 'react-icons/bs';
+import { HiOutlineSparkles } from 'react-icons/hi';
 
 const user_avatar_images: string[] = [
     "https://i.pinimg.com/1200x/ff/59/9f/ff599f54dfc78c39e417de2f24640ff3.jpg",
@@ -10,58 +12,73 @@ const user_avatar_images: string[] = [
 
 const WhyUsComponent = () => {
   return (
-    <section className="flex justify-center items-center w-full py-20 bg-linear-to-b from-white to-gray-50">
+    <section className="flex justify-center items-center w-full py-20 bg-linear-to-b from-white to-amber-50/30 relative overflow-hidden">
         
-        <div className="w-[70%] flex flex-col-reverse md:flex-row-reverse justify-center items-center gap-12">
+        {/* Decorative background elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute -top-20 -left-20 w-64 h-64 bg-yellow-100 rounded-full blur-3xl opacity-30"></div>
+            <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-amber-100 rounded-full blur-3xl opacity-30"></div>
+            
+            <div className="absolute top-40 right-20 animate-float-slow opacity-10">
+                <BsStars className="text-yellow-500 text-6xl" />
+            </div>
+            <div className="absolute bottom-40 left-20 animate-float-slow opacity-10">
+                <HiOutlineSparkles className="text-amber-500 text-6xl" />
+            </div>
+        </div>
+        
+        <div className="relative z-10 w-[90%] lg:w-[70%] flex flex-col-reverse md:flex-row-reverse justify-center items-center gap-12">
             
             {/* left side - Content */}
             <div className="flex-1 space-y-6">
                 <div className="flex flex-col gap-6 justify-start items-start w-full">
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
                         Why Choose{' '}
-                        <span className="text-blue-700">Versopaid</span>
+                        <span className="text-transparent bg-clip-text bg-linear-to-tr from-yellow-500 to-amber-500">
+                            VersoPaid
+                        </span>
                     </h2>
 
                     <p className="text-gray-600 leading-9">
-                        We help small recurring-collection groups in Kenya automate payment tracking, 
-                        reconciliation, and member notifications - so you can focus on growing, not chasing payments.
+                        We automate M-Pesa and bank payments reconciliation, subscription tracking, defaulter management, and reminders 
+                        for recurring-collection groups in Kenya — so you get clarity without chasing payments.
                     </p>                
                 </div>
 
                 <div className="space-y-4 mt-8">
-                    <div className="flex items-center gap-4 bg-white hover:bg-blue-50 rounded-full p-4 pr-8 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group border border-gray-100">
-                        <div className="bg-blue-700 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:scale-110 transition-transform">
+                    <div className="flex items-center gap-4 bg-white hover:bg-amber-50 rounded-full p-4 pr-8 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group border border-gray-100">
+                        <div className="bg-linear-to-tr from-yellow-500 to-amber-500 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:scale-110 transition-transform">
                             1
                         </div>
                         <div className="flex-1">
                             <div className="flex items-center gap-2">
-                                <h4 className="font-bold text-gray-900 text-lg">80% Time Saved</h4>
+                                <h4 className="font-bold text-gray-900 text-lg">Time Saved</h4>
                             </div>
-                            <p className="text-gray-600 text-sm">Automated reconciliation eliminates manual work</p>
+                            <p className="text-gray-600 text-sm">Automated M-Pesa & bank reconciliation — no manual statement matching</p>
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-4 bg-white hover:bg-blue-50 rounded-full p-4 pr-8 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group border border-gray-100">
-                        <div className="bg-blue-700 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:scale-110 transition-transform">
+                    <div className="flex items-center gap-4 bg-white hover:bg-amber-50 rounded-full p-4 pr-8 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group border border-gray-100">
+                        <div className="bg-linear-to-tr from-yellow-500 to-amber-500 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:scale-110 transition-transform">
                             2
                         </div>
                         <div className="flex-1">
                             <div className="flex items-center gap-2">
-                                <h4 className="font-bold text-gray-900 text-lg">Auto-Reminders</h4>
+                                <h4 className="font-bold text-gray-900 text-lg">Automated Reminders</h4>
                             </div>
-                            <p className="text-gray-600 text-sm">WhatsApp, SMS & email notifications</p>
+                            <p className="text-gray-600 text-sm">WhatsApp, SMS and email for upcoming or missed payments</p>
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-4 bg-white hover:bg-blue-50 rounded-full p-4 pr-8 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group border border-gray-100">
-                        <div className="bg-blue-700 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:scale-110 transition-transform">
+                    <div className="flex items-center gap-4 bg-white hover:bg-amber-50 rounded-full p-4 pr-8 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group border border-gray-100">
+                        <div className="bg-linear-to-tr from-yellow-500 to-amber-500 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:scale-110 transition-transform">
                             3
                         </div>
                         <div className="flex-1">
                             <div className="flex items-center gap-2">
                                 <h4 className="font-bold text-gray-900 text-lg">Clear Reporting</h4>
                             </div>
-                            <p className="text-gray-600 text-sm">Audit-ready financial summaries</p>
+                            <p className="text-gray-600 text-sm">Weekly and monthly contribution summaries, audit-ready</p>
                         </div>
                     </div>
                 </div>
@@ -69,7 +86,7 @@ const WhyUsComponent = () => {
                 <div className="mt-10">
                     <a 
                         href="#" 
-                        className="inline-flex items-center gap-2 px-8 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg group"
+                        className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-tr from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg group"
                     >
                         Get Started Today 
                         <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -87,12 +104,12 @@ const WhyUsComponent = () => {
                     <div className="relative w-full h-full transform scale-120 origin-center">
                         <img 
                             src={why_us_image} 
-                            alt="Why choose Versopaid" 
+                            alt="Why choose VersoPaid" 
                             className="w-full h-auto object-cover"
                         />
                     </div>
                     
-                    <div className="absolute inset-0 bg-linear-to-tr from-blue-900/20 to-transparent"></div>
+                    <div className="absolute inset-0 bg-linear-to-tr from-purple-500/20 to-teal-500/20"></div>
                 </div>
 
                 <div className="absolute -bottom-6 right-4 bg-white rounded-2xl shadow-2xl p-4 flex items-center gap-3 z-10">
@@ -111,28 +128,33 @@ const WhyUsComponent = () => {
                         ))}
                     </div>
                     <div className="flex flex-col">
-                        <span className="text-sm font-bold text-gray-900">500+</span>
-                        <span className="text-xs text-gray-600">Happy Groups</span>
+                        <span className="text-sm font-bold text-gray-900">Pilot</span>
+                        <span className="text-xs text-gray-600">Chamas & groups</span>
                     </div>
                 </div>
 
                 <div className="absolute top-6 -left-6 bg-white rounded-xl shadow-xl p-3 animate-float z-10">
                     <div className="flex items-center gap-2">
-                        <div className="bg-green-100 p-2 rounded-lg">
-                            <FaCheckCircle className="text-green-600 text-sm" />
+                        <div className="bg-yellow-100 p-2 rounded-lg">
+                            <FaCheckCircle className="text-yellow-600 text-sm" />
                         </div>
                         <div>
-                            <p className="text-xs font-bold text-gray-900">98%</p>
-                            <p className="text-[10px] text-gray-600">Payment Accuracy</p>
+                        <p className="text-xs font-bold text-gray-900">Accurate</p>
+                            <p className="text-[10px] text-gray-600">M-Pesa & bank matching</p>
                         </div>
                     </div>
                 </div>
 
-                <div className="absolute -z-10 w-full h-full bg-blue-100 rounded-full blur-3xl opacity-30"
+                <div className="absolute -z-10 w-full h-full bg-linear-to-tr from-yellow-100 to-amber-100 rounded-full blur-3xl opacity-30"
                      style={{
                         borderRadius: '40% 60% 30% 70% / 60% 30% 70% 40%',
                         transform: 'scale(1.1)'
                      }}>
+                </div>
+
+                {/* Yellow accent badge */}
+                <div className="absolute top-1/2 -right-8 bg-linear-to-tr from-yellow-500 to-amber-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg transform rotate-12">
+                    Trusted
                 </div>
             </div>
             
