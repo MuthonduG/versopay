@@ -2,8 +2,8 @@
 import type { ApiResponse, ApiError } from '../types';
 // Import helpers to map HTTP status codes to messages and normalize errors
 import { mapStatusToMessage, normalizeError } from '../errors/errorHandler';
-// Import token storage helper to persist JWT on successful 
-import { setToken } from './tokenStorage';
+// Import token storage helper to persist JWT on successful auth responses
+import { setToken, setRefreshToken, getToken } from './tokenStorage';
 
 // Base path for proxy requests; falls back to /api if env var is missing
 const PROXY_BASE = import.meta.env.VITE_API_GATEWAY ?? '/api';
@@ -19,68 +19,81 @@ export interface ProxyClientOptions {
   method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
   body?: unknown;
   headers?: Record<string, string>;
+  /** When true, sends Authorization: Bearer <access token> (for logout, etc.) */
+  auth?: boolean;
 }
 
+type BackendEnvelope<T> = {
+  success?: boolean;
+  message?: string;
+  data?: T;
+  errorCode?: string;
+};
+
 /**
- * Fetch-based client for unauthenticated flows (login, signup, onboarding).
- * Calls /api (proxied by Vite to backend).
- * Uses credentials: "include" for cookie support.
- * Returns { success, data?, error? } instead of throwing.
+ * Unwraps VersoPaid auth API responses (ApiResponseDTO: success, message, data).
+ * Persists access + refresh tokens when present on the inner payload.
  */
 export async function proxyFetch<T = unknown>(
   path: string,
   options: ProxyClientOptions = {}
 ): Promise<ApiResponse<T>> {
-  // Destructure options with defaults: GET method, no body, empty headers
-  const { method = 'GET', body, headers = {} } = options;
+  const { method = 'GET', body, headers = {}, auth = false } = options;
 
-  // Build full URL: ensure path has leading slash if missing
   const url = joinUrl(PROXY_BASE, path);
 
-  // Build fetch config: method, credentials for cookies, JSON content-type
+  const requestHeaders: Record<string, string> = {
+    'Content-Type': 'application/json',
+    ...headers,
+  };
+  if (auth) {
+    const token = getToken();
+    if (token) {
+      requestHeaders.Authorization = `Bearer ${token}`;
+    }
+  }
+
   const config: RequestInit = {
     method,
     credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-      ...headers,
-    },
+    headers: requestHeaders,
   };
 
-  // Add body only for non-GET requests
   if (body && method !== 'GET') {
     config.body = JSON.stringify(body);
   }
 
   try {
-    // Send the request to the proxy (Vite forwards /api to backend)
     const response = await fetch(url, config);
-    // Parse JSON; return empty object if response body is invalid JSON
-    const json = await response.json().catch(() => ({}));
+    const json = (await response.json().catch(() => ({}))) as BackendEnvelope<T> & Record<string, unknown>;
 
-    // If response status is not 2xx, build error and return
     if (!response.ok) {
       const error: ApiError = {
-        message: json?.message ?? mapStatusToMessage(response.status),
+        message: (typeof json?.message === 'string' && json.message) || mapStatusToMessage(response.status),
         status: response.status,
         data: json,
       };
       return { success: false, error };
     }
 
-    // Store token if present (login, register, verify, reset)
-    const token = json?.token;
-    if (token && typeof token === 'string') {
+    const inner = json?.data !== undefined ? json.data : json;
+    const payload = inner as Record<string, unknown>;
+
+    const token = typeof payload?.token === 'string' ? payload.token : undefined;
+    if (token) {
       setToken(token);
     }
+    const refreshToken = typeof payload?.refreshToken === 'string' ? payload.refreshToken : undefined;
+    if (refreshToken) {
+      setRefreshToken(refreshToken);
+    }
 
-    // Return success with parsed data; default success to true if omitted
+    const success = json?.success !== false;
     return {
-      success: json?.success ?? true,
-      data: json as T,
+      success,
+      data: inner as T,
     };
   } catch (err) {
-    // Network or parse error: normalize into ApiError and return
     const error = normalizeError(
       err instanceof Error ? err.message : 'Network request failed'
     );

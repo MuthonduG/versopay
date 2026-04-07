@@ -1,6 +1,6 @@
-// Proxy client for unauthenticated flows; no token required
+// Proxy client for auth flows against versopaid_backend auth service
 import { proxyFetch } from '../clients/proxyClient';
-// Request/response types for auth endpoints
+import { getRefreshToken } from '../clients/tokenStorage';
 import type {
   AuthTokens,
   LoginRequest,
@@ -8,61 +8,71 @@ import type {
   EmailVerificationRequest,
   PasswordResetRequest,
   PasswordResetVerifyRequest,
+  LoginResponsePayload,
+  UserResponsePayload,
 } from '../types';
 
-// Base path for auth endpoints; full URL is /api/auth (proxy base + this)
-const AUTH_BASE = '/auth';
+const USERS_BASE = '/v1/users';
 
-// Authenticate with email/phone and password; returns token on success
 export async function login(payload: LoginRequest) {
-  const result = await proxyFetch<AuthTokens>(`${AUTH_BASE}/login`, {
+  const result = await proxyFetch<LoginResponsePayload>(`${USERS_BASE}/login`, {
     method: 'POST',
-    body: payload,
+    body: { ...payload, rememberMe: payload.rememberMe ?? false },
   });
   return result;
 }
 
-// Create new user account; requires email verification before activation
 export async function register(payload: RegisterRequest) {
-  const result = await proxyFetch<AuthTokens>(`${AUTH_BASE}/register`, {
+  const result = await proxyFetch<UserResponsePayload>(`${USERS_BASE}/register`, {
     method: 'POST',
     body: payload,
   });
   return result;
 }
 
-// Verify email with OTP sent after registration; activates account
 export async function verifyEmail(payload: EmailVerificationRequest) {
-  const result = await proxyFetch<AuthTokens>(`${AUTH_BASE}/verify-email`, {
+  const result = await proxyFetch<LoginResponsePayload>(`${USERS_BASE}/verify-email`, {
     method: 'POST',
     body: payload,
   });
   return result;
 }
 
-// Resend OTP for email verification or password reset; purpose identifies which flow
 export async function resendOtp(email: string, purpose: string) {
   const result = await proxyFetch<{ message?: string }>(
-    `${AUTH_BASE}/resend-otp?email=${encodeURIComponent(email)}&purpose=${encodeURIComponent(purpose)}`,
+    `${USERS_BASE}/resend-otp?email=${encodeURIComponent(email)}&purpose=${encodeURIComponent(purpose)}`,
     { method: 'POST' }
   );
   return result;
 }
 
-// Request password reset; sends OTP to email
 export async function forgotPassword(payload: PasswordResetRequest) {
   const result = await proxyFetch<{ message?: string }>(
-    `${AUTH_BASE}/forgot-password`,
+    `${USERS_BASE}/password-reset-request`,
     { method: 'POST', body: payload }
   );
   return result;
 }
 
-// Complete password reset with OTP and new password; returns token on success
 export async function resetPassword(payload: PasswordResetVerifyRequest) {
-  const result = await proxyFetch<AuthTokens>(
-    `${AUTH_BASE}/reset-password`,
+  const result = await proxyFetch<{ email?: string }>(
+    `${USERS_BASE}/password-reset-verify`,
     { method: 'POST', body: payload }
   );
   return result;
 }
+
+/** Revokes refresh token; requires Bearer access token per backend security config */
+export async function logoutApi() {
+  const refreshToken = getRefreshToken();
+  if (!refreshToken) {
+    return { success: true as const, data: undefined };
+  }
+  const result = await proxyFetch<unknown>(
+    `${USERS_BASE}/logout?refreshToken=${encodeURIComponent(refreshToken)}`,
+    { method: 'POST', auth: true }
+  );
+  return result;
+}
+
+export type { AuthTokens, LoginResponsePayload, UserResponsePayload };

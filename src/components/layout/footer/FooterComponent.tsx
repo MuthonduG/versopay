@@ -70,8 +70,7 @@ const FooterComponent = () => {
             </div>
             
             <p className="text-sm leading-relaxed text-gray-600">
-              Automated M-Pesa reconciliation, subscription tracking, defaulter management, 
-              reminders, and reporting for recurring-collection groups in Kenya.
+              Personal finance for Kenya: subscription visibility, categorized spending, budgets and goals, plus M-Pesa and bank reconciliation—without holding your funds.
             </p>
             
             <div className="flex items-center gap-4 pt-4">

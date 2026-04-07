@@ -1,5 +1,5 @@
-import { FaRecycle } from "react-icons/fa6";
-import { IoPeopleSharp } from "react-icons/io5";
+import { FaRecycle, FaWallet, FaBullseye, FaPiggyBank } from "react-icons/fa6";
+import { MdSubscriptions } from "react-icons/md";
 import { VscGraph } from "react-icons/vsc";
 import { BsStars } from "react-icons/bs";
 import { HiOutlineSparkles } from "react-icons/hi";
@@ -7,20 +7,41 @@ import { HiOutlineSparkles } from "react-icons/hi";
 const FeaturesPage = () => {
   const features = [
     {
-      icon: <FaRecycle className="text-2xl text-yellow-600" />,
-      title: "Automated M-Pesa & Bank Reconciliation",
-      description: "Payments from M-Pesa and bank transfers are matched to members automatically. No more manual statement reviews or spreadsheet errors.",
+      icon: <MdSubscriptions className="text-2xl text-yellow-600" />,
+      title: "Subscriptions & recurring charges",
+      description:
+        "See what you pay every month—streaming, airtime bundles, apps, and other renewals—in one view. Spot forgotten renewals and stay ahead of due dates.",
     },
     {
-      icon: <IoPeopleSharp className="text-2xl text-yellow-600" />,
-      title: "Subscription & Defaulter Tracking",
-      description: "See who has paid and who hasn’t at a glance. Flag missed payments in real time and manage defaulters from one dashboard.",
+      icon: <FaWallet className="text-2xl text-yellow-600" />,
+      title: "Expense tracking",
+      description:
+        "Log and categorize spending so you always know where money went. One clean flow for day-to-day purchases, transfers, and fees—without spreadsheet fatigue.",
+    },
+    {
+      icon: <FaBullseye className="text-2xl text-yellow-600" />,
+      title: "Budgets & spending goals",
+      description:
+        "Set limits by category or time period and track progress as you spend. Stay intentional when you’re close to a cap, the same way you’d expect from a modern money app.",
+    },
+    {
+      icon: <FaPiggyBank className="text-2xl text-yellow-600" />,
+      title: "Saving goals",
+      description:
+        "Name a target—rainy day fund, school fees, travel—and watch progress over time. Simple milestones that keep motivation high as balances grow.",
+    },
+    {
+      icon: <FaRecycle className="text-2xl text-yellow-600" />,
+      title: "M-Pesa & bank reconciliation",
+      description:
+        "Match M-Pesa and bank lines to your own spending and savings picture automatically. Fewer manual statement reviews and fewer “where did this go?” moments.",
     },
     {
       icon: <VscGraph className="text-2xl text-yellow-600" />,
-      title: "Reminders & Reporting",
-      description: "SMS, WhatsApp, and email reminders for upcoming or missed payments. Weekly and monthly contribution summaries, exportable and audit-ready.",
-    }
+      title: "Reminders & reporting",
+      description:
+        "SMS, WhatsApp, and email nudges for bills and renewals. Summaries and exports when you want a snapshot of the month—without digging through screenshots.",
+    },
   ];
 
   return (
@@ -44,15 +65,15 @@ const FeaturesPage = () => {
         <div className="text-center mb-16">
           
           <h2 className="text-[#0f1724] text-4xl md:text-5xl font-bold mb-4 leading-tight">
-            M-Pesa & Bank Reconciliation,{' '}
+            Track, budget, and plan—{' '}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-amber-500">
-              Subscriptions & Reporting
+              with Kenya in mind
             </span>
           </h2>
           
           <p className="text-[#606874] text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            Stop manual statement matching. VersoPaid automates reconciliation for M-Pesa and bank payments, tracks recurring contributions, 
-            flags defaulters, sends reminders, and delivers audit-ready reports.
+            VersoPaid brings the clarity people expect from leading subscription and budgeting apps—recurring visibility, categorized spending, and goals—then adds
+            M-Pesa and bank reconciliation so Kenyan mobile money fits naturally into your personal dashboard.
           </p>
         </div>
 
@@ -84,7 +105,7 @@ const FeaturesPage = () => {
 
         <div className="text-center mt-16">
           <p className="text-[#606874] mb-6">
-            Ready to stop reconciling by hand and chasing payments?
+            Ready to tame subscriptions, understand spending, and feel on top of every shilling?
           </p>
           <a 
             href="#" 

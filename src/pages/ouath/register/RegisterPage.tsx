@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
+import { useRegister } from '../../../hooks/useAuth';
 import { 
   FaEnvelope, 
   FaLock, 
@@ -20,13 +22,22 @@ import register_image from "../../../assets/register.png";
 type AccountType = 'personal' | 'organisation';
 type PaymentMethod = 'mpesa' | 'airtel' | 'momo' | 'bank';
 
+function normalizePhone(raw: string): string {
+  const s = raw.replace(/\s/g, '');
+  if (s.startsWith('+')) return s;
+  if (s.startsWith('0')) return `+254${s.slice(1)}`;
+  if (s.startsWith('254')) return `+${s}`;
+  return s;
+}
+
 const RegisterPage = () => {
   const navigate = useNavigate();
+  const registerMutation = useRegister();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   
-  // Account type
-  const [accountType, setAccountType] = useState<AccountType>('personal');
+  // Account type (organisation path disabled; keep state for commented UI)
+  const [accountType] = useState<AccountType>('personal');
   
   // Common fields
   const [email, setEmail] = useState('');
@@ -75,40 +86,37 @@ const RegisterPage = () => {
     { value: '1000+', label: '1000+ members' }
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (password !== confirmPassword) {
       alert('Passwords do not match');
       return;
     }
-    
+
     if (!agreeToTerms) {
       alert('Please agree to the terms and policies');
       return;
     }
-    
-    const formData = {
-      accountType,
+
+    const result = await registerMutation.mutateAsync({
+      firstName,
+      lastName,
       email,
+      phoneNumber: normalizePhone(phoneNumber),
       password,
-      phoneNumber,
-      address,
-      ...(accountType === 'personal' ? { firstName, lastName } : { 
-        organisationName, 
-        businessRegistration, 
-        memberCount 
-      }),
-      paymentMethod,
-      ...(paymentMethod === 'mpesa' && { mpesaNumber }),
-      ...(paymentMethod === 'airtel' && { airtelNumber }),
-      ...(paymentMethod === 'momo' && { momoNumber }),
-      ...(paymentMethod === 'bank' && { cardNumber, cardHolderName, cardExpiry, cardCvv })
-    };
-    
-    console.log('Registration data:', formData);
-    // After signup, go to onboarding (Step 2: Roles & Privileges)
-    navigate('/oauth/onboarding');
+      confirmPassword,
+      termsAccepted: true,
+      accountType: 'PERSONAL',
+    });
+
+    if (result.success) {
+      toast.success('Account created. We sent a verification code to your email.');
+      navigate('/oauth/verify-email', { state: { email } });
+      return;
+    }
+
+    toast.error(result.error?.message ?? 'Registration failed. Please try again.');
   };
 
   return (
@@ -219,42 +227,14 @@ const RegisterPage = () => {
 
             <form onSubmit={handleSubmit} className="space-y-6">
               
-              {/* Account Type Selection */}
+              {/* Organisation account type toggle — re-enable when org onboarding returns
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Account Type
-                </label>
-                <div className="grid grid-cols-2 gap-4">
-                  <button
-                    type="button"
-                    onClick={() => setAccountType('personal')}
-                    className={`flex items-center justify-center gap-2 p-4 rounded-xl border-2 transition-all ${
-                      accountType === 'personal'
-                        ? 'border-yellow-500 bg-yellow-50 text-yellow-700'
-                        : 'border-gray-200 hover:border-yellow-200 text-gray-600'
-                    }`}
-                  >
-                    <FaUser />
-                    <span className="font-medium">Personal</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setAccountType('organisation')}
-                    className={`flex items-center justify-center gap-2 p-4 rounded-xl border-2 transition-all ${
-                      accountType === 'organisation'
-                        ? 'border-yellow-500 bg-yellow-50 text-yellow-700'
-                        : 'border-gray-200 hover:border-yellow-200 text-gray-600'
-                    }`}
-                  >
-                    <FaBuilding />
-                    <span className="font-medium">Organisation</span>
-                  </button>
-                </div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Account Type</label>
+                <div className="grid grid-cols-2 gap-4">...</div>
               </div>
+              */}
 
-              {/* Conditional fields based on account type */}
-              {accountType === 'personal' ? (
-                <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
                       First Name
@@ -289,7 +269,8 @@ const RegisterPage = () => {
                     />
                   </div>
                 </div>
-              ) : (
+
+              {false && (
                 <div className="space-y-4">
                   <div>
                     <label htmlFor="organisationName" className="block text-sm font-medium text-gray-700 mb-1">
@@ -310,7 +291,7 @@ const RegisterPage = () => {
                       />
                     </div>
                   </div>
-                  
+
                   <div>
                     <label htmlFor="businessRegistration" className="block text-sm font-medium text-gray-700 mb-1">
                       Business Registration <span className="text-gray-400 text-xs">(Optional)</span>
@@ -342,7 +323,7 @@ const RegisterPage = () => {
                       className="block w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all bg-white/80"
                     >
                       <option value="">Select member count</option>
-                      {memberCountOptions.map(option => (
+                      {memberCountOptions.map((option) => (
                         <option key={option.value} value={option.value}>
                           {option.label}
                         </option>
@@ -459,6 +440,8 @@ const RegisterPage = () => {
                 </div>
               </div>
 
+              {false && (
+              <>
               {/* Payment Method */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -624,6 +607,8 @@ const RegisterPage = () => {
                   />
                 </div>
               </div>
+              </>
+              )}
 
               {/* Terms and policies checkbox */}
               <div className="flex items-start">
@@ -649,9 +634,10 @@ const RegisterPage = () => {
               {/* Submit button */}
               <button
                 type="submit"
-                className="group w-full flex justify-center items-center gap-2 bg-linear-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-white font-semibold py-4 px-4 rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-lg mt-8"
+                disabled={registerMutation.isPending}
+                className="group w-full flex justify-center items-center gap-2 bg-linear-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 disabled:opacity-60 text-white font-semibold py-4 px-4 rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-lg mt-8"
               >
-                Create Account
+                {registerMutation.isPending ? 'Creating…' : 'Create Account'}
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
               </button>
             </form>

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { FaTimes, FaArrowRight, FaPaperPlane } from 'react-icons/fa';
 import { BsShieldCheck, BsStars } from 'react-icons/bs';
@@ -7,12 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import * as waitlistApi from '../../../api/modules/waitlist';
-import type {
-  BusinessType,
-  CheckWaitlistStatusResponse,
-  WaitlistFieldErrors,
-  WaitlistJoinRequest,
-} from '../../../api/types';
+import type { CheckWaitlistStatusResponse, WaitlistFieldErrors, WaitlistJoinRequest } from '../../../api/types';
 
 interface JoinWaitlistModalProps {
   isOpen?: boolean;
@@ -29,23 +24,13 @@ const getFirstFieldError = (value: unknown): string | undefined => {
   return undefined;
 };
 
-const JoinWaitlistModal = ({ isOpen = true, onClose }: JoinWaitlistModalProps) => {
-  const businessTypes: Array<{ value: BusinessType; label: string }> = useMemo(
-    () => [
-      { value: 'ISP', label: 'ISP' },
-      { value: 'GYM', label: 'Gym' },
-      { value: 'SACCO', label: 'Sacco' },
-      { value: 'CHAMA', label: 'Chama' },
-      { value: 'OTHER', label: 'Other' },
-    ],
-    []
-  );
+const PERSONAL_WAITLIST_TYPE = 'OTHER' as const;
+const PERSONAL_WAITLIST_NOTE = 'Personal account';
 
+const JoinWaitlistModal = ({ isOpen = true, onClose }: JoinWaitlistModalProps) => {
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [businessName, setBusinessName] = useState('');
-  const [businessType, setBusinessType] = useState<BusinessType>('ISP');
-  const [otherBusinessDescription, setOtherBusinessDescription] = useState('');
+  const [fullName, setFullName] = useState('');
 
   const [fieldErrors, setFieldErrors] = useState<WaitlistFieldErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -56,9 +41,7 @@ const JoinWaitlistModal = ({ isOpen = true, onClose }: JoinWaitlistModalProps) =
   const reset = () => {
     setEmail('');
     setPhoneNumber('');
-    setBusinessName('');
-    setBusinessType('ISP');
-    setOtherBusinessDescription('');
+    setFullName('');
     setFieldErrors({});
     setIsSubmitting(false);
     setIsChecking(false);
@@ -110,17 +93,8 @@ const JoinWaitlistModal = ({ isOpen = true, onClose }: JoinWaitlistModalProps) =
       nextErrors.phone_number = 'Please enter a valid phone number with country code (e.g., +254...).';
     }
 
-    if (!businessName.trim()) {
-      nextErrors.business_name = 'Please enter your business name.';
-    }
-
-    if (!businessType) {
-      nextErrors.business_type = 'Please select your business type.';
-    }
-
-    if (businessType === 'OTHER' && !otherBusinessDescription.trim()) {
-      nextErrors.other_business_description =
-        'Please specify your business industry when selecting "Other".';
+    if (!fullName.trim()) {
+      nextErrors.business_name = 'Please enter your full name.';
     }
 
     setFieldErrors(nextErrors);
@@ -133,21 +107,16 @@ const JoinWaitlistModal = ({ isOpen = true, onClose }: JoinWaitlistModalProps) =
 
   const handleClose = () => onClose?.();
 
-  const submitPayload: WaitlistJoinRequest = useMemo(() => {
+  const buildPayload = (): WaitlistJoinRequest => {
     const phoneClean = phoneNumber.replace(/\s+/g, '').trim();
-    const payload: WaitlistJoinRequest = {
+    return {
       email: email.trim(),
       phone_number: phoneClean,
-      business_name: businessName.trim(),
-      business_type: businessType,
+      business_name: fullName.trim(),
+      business_type: PERSONAL_WAITLIST_TYPE,
+      other_business_description: PERSONAL_WAITLIST_NOTE,
     };
-
-    if (businessType === 'OTHER') {
-      payload.other_business_description = otherBusinessDescription.trim();
-    }
-
-    return payload;
-  }, [businessName, businessType, email, otherBusinessDescription, phoneNumber]);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -161,7 +130,7 @@ const JoinWaitlistModal = ({ isOpen = true, onClose }: JoinWaitlistModalProps) =
 
     try {
       setIsSubmitting(true);
-      const result = await waitlistApi.joinWaitlist(submitPayload);
+      const result = await waitlistApi.joinWaitlist(buildPayload());
 
       if (result.success) {
         setIsJoined(true);
@@ -234,7 +203,7 @@ const JoinWaitlistModal = ({ isOpen = true, onClose }: JoinWaitlistModalProps) =
               <div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">Join the Waitlist</h2>
                 <p className="text-gray-600">
-                  Get early access and updates. No spam, just product news.
+                  Get early access for personal accounts. No spam—just product news.
                 </p>
               </div>
 
@@ -282,7 +251,7 @@ const JoinWaitlistModal = ({ isOpen = true, onClose }: JoinWaitlistModalProps) =
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    placeholder="info@company.co.ke"
+                    placeholder="you@email.com"
                     className="block w-full py-3 px-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all bg-white/80"
                     aria-invalid={Boolean(fieldErrors.email)}
                   />
@@ -315,16 +284,16 @@ const JoinWaitlistModal = ({ isOpen = true, onClose }: JoinWaitlistModalProps) =
                 </div>
 
                 <div>
-                  <label htmlFor="waitlist-business" className="block text-sm font-medium text-gray-700 mb-1">
-                    Business Name
+                  <label htmlFor="waitlist-full-name" className="block text-sm font-medium text-gray-700 mb-1">
+                    Full name
                   </label>
                   <input
-                    id="waitlist-business"
+                    id="waitlist-full-name"
                     type="text"
-                    value={businessName}
-                    onChange={(e) => setBusinessName(e.target.value)}
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
                     required
-                    placeholder="Kenya ISP Solutions"
+                    placeholder="Jane Njeri"
                     className="block w-full py-3 px-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all bg-white/80"
                     aria-invalid={Boolean(fieldErrors.business_name)}
                   />
@@ -332,60 +301,6 @@ const JoinWaitlistModal = ({ isOpen = true, onClose }: JoinWaitlistModalProps) =
                     <p className="mt-1 text-sm text-red-600">{fieldErrors.business_name}</p>
                   ) : null}
                 </div>
-
-                <div>
-                  <label htmlFor="waitlist-business-type" className="block text-sm font-medium text-gray-700 mb-1">
-                    Business Type
-                  </label>
-                  <select
-                    id="waitlist-business-type"
-                    value={businessType}
-                    onChange={(e) => {
-                      const next = e.target.value as BusinessType;
-                      setBusinessType(next);
-                      if (next !== 'OTHER') setOtherBusinessDescription('');
-                      setFieldErrors((prev) => ({ ...prev, business_type: undefined, other_business_description: undefined }));
-                    }}
-                    required
-                    className="block w-full py-3 px-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all bg-white/80"
-                    aria-invalid={Boolean(fieldErrors.business_type)}
-                  >
-                    {businessTypes.map((t) => (
-                      <option key={t.value} value={t.value}>
-                        {t.label}
-                      </option>
-                    ))}
-                  </select>
-                  {fieldErrors.business_type ? (
-                    <p className="mt-1 text-sm text-red-600">{fieldErrors.business_type}</p>
-                  ) : null}
-                </div>
-
-                {businessType === 'OTHER' ? (
-                  <div>
-                    <label
-                      htmlFor="waitlist-other-business"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      Other Business Industry
-                    </label>
-                    <input
-                      id="waitlist-other-business"
-                      type="text"
-                      value={otherBusinessDescription}
-                      onChange={(e) => setOtherBusinessDescription(e.target.value)}
-                      required
-                      placeholder="e.g., Manufacturing, Retail, Logistics..."
-                      className="block w-full py-3 px-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all bg-white/80"
-                      aria-invalid={Boolean(fieldErrors.other_business_description)}
-                    />
-                    {fieldErrors.other_business_description ? (
-                      <p className="mt-1 text-sm text-red-600">
-                        {fieldErrors.other_business_description}
-                      </p>
-                    ) : null}
-                  </div>
-                ) : null}
 
                 <button
                   type="submit"

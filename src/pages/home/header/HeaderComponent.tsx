@@ -83,14 +83,15 @@ const HeaderComponent = ({ onJoinWaitlist }: HeaderComponentProps) => {
         {/* Left side - Content */}
         <div className="flex-1 flex-col justify-center items-center md:justify-start md:items-start p-4 gap-4">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-            Your Payments. Your Clarity.{' '}
+            Your home base for{' '}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-amber-500">
-              Your Control.
+              money clarity.
             </span>
           </h1>
           
           <p className="text-gray-600 leading-relaxed text-lg mt-8">
-            VersoPaid automates M‑Pesa and bank payments reconciliation, tracks subscriptions, flags defaulters, and sends reminders — so you never chase payments again.
+            The modern way to manage your money: see subscriptions and recurring charges, categorize spending, set budgets, and plan savings—then line up M‑Pesa
+            and bank activity so your picture stays accurate. VersoPaid is personal finance built for Kenya, with mobile money in the loop from day one.
           </p>
           
           {/* Updated CTA buttons to match Navbar yellow theme */}
@@ -169,7 +170,7 @@ const HeaderComponent = ({ onJoinWaitlist }: HeaderComponentProps) => {
               <div className="min-w-0">
                 <p className="text-xs font-medium text-gray-500 truncate">Monthly Report</p>
                 <p className="text-sm font-bold text-gray-800 truncate">KES 45,500</p>
-                <p className="text-[10px] text-yellow-600 truncate">On track • audit-ready</p>
+                <p className="text-[10px] text-yellow-600 truncate">On track this month</p>
               </div>
             </div>
             <div className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-white rotate-45 shadow-lg"></div>

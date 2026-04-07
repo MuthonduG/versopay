@@ -3,9 +3,8 @@ import { FaBars, FaTimes } from "react-icons/fa"
 import { Link, useNavigate } from 'react-router-dom'
 
 const navLinks = [
-  { title: "Reconciliation", href: "#solutions" },
-  { title: "Subscriptions", href: "#solutions" },
-  { title: "About", href: "#about" },
+  { title: 'Features', href: '#solutions' },
+  { title: 'About', href: '#about' },
 ]
 
 const NavbarComponent = () => {

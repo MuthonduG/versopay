@@ -13,23 +13,25 @@ const AboutComponent = () => {
     {
       icon: <BsCheckCircleFill className="text-2xl" />,
       title: "Simplicity First",
-      description: "We believe financial tools should be straightforward. No complex setups — just clear reconciliation and reporting."
+      description:
+        "Financial tools should be straightforward—whether you are tracking subscriptions, categorizing spend, or lining up M-Pesa with the rest of your money.",
     },
     {
       icon: <FaHandsHelping className="text-2xl" />,
-      title: "Built for SMEs",
-      description: "Designed specifically for Kenyan small businesses and collection groups. We understand your workflow."
+      title: "Kenya-first",
+      description:
+        "Built for how people in Kenya actually move money—M-Pesa, other mobile wallets, and local banks—without forcing a foreign playbook.",
     },
     {
       icon: <BsShieldCheck className="text-2xl" />,
       title: "Trust & Security",
-      description: "Your data is protected. We never hold funds — we provide visibility and reconciliation only."
+      description: "Your data is protected. We never hold funds — we provide visibility and reconciliation only.",
     },
     {
       icon: <FaChartLine className="text-2xl" />,
       title: "Transparency",
-      description: "Clear reporting, no hidden fees. Know exactly who paid, who didn't, and when."
-    }
+      description: "Clear reporting and no hidden fees—see cash flow, goals, and recurring charges with the same honest lens.",
+    },
   ];
 
   const stats = [
@@ -82,9 +84,8 @@ const AboutComponent = () => {
           </h2>
           
           <p className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            Versopaid is a lightweight reconciliation and subscription management platform built specifically 
-            for small recurring-collection groups in Kenya. We help organizations track who has paid and who 
-            hasn't — automatically — so you don't have to manually reconcile M-Pesa and bank statements.
+            VersoPaid is a lightweight personal finance workspace for Kenya: subscriptions, spending, budgets, and goals—with M-Pesa and bank reconciliation so your
+            dashboard reflects real life, not a pile of PDFs and screenshots.
           </p>
         </div>
 
@@ -99,15 +100,15 @@ const AboutComponent = () => {
               <h3 className="text-2xl font-bold text-gray-900">The Challenge</h3>
             </div>
             <p className="text-gray-600 leading-relaxed mb-6">
-              Small and medium-sized recurring-collection groups in Kenya face major operational challenges:
+              Managing personal money across M-Pesa and banks still breaks down for too many people:
             </p>
             <ul className="space-y-3">
               {[
-                "Manual reconciliation of M-Pesa and bank statements",
-                "Time-consuming follow-ups with defaulters",
-                "Errors in payment tracking",
-                "Lack of structured reporting",
-                "Overreliance on Excel and WhatsApp screenshots"
+                "Manual matching of M-Pesa texts and bank statements",
+                "Subscriptions and renewals scattered across apps",
+                "No single view of spending, budgets, and goals",
+                "Hard to tell “safe to spend” after bills and savings",
+                "Overreliance on spreadsheets and chat screenshots",
               ].map((item, idx) => (
                 <li key={idx} className="flex items-start gap-2 text-gray-600">
                   <span className="text-red-400 mt-1">•</span>
@@ -126,15 +127,15 @@ const AboutComponent = () => {
               <h3 className="text-2xl font-bold text-gray-900">Our Solution</h3>
             </div>
             <p className="text-gray-700 leading-relaxed mb-6 font-medium">
-              Versopaid provides automated reconciliation and tracking:
+              VersoPaid brings it together in one calm flow:
             </p>
             <ul className="space-y-3">
               {[
-                "Automated reconciliation of mobile and bank payments",
-                "Subscription and recurring contribution tracking",
-                "Defaulter identification and tracking",
-                "Automated reminders and notifications",
-                "Structured financial reporting"
+                "Automated reconciliation of mobile money and bank activity",
+                "Subscription and recurring charge tracking",
+                "Categorized spending, budgets, and saving goals",
+                "Reminders across SMS, WhatsApp, and email",
+                "Clear monthly summaries you can actually use",
               ].map((item, idx) => (
                 <li key={idx} className="flex items-start gap-2 text-gray-700">
                   <BsCheckCircleFill className="text-yellow-500 text-sm mt-0.5 shrink-0" />
@@ -224,8 +225,7 @@ const AboutComponent = () => {
               Built for Kenya's Mobile Money Ecosystem
             </h3>
             <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-              Seamlessly integrates with M-Pesa, Airtel Money, and major Kenyan banks. 
-              No complex setup — just connect and start reconciling.
+              Connect M-Pesa, Airtel Money, and major Kenyan banks when you are ready—so your personal view stays in sync without constant manual entry.
             </p>
             
             <div className="flex flex-wrap justify-center gap-6 mt-8">
@@ -245,9 +245,9 @@ const AboutComponent = () => {
             <span className="text-sm font-medium text-gray-500">Join Our Journey</span>
           </div>
           <p className="text-gray-600 mb-6">
-            We're on a mission to simplify financial operations for thousands of Kenyan groups.
+            We are on a mission to give thousands of people in Kenya a clearer relationship with their money.
             <br />
-            Be part of the first groups to experience automated reconciliation.
+            Be among the first to get early access when we open the doors.
           </p>
           <a 
             href="#" 

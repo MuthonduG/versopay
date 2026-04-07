@@ -1,22 +1,22 @@
 import { lazy, Suspense } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
+import { ProtectedRoute } from '../components/auth/ProtectedRoute';
 
-const HomePage        = lazy(() => import('../pages/home'));
-const AboutPage       = lazy(() => import('../pages/about/AboutPage'));
-const OauthPage       = lazy(() => import('../pages/ouath'));
-const RegisterPage    = lazy(() => import('../pages/ouath/register/RegisterPage'));
-const LoginPage       = lazy(() => import('../pages/ouath/login/LoginPage'));
-const OnboardingPage  = lazy(() => import('../pages/ouath/onboarding/OnboardingPage'));
+const HomePage = lazy(() => import('../pages/home'));
+const AboutPage = lazy(() => import('../pages/about/AboutPage'));
+const OauthPage = lazy(() => import('../pages/ouath'));
+const RegisterPage = lazy(() => import('../pages/ouath/register/RegisterPage'));
+const LoginPage = lazy(() => import('../pages/ouath/login/LoginPage'));
+const VerifyEmailPage = lazy(() => import('../pages/ouath/verify-email/VerifyEmailPage'));
 const DashboardLayout = lazy(() => import('../pages/dashboard/DashboardLayout'));
-const Dashboard       = lazy(() => import('../pages/dashboard/Dashboard'));
-const Analytics       = lazy(() => import('../pages/dashboard/Analytics'));
-const Plans           = lazy(() => import('../pages/dashboard/Plans'));
-const Collections     = lazy(() => import('../pages/dashboard/Collections'));
-const Disbursements   = lazy(() => import('../pages/dashboard/Disbursements'));
-const Members         = lazy(() => import('../pages/dashboard/Members'));
-const Roles           = lazy(() => import('../pages/dashboard/Roles'));
-const Settings        = lazy(() => import('../pages/dashboard/Settings'));
-const Users           = lazy(() => import('../pages/dashboard/Users'));
+const Dashboard = lazy(() => import('../pages/dashboard/Dashboard'));
+const Accounts = lazy(() => import('../pages/dashboard/Accounts'));
+const Transactions = lazy(() => import('../pages/dashboard/Transactions'));
+const CashFlowReports = lazy(() => import('../pages/dashboard/CashFlowReports'));
+const Budget = lazy(() => import('../pages/dashboard/Budget'));
+const Recurring = lazy(() => import('../pages/dashboard/Recurring'));
+const Goals = lazy(() => import('../pages/dashboard/Goals'));
+const Settings = lazy(() => import('../pages/dashboard/Settings'));
 
 const Loader = () => (
   <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -30,24 +30,31 @@ export const AppRoute = () => (
       <Route path="/" element={<HomePage />} />
       <Route path="/about" element={<AboutPage />} />
 
-      {/* oauth */}
       <Route path="/oauth" element={<OauthPage />}>
-        <Route path="register"   element={<RegisterPage />} />
-        <Route path="login"     element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="verify-email" element={<VerifyEmailPage />} />
+        {/* Roles & privileges onboarding — disabled for personal-account-first launch
         <Route path="onboarding" element={<OnboardingPage />} />
+        */}
       </Route>
 
-      {/* dashboard */}
-      <Route path="/dashboard" element={<DashboardLayout />}>
-        <Route index               element={<Dashboard />} />
-        <Route path="analytics"    element={<Analytics />} />
-        <Route path="plans"        element={<Plans />} />
-        <Route path="collections"  element={<Collections />} />
-        <Route path="disbursements"element={<Disbursements />} />
-        <Route path="users"        element={<Users />} />
-        <Route path="members"      element={<Members />} />
-        <Route path="roles"        element={<Roles />} />
-        <Route path="settings"     element={<Settings />} />
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <DashboardLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<Dashboard />} />
+        <Route path="accounts" element={<Accounts />} />
+        <Route path="transactions" element={<Transactions />} />
+        <Route path="cash-flow" element={<CashFlowReports />} />
+        <Route path="budget" element={<Budget />} />
+        <Route path="recurring" element={<Recurring />} />
+        <Route path="goals" element={<Goals />} />
+        <Route path="settings" element={<Settings />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />

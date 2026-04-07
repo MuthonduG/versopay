@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { toast } from 'sonner';
+import { useLogin } from '../../../hooks/useAuth';
 import { FaEnvelope, FaLock, FaArrowRight, FaGoogle, FaMicrosoft } from 'react-icons/fa';
 import { BsShieldCheck, BsEye, BsEyeSlash, BsStars } from 'react-icons/bs';
 import { HiOutlineSparkles } from 'react-icons/hi';
@@ -16,10 +18,23 @@ const LoginPage = () => {
   const [showOtpModal, setShowOtpModal] = useState(false);
   const [otpEmail, setOtpEmail] = useState('');
   const navigate = useNavigate();
-  
-  const handleSubmit = (e: React.FormEvent) => {
+  const location = useLocation();
+  const loginMutation = useLogin();
+  const from = (location.state as { from?: { pathname?: string } } | null)?.from?.pathname ?? '/dashboard';
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    navigate('/oauth/onboarding');
+    const result = await loginMutation.mutateAsync({
+      loginData: email,
+      password,
+      rememberMe,
+    });
+    if (!result.success) {
+      toast.error(result.error?.message ?? 'Login failed. Please try again.');
+      return;
+    }
+    toast.success('Signed in successfully');
+    navigate(from, { replace: true });
   };
 
   const handleForgotPasswordClick = (e: React.MouseEvent) => {
@@ -207,9 +222,10 @@ const LoginPage = () => {
 
               <button
                 type="submit"
-                className="group w-full flex justify-center items-center gap-2 bg-linear-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-lg mt-8"
+                disabled={loginMutation.isPending}
+                className="group w-full flex justify-center items-center gap-2 bg-linear-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 disabled:opacity-60 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-lg mt-8"
               >
-                Sign In
+                {loginMutation.isPending ? 'Signing in…' : 'Sign In'}
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
               </button>
             </form>

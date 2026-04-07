@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FaQuoteLeft, FaStar, FaPlay, FaPause, FaLinkedin, FaTwitter, FaBuilding } from 'react-icons/fa';
+import { FaQuoteLeft, FaStar, FaPlay, FaPause, FaLinkedin, FaTwitter, FaUser } from 'react-icons/fa';
 import { MdVerified, MdOutlineArrowBack, MdOutlineArrowForward } from 'react-icons/md';
 import { BsTrophy } from 'react-icons/bs';
 import { HiOutlineSparkles } from 'react-icons/hi';
@@ -10,15 +10,20 @@ interface TestimonialStats {
   timeSaved?: string;
   collectionRate?: string;
   memberGrowth?: string;
-  efficiency?: string;
-  errorReduction?: string;
-  latePayments?: string;
-  retention?: string;
-  adminTime?: string;
-  parentSatisfaction?: string;
-  auditTime?: string;
-  overdueAccounts?: string;
-  cashFlow?: string;
+  clarity?: string;
+  stress?: string;
+  renewalsCaught?: string;
+  wasteCut?: string;
+  focus?: string;
+  onTrackWeeks?: string;
+  overspend?: string;
+  goals?: string;
+  reconciled?: string;
+  planning?: string;
+  anxiety?: string;
+  goalsFunded?: string;
+  progress?: string;
+  arguments?: string;
 }
 
 interface Testimonial {
@@ -41,64 +46,69 @@ const TestimonialsComponent = () => {
   const testimonials: Testimonial[] = [
     {
       id: 1,
-      name: "Grace Wanjiku",
-      title: "Treasurer",
-      company: "Kigumo Women's Chama",
-      industry: "Chamas",
-      image: "https://i.pinimg.com/736x/96/e3/63/96e3632f40c81f5fb985697f662adfb0.jpg",
-      quote: "Versopaid transformed our chama operations completely. What used to take 6 hours every Sunday now takes just 10 minutes. The automatic M-Pesa reconciliation is a game-changer, and our members love the WhatsApp reminders. Our collection rate is now at 98% - the highest ever!",
-      stats: { timeSaved: "6 hrs/week", collectionRate: "98%", memberGrowth: "+45%" },
+      name: 'Grace Wanjiku',
+      title: 'Product designer',
+      company: 'Nairobi',
+      industry: 'Personal finance',
+      image: 'https://i.pinimg.com/736x/96/e3/63/96e3632f40c81f5fb985697f662adfb0.jpg',
+      quote:
+        'I finally see every subscription in one place. Pairing that with M-Pesa means I am not guessing at month-end anymore—I actually know what is left after bills.',
+      stats: { timeSaved: '3 hrs/mo', clarity: '+100%', stress: '-40%' },
       rating: 5,
-      featured: true
+      featured: true,
     },
     {
       id: 2,
-      name: "Sarah Otieno",
-      title: "Branch Manager",
-      company: "Nairobi Women's SACCO",
-      industry: "SACCOs",
-      image: "https://i.pinimg.com/1200x/b0/bc/07/b0bc077f04b123595e93e1e05ea8ee5b.jpg",
-      quote: "Managing 500+ members across 3 branches was chaotic until Versopaid. The platform unified our data and gave us real-time visibility. Our board meetings are now data-driven, and the audit-ready reports have saved us countless hours. This is exactly what the SACCO sector needed.",
-      stats: { efficiency: "3x faster", errorReduction: "95%", memberGrowth: "+40%" },
+      name: 'Brian Omondi',
+      title: 'Software engineer',
+      company: 'Remote',
+      industry: 'Subscriptions',
+      image: 'https://i.pinimg.com/1200x/b0/bc/07/b0bc077f04b123595e93e1e05ea8ee5b.jpg',
+      quote:
+        'Rocket-style subscription visibility, but it speaks M-Pesa. The reminders caught two renewals I would have forgotten—small wins that add up fast.',
+      stats: { renewalsCaught: '2/mo', wasteCut: '-18%', focus: '+1' },
       rating: 5,
-      featured: false
+      featured: false,
     },
     {
       id: 3,
-      name: "John Mwangi",
-      title: "Owner",
-      company: "FitLife Fitness Center",
-      industry: "Gyms",
-      image: "https://i.pinimg.com/1200x/d2/1f/b2/d21fb26ff8628bee215789569d4d5fba.jpg",
-      quote: "Late payments dropped by 70% in the first month! Versopaid automatically matches M-Pesa payments and sends timely reminders. My admin team now focuses on member experience instead of chasing payments. The ROI has been incredible for our gym.",
-      stats: { latePayments: "-70%", retention: "+30%", adminTime: "-15 hrs/wk" },
+      name: 'Amina Hassan',
+      title: 'Teacher',
+      company: 'Mombasa',
+      industry: 'Budgeting',
+      image: 'https://i.pinimg.com/1200x/d2/1f/b2/d21fb26ff8628bee215789569d4d5fba.jpg',
+      quote:
+        'Budgets used to feel like punishment. Here they feel like guardrails—I set categories once and get a clear picture without living in Excel.',
+      stats: { onTrackWeeks: '4/4', overspend: '-25%', goals: '+2' },
       rating: 5,
-      featured: false
+      featured: false,
     },
     {
       id: 4,
-      name: "Mary Nduta",
-      title: "Bursar",
-      company: "Excel Academy",
-      industry: "Schools",
-      image: "https://i.pinimg.com/736x/ac/00/0a/ac000a2915e49524c511cf4e4cbde131.jpg",
-      quote: "Fee collection increased by 35% in just 3 months! Parents love the transparency and timely reminders. The audit-ready reports have reduced our audit time by 50%. Versopaid has made school fee management effortless.",
-      stats: { collectionRate: "+35%", parentSatisfaction: "92%", auditTime: "-50%" },
+      name: 'Kevin Mutua',
+      title: 'Freelancer',
+      company: 'Kiambu',
+      industry: 'Cash flow',
+      image: 'https://i.pinimg.com/736x/ac/00/0a/ac000a2915e49524c511cf4e4cbde131.jpg',
+      quote:
+        'Irregular income is messy. Having M-Pesa and the bank in one flow stopped the “where did Friday’s payment go?” spiral. I plan the next month with confidence.',
+      stats: { reconciled: '99%', planning: 'Weekly', anxiety: '-30%' },
       rating: 5,
-      featured: false
+      featured: false,
     },
     {
       id: 5,
-      name: "David Kimathi",
-      title: "Founder",
-      company: "Kimathi ISP Solutions",
-      industry: "ISPs",
-      image: "https://i.pinimg.com/1200x/c0/b2/75/c0b27561ec5a5181f59ae0d187dcc91b.jpg",
-      quote: "Overdue accounts dropped by 80% and cash flow improved by 45% within months. The API integration was seamless, and automated reconciliation works flawlessly. Versopaid has allowed me to focus on growing my business instead of chasing payments.",
-      stats: { overdueAccounts: "-80%", cashFlow: "+45%", adminTime: "-20 hrs/wk" },
+      name: 'Esther Njeri',
+      title: 'Parent',
+      company: 'Nakuru',
+      industry: 'Saving goals',
+      image: 'https://i.pinimg.com/1200x/c0/b2/75/c0b27561ec5a5181f59ae0d187dcc91b.jpg',
+      quote:
+        'School fees and travel used to live in my head. Named goals with progress bars make it feel achievable—and the whole family can see we are on track.',
+      stats: { goalsFunded: '2', progress: '+35%', arguments: '-50%' },
       rating: 5,
-      featured: false
-    }
+      featured: false,
+    },
   ];
 
   const nextTestimonial = (): void => {
@@ -158,17 +168,17 @@ const TestimonialsComponent = () => {
         <div className="text-center mb-16">
           
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Learn why professionals trust our{' '}
+            What early supporters say about{' '}
             <span className="relative inline-block">
               <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-amber-500">
-                solutions
+                money clarity
               </span>
               <div className="absolute -bottom-3 left-0 right-0 h-1 bg-linear-to-r from-yellow-500 to-amber-500 rounded-full"></div>
             </span>
           </h2>
-          
+
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            to complete their customer journeys with confidence and clarity
+            Real stories from people who want the same thing: less guesswork, more control.
           </p>
           
           
@@ -264,7 +274,7 @@ const TestimonialsComponent = () => {
                 <div>
                   <div className="mb-6">
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-50 rounded-full mb-4">
-                      <FaBuilding className="text-yellow-500 text-xs" />
+                      <FaUser className="text-yellow-500 text-xs" />
                       <span className="text-xs font-medium text-yellow-700">
                         {testimonials[activeIndex].industry}
                       </span>

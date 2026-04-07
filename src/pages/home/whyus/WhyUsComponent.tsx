@@ -40,8 +40,8 @@ const WhyUsComponent = () => {
                     </h2>
 
                     <p className="text-gray-600 leading-9">
-                        We automate M-Pesa and bank payments reconciliation, subscription tracking, defaulter management, and reminders 
-                        for recurring-collection groups in Kenya — so you get clarity without chasing payments.
+                        VersoPaid helps you stay on top of personal money—subscriptions, day-to-day spending, budgets, and saving goals—with automated M-Pesa and bank
+                        reconciliation and reminders that actually reduce mental load. One product mindset: clarity you can trust week to week.
                     </p>                
                 </div>
 
@@ -64,9 +64,9 @@ const WhyUsComponent = () => {
                         </div>
                         <div className="flex-1">
                             <div className="flex items-center gap-2">
-                                <h4 className="font-bold text-gray-900 text-lg">Automated Reminders</h4>
+                                <h4 className="font-bold text-gray-900 text-lg">Recurring & subscriptions</h4>
                             </div>
-                            <p className="text-gray-600 text-sm">WhatsApp, SMS and email for upcoming or missed payments</p>
+                            <p className="text-gray-600 text-sm">See what repeats every month—apps, bundles, dues—so nothing surprises you</p>
                         </div>
                     </div>
 
@@ -76,9 +76,21 @@ const WhyUsComponent = () => {
                         </div>
                         <div className="flex-1">
                             <div className="flex items-center gap-2">
-                                <h4 className="font-bold text-gray-900 text-lg">Clear Reporting</h4>
+                                <h4 className="font-bold text-gray-900 text-lg">Spending & saving clarity</h4>
                             </div>
-                            <p className="text-gray-600 text-sm">Weekly and monthly contribution summaries, audit-ready</p>
+                            <p className="text-gray-600 text-sm">Categorized expenses, budgets, and goals in one coherent dashboard</p>
+                        </div>
+                    </div>
+
+                    <div className="flex items-center gap-4 bg-white hover:bg-amber-50 rounded-full p-4 pr-8 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group border border-gray-100">
+                        <div className="bg-linear-to-tr from-yellow-500 to-amber-500 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:scale-110 transition-transform">
+                            4
+                        </div>
+                        <div className="flex-1">
+                            <div className="flex items-center gap-2">
+                                <h4 className="font-bold text-gray-900 text-lg">Reminders that actually help</h4>
+                            </div>
+                            <p className="text-gray-600 text-sm">WhatsApp, SMS, and email for bills, renewals, and what you choose to track</p>
                         </div>
                     </div>
                 </div>
@@ -129,7 +141,7 @@ const WhyUsComponent = () => {
                     </div>
                     <div className="flex flex-col">
                         <span className="text-sm font-bold text-gray-900">Pilot</span>
-                        <span className="text-xs text-gray-600">Chamas & groups</span>
+                        <span className="text-xs text-gray-600">Early access members</span>
                     </div>
                 </div>
 

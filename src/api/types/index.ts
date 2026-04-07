@@ -13,13 +13,44 @@ export interface ApiResponse<T = unknown> {
   error?: ApiError;
 }
 
+/** Normalized auth payload stored in Redux after login / verify-email */
 export interface AuthTokens {
   token: string;
+  refreshToken?: string;
   message?: string;
   email?: string;
   firstName?: string;
   lastName?: string;
   success?: boolean;
+  user?: LoginUserInfo;
+}
+
+/** Matches backend LoginResponseDTO user block */
+export interface LoginUserInfo {
+  id: number;
+  email: string;
+  firstName: string;
+  lastName: string;
+  fullName?: string;
+  phoneNumber?: string;
+}
+
+/** Inner data from POST /api/v1/users/login and /verify-email */
+export interface LoginResponsePayload {
+  token: string;
+  refreshToken: string;
+  tokenType?: string;
+  expiresIn?: number;
+  user: LoginUserInfo;
+}
+
+/** Inner data from POST /api/v1/users/register */
+export interface UserResponsePayload {
+  id: number;
+  email: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
 }
 
 export interface User {
@@ -33,11 +64,14 @@ export interface User {
   isActive: boolean;
 }
 
-// Auth request payloads
+// Auth request payloads (VersoPaid auth service /api/v1/users)
 export interface LoginRequest {
   loginData: string;
   password: string;
+  rememberMe?: boolean;
 }
+
+export type AccountTypeApi = 'PERSONAL' | 'ORGANISATION';
 
 export interface RegisterRequest {
   firstName: string;
@@ -47,6 +81,7 @@ export interface RegisterRequest {
   password: string;
   confirmPassword: string;
   termsAccepted: boolean;
+  accountType: AccountTypeApi;
 }
 
 export interface EmailVerificationRequest {
